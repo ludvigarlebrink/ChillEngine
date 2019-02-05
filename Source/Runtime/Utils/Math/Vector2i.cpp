@@ -27,6 +27,12 @@ Vector2i::Vector2i(int32 x, int32 y)
 {
 }
 
+Vector2i::Vector2i(int32 uniform)
+    : x(uniform)
+    , y(uniform)
+{
+}
+
 Vector2i::Vector2i(const std::string& vec)
 {
     x = std::stoi(vec.substr(vec.find_first_of("(") + 1u));

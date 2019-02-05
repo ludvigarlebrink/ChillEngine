@@ -35,6 +35,13 @@ public:
     Vector2i(int32 x, int32 y);
 
     /**
+     * @brief Creates a vector where both components have the same value.
+     *
+     * @param uniform Value of both components.
+     */
+    Vector2i(int32 uniform);
+
+    /**
      * @brief Creates a vector from a string, format must be "(x, y)".
      *
      * @param vec String to create this vector from, format must be "(x, y)".
