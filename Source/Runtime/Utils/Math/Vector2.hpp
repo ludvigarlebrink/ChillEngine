@@ -8,7 +8,7 @@
 namespace chill
 {
 /**
- * @brief A vector with two components.
+ * @brief A vector, or a point, with two components.
  */
 struct UTILS_API Vector2
 {
@@ -35,11 +35,29 @@ public:
     Vector2(f32 x, f32 y);
 
     /**
-     * @brief Creates a vector.
+     * @brief Creates a vector where both components have the same value.
      *
      * @param uniform Value of both components.
      */
     Vector2(f32 uniform);
+
+    /**
+     * @brief Get the distance between two points.
+     *
+     * @param p1 First point.
+     * @param p2 Second point.
+     * @return Distance between two points.
+     */
+    static f32 distance(const Vector2& p1, const Vector2& p2);
+
+    /**
+     * @brief Get the distance between two points squared.
+     *
+     * @param p1 First point.
+     * @param p2 Second point.
+     * @return Distance between two points squared.
+     */
+    static f32 distanceSquared(const Vector2& p1, const Vector2& p2);
 
     /**
      * @brief Get the dot product of two vectors.
@@ -147,3 +165,7 @@ Vector2 operator/(const Vector2& lhs, const Vector2& rhs);
 
 Vector2 operator/(const Vector2& lhs, f32 rhs);
 } // namespace snack
+
+/**
+ * @struct chill::Vector2
+ */

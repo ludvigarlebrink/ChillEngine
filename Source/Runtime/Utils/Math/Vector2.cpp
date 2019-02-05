@@ -33,6 +33,18 @@ Vector2::Vector2(f32 uniform)
 {
 }
 
+f32 Vector2::distance(const Vector2& p1, const Vector2& p2)
+{
+    Vector2 v = p2 - p1;
+    return v.length();
+}
+
+f32 Vector2::distanceSquared(const Vector2& p1, const Vector2& p2)
+{
+    Vector2 v = p2 - p1;
+    return v.lengthSquared();
+}
+
 f32 Vector2::dot(const Vector2 & v1, const Vector2 & v2)
 {
     return v1.x * v2.x + v1.y * v2.y;
