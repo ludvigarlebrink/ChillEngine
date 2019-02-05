@@ -132,32 +132,32 @@ public:
 public:
 
     /**
-     * @brief Shorthand for Vector2(0, -1).
+     * @brief Shorthand for Vector2f(0, -1).
      */
     static const Vector2f DOWN;
 
     /**
-     * @brief Shorthand for Vector2(-1, 0).
+     * @brief Shorthand for Vector2f(-1, 0).
      */
     static const Vector2f LEFT;
 
     /**
-     * @brief Shorthand for Vector2(1, 1).
+     * @brief Shorthand for Vector2f(1, 1).
      */
     static const Vector2f ONE;
 
     /**
-     * @brief Shorthand for Vector2(1, 0).
+     * @brief Shorthand for Vector2f(1, 0).
      */
     static const Vector2f RIGHT;
 
     /**
-     * @brief Shorthand for Vector2(0, 1).
+     * @brief Shorthand for Vector2f(0, 1).
      */
     static const Vector2f UP;
 
     /**
-     * @brief Shorthand for Vector2(0, 0).
+     * @brief Shorthand for Vector2f(0, 0).
      */
     static const Vector2f ZERO;
 
