@@ -74,10 +74,26 @@ Vector2i& Vector2i::operator*=(const Vector2i& other)
     return *this;
 }
 
+Vector2i& Vector2i::operator*=(int32 v)
+{
+    x *= v;
+    y *= v;
+
+    return *this;
+}
+
 Vector2i& Vector2i::operator/=(const Vector2i& other)
 {
     x /= other.x;
     y /= other.y;
+
+    return *this;
+}
+
+Vector2i& Vector2i::operator/=(int32 v)
+{
+    x /= v;
+    y /= v;
 
     return *this;
 }

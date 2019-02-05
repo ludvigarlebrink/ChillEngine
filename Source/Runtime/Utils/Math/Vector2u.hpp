@@ -56,7 +56,11 @@ public:
 
     Vector2u& operator*=(const Vector2u& other);
 
+    Vector2u& operator*=(uint32 v);
+
     Vector2u& operator/=(const Vector2u& other);
+    
+    Vector2u& operator/=(uint32 v);
 
     uint32& operator[](uint32 i);
 

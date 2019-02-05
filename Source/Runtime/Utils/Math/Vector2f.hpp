@@ -125,7 +125,11 @@ public:
 
     Vector2f& operator*=(const Vector2f& other);
 
+    Vector2f& operator*=(f32 v);
+
     Vector2f& operator/=(const Vector2f& other);
+
+    Vector2f& operator/=(f32 v);
 
     f32& operator[](uint32 i);
 

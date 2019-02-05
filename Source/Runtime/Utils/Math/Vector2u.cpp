@@ -67,10 +67,26 @@ Vector2u& Vector2u::operator*=(const Vector2u& other)
     return *this;
 }
 
+Vector2u& Vector2u::operator*=(uint32 v)
+{
+    x *= v;
+    y *= v;
+
+    return *this;
+}
+
 Vector2u& Vector2u::operator/=(const Vector2u& other)
 {
     x /= other.x;
     y /= other.y;
+
+    return *this;
+}
+
+Vector2u& Vector2u::operator/=(uint32 v)
+{
+    x /= v;
+    y /= v;
 
     return *this;
 }

@@ -126,10 +126,26 @@ Vector2f& Vector2f::operator*=(const Vector2f& other)
     return *this;
 }
 
+Vector2f& Vector2f::operator*=(f32 v)
+{
+    x *= v;
+    y *= v;
+
+    return *this;
+}
+
 Vector2f& Vector2f::operator/=(const Vector2f& other)
 {
     x /= other.x;
     y /= other.y;
+
+    return *this;
+}
+
+Vector2f& Vector2f::operator/=(f32 v)
+{
+    x /= v;
+    y /= v;
 
     return *this;
 }
