@@ -2,13 +2,6 @@
 
 namespace chill
 {
-const Vector2u Vector2u::DOWN = Vector2u(0u, -1u);
-const Vector2u Vector2u::LEFT = Vector2u(-1u, 0u);
-const Vector2u Vector2u::ONE = Vector2u(1u, 1u);
-const Vector2u Vector2u::RIGHT = Vector2u(1u, 0u);
-const Vector2u Vector2u::UP = Vector2u(0u, 1u);
-const Vector2u Vector2u::ZERO = Vector2u(0u, 0u);
-
 Vector2u::Vector2u()
     : x(0u)
     , y(0u)
@@ -95,11 +88,6 @@ Vector2u operator+(const Vector2u& lhs, const Vector2u& rhs)
 Vector2u operator-(const Vector2u& lhs, const Vector2u& rhs)
 {
     return { lhs.x - rhs.x, lhs.y - rhs.y };
-}
-
-Vector2u operator-(const Vector2u& vector)
-{
-    return { -vector.x, -vector.y };
 }
 
 Vector2u operator*(const Vector2u& lhs, const Vector2u& rhs)

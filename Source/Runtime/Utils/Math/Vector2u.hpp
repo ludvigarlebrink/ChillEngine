@@ -63,36 +63,6 @@ public:
 public:
 
     /**
-     * @brief Shorthand for Vector2u(0, -1).
-     */
-    static const Vector2u DOWN;
-
-    /**
-     * @brief Shorthand for Vector2u(-1, 0).
-     */
-    static const Vector2u LEFT;
-
-    /**
-     * @brief Shorthand for Vector2u(1, 1).
-     */
-    static const Vector2u ONE;
-
-    /**
-     * @brief Shorthand for Vector2u(1, 0).
-     */
-    static const Vector2u RIGHT;
-
-    /**
-     * @brief Shorthand for Vector2u(0, 1).
-     */
-    static const Vector2u UP;
-
-    /**
-     * @brief Shorthand for Vector2u(0, 0).
-     */
-    static const Vector2u ZERO;
-
-    /**
      * @brief X component of a vector.
      */
     uint32 x;
@@ -106,8 +76,6 @@ public:
 Vector2u operator+(const Vector2u& lhs, const Vector2u& rhs);
 
 Vector2u operator-(const Vector2u& lhs, const Vector2u& rhs);
-
-Vector2u operator-(const Vector2u& vector);
 
 Vector2u operator*(const Vector2u& lhs, const Vector2u& rhs);
 
