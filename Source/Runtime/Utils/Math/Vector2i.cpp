@@ -2,12 +2,12 @@
 
 namespace chill
 {
-const Vector2i Vector2i::DOWN = Vector2f(0, -1);
-const Vector2i Vector2i::LEFT = Vector2f(-1, 0);
-const Vector2i Vector2i::ONE = Vector2f(1, 1);
-const Vector2i Vector2i::RIGHT = Vector2f(1, 0);
-const Vector2i Vector2i::UP = Vector2f(0, 1);
-const Vector2i Vector2i::ZERO = Vector2f(0, 0);
+const Vector2i Vector2i::DOWN = Vector2i(0, -1);
+const Vector2i Vector2i::LEFT = Vector2i(-1, 0);
+const Vector2i Vector2i::ONE = Vector2i(1, 1);
+const Vector2i Vector2i::RIGHT = Vector2i(1, 0);
+const Vector2i Vector2i::UP = Vector2i(0, 1);
+const Vector2i Vector2i::ZERO = Vector2i(0, 0);
 
 Vector2i::Vector2i()
     : x(0)
@@ -29,8 +29,8 @@ Vector2i::Vector2i(int32 x, int32 y)
 
 Vector2i::Vector2i(const std::string& vec)
 {
-    x = std::stof(vec.substr(vec.find_first_of("(") + 1u));
-    y = std::stof(vec.substr(vec.find_first_of(",") + 1u));
+    x = std::stoi(vec.substr(vec.find_first_of("(") + 1u));
+    y = std::stoi(vec.substr(vec.find_first_of(",") + 1u));
 }
 
 std::string Vector2i::toString() const
