@@ -104,12 +104,12 @@ public:
     static const Vector2i ZERO;
 
     /**
-     * @brief X component of a vector.
+     * @brief X component of this vector.
      */
     int32 x;
 
     /**
-     * @brief Y component of a vector.
+     * @brief Y component of this vector.
      */
     int32 y;
 };

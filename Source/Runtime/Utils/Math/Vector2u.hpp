@@ -74,12 +74,12 @@ public:
 public:
 
     /**
-     * @brief X component of a vector.
+     * @brief X component of this vector.
      */
     uint32 x;
 
     /**
-     * @brief Y component of a vector.
+     * @brief Y component of this vector.
      */
     uint32 y;
 };

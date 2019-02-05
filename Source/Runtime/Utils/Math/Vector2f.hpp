@@ -57,6 +57,8 @@ public:
      */
     static f32 angle(const Vector2f& from, const Vector2f& to);
 
+    static Vector2f clamp(const Vector2f& min, const Vector2f& max, const Vector2f& value);
+
     /**
      * @brief Get the distance between two points.
      *
@@ -82,12 +84,38 @@ public:
      * @param v2 Second vector.
      * @retunr Dot product of two vectors.
      */
-    static f32 dot(const Vector2f& v1, const Vector2f& v2);
+    static f32 dot(const Vector2f& lhs, const Vector2f& rhs);
+    
+    /**
+     * @brief Get the length of this vector.
+     *
+     * @return Length of this vector.
+     */
+    f32 length() const;
+
+    /**
+     * @brief Get the squared length of this vector.
+     *
+     * @return Squared length of this vector.
+     */
+    f32 lengthSquared() const;
+
+    /**
+     * @param Linear interpolation between two vectors.
+     *
+     * @param start Start vector.
+     * @param end End vector.
+     * @param t Interpolation value.
+     * @return A linear interpolated vector.
+     */
+    static Vector2f lerp(const Vector2f& start, const Vector2f& end, f32 t);
 
     /**
      * @brief Normlizes this vector.
+     *
+     * @return Reference to this vector.
      */
-    void normalize();
+    Vector2f& normalize();
 
     /**
      * @brief Creates a normalized version of this vector.
@@ -95,20 +123,6 @@ public:
      * @return A normalized version of this vector.
      */
     Vector2f normalized() const;
-
-    /**
-     * @brief Get the length of this vector.
-     *
-     * @return Length of the vector.
-     */
-    f32 length() const;
-
-    /**
-     * @brief Get the squared length of this vector.
-     *
-     * @return Squared length of the vector.
-     */
-    f32 lengthSquared() const;
 
     /**
      * @brief Get this vector as a nicely formated string: "(x, y)".
@@ -166,12 +180,12 @@ public:
     static const Vector2f ZERO;
 
     /**
-     * @brief X component of a vector.
+     * @brief X component of this vector.
      */
     f32 x;
 
     /**
-     * @brief Y component of a vector.
+     * @brief Y component of this vector.
      */
     f32 y;
 };
@@ -194,5 +208,5 @@ Vector2f operator/(const Vector2f& lhs, f32 rhs);
 } // namespace chill
 
 /**
- * @struct chill::Vector2i
+ * @struct chill::Vector2f
  */

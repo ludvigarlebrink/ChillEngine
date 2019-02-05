@@ -42,7 +42,15 @@ Vector2f::Vector2f(const std::string& vec)
 
 f32 Vector2f::angle(const Vector2f& from, const Vector2f& to)
 {
-    return Mathf::RadToDeg(acos(dot(from, to)));
+    return Mathf::radToDeg(acos(dot(from, to)));
+}
+
+Vector2f Vector2f::clamp(const Vector2f& min, const Vector2f& max, const Vector2f& value)
+{
+    return { 
+        Mathf::clamp(min.x, max.x, value.x),
+        Mathf::clamp(min.y, max.y, value.y),
+    };
 }
 
 f32 Vector2f::distance(const Vector2f& p1, const Vector2f& p2)
@@ -57,32 +65,39 @@ f32 Vector2f::distanceSquared(const Vector2f& p1, const Vector2f& p2)
     return v.lengthSquared();
 }
 
-f32 Vector2f::dot(const Vector2f& v1, const Vector2f& v2)
+f32 Vector2f::dot(const Vector2f& lhs, const Vector2f& rhs)
 {
-    return v1.x * v2.x + v1.y * v2.y;
+    return lhs.x * rhs.x + lhs.y * rhs.y;
 }
 
-void Vector2f::normalize()
+f32 Vector2f::length() const
+{
+    return abs(x * x + y * y);
+}
+
+f32 Vector2f::lengthSquared() const
+{
+    return sqrt(abs(x * x + y * y));
+}
+
+Vector2f Vector2f::lerp(const Vector2f& start, const Vector2f& end, f32 t)
+{
+    return start + t * (end - start);
+}
+
+Vector2f& Vector2f::normalize()
 {
     f32 len = sqrt(x * x + y * y);
     x /= len;
     y /= len;
+
+    return *this;
 }
 
 Vector2f Vector2f::normalized() const
 {
     f32 len = sqrt(x * x + y * y);
     return { x / len, y / len };
-}
-
-f32 Vector2f::length() const
-{
-    return x * x + y * y;
-}
-
-f32 Vector2f::lengthSquared() const
-{
-    return sqrt(x * x + y * y);
 }
 
 std::string Vector2f::toString() const
