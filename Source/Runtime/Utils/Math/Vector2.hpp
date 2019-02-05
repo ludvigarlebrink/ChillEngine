@@ -42,6 +42,22 @@ public:
     Vector2(f32 uniform);
 
     /**
+     * @brief Creates a vector from a string, format must be "(x, y)".
+     *
+     * @param vec String to create this vector from, format must be "(x, y)".
+     */
+    Vector2(const std::string& vec);
+
+    /**
+     * @brief Get the angle in degrees between from and to.
+     *
+     * @param from Vector from which the angular difference is measured.
+     * @param from Vector to which the angular difference is measured.
+     * @return Angle in degrees between from and to.
+     */
+    static f32 angle(const Vector2& from, const Vector2& to);
+
+    /**
      * @brief Get the distance between two points.
      *
      * @param p1 First point.
@@ -72,6 +88,13 @@ public:
      * @brief Normlizes this vector.
      */
     void normalize();
+
+    /**
+     * @brief Creates a normalized version of this vector.
+     *
+     * @return A normalized version of this vector.
+     */
+    Vector2 normalized() const;
 
     /**
      * @brief Get the length of this vector.
