@@ -130,3 +130,7 @@ Vector2i operator/(const Vector2i& lhs, const Vector2i& rhs);
 
 Vector2i operator/(const Vector2i& lhs, int32 rhs);
 } // namespace chill
+
+/**
+ * @struct chill::Vector2i
+ */

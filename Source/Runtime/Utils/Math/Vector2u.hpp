@@ -98,3 +98,7 @@ Vector2u operator/(const Vector2u& lhs, const Vector2u& rhs);
 
 Vector2u operator/(const Vector2u& lhs, uint32 rhs);
 } // namespace chill
+
+/**
+ * @struct chill::Vector2u
+ */

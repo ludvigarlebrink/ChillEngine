@@ -194,5 +194,5 @@ Vector2f operator/(const Vector2f& lhs, f32 rhs);
 } // namespace chill
 
 /**
- * @struct chill::Vector2
+ * @struct chill::Vector2i
  */
