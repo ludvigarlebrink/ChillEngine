@@ -8,7 +8,7 @@ namespace chill
 /**
  * @brief A collection of mathematical functions.
  */
-class UTILS_API  MathF
+class UTILS_API  Mathf
 {
 public:
 

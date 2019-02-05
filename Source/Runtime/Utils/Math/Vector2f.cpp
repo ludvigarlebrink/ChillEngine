@@ -1,5 +1,5 @@
 #include "Vector2.hpp"
-#include "MathF.hpp"
+#include "Mathf.hpp"
 
 namespace chill
 {
@@ -42,7 +42,7 @@ Vector2::Vector2(const std::string& vec)
 
 f32 Vector2::angle(const Vector2& from, const Vector2& to)
 {
-    return MathF::RadToDeg(acos(dot(from, to)));
+    return Mathf::RadToDeg(acos(dot(from, to)));
 }
 
 f32 Vector2::distance(const Vector2& p1, const Vector2& p2)

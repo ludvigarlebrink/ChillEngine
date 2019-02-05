@@ -10,21 +10,21 @@ namespace chill
 /**
  * @brief A vector, or a point, with two components.
  */
-struct UTILS_API Vector2
+struct UTILS_API Vector2f
 {
 public:
 
     /**
      * @brief Creates a vector and initializes all components to 0.  
      */
-    Vector2();
+    Vector2f();
 
     /**
      * @brief Copies a vector.
      *
      * @param other Vector to copy from.
      */
-    Vector2(const Vector2& other);
+    Vector2f(const Vector2f& other);
 
     /**
      * @brief Creates a vector.
@@ -32,21 +32,21 @@ public:
      * @param x Value of the x component.
      * @param y Value of the y component.
      */
-    Vector2(f32 x, f32 y);
+    Vector2f(f32 x, f32 y);
 
     /**
      * @brief Creates a vector where both components have the same value.
      *
      * @param uniform Value of both components.
      */
-    Vector2(f32 uniform);
+    Vector2f(f32 uniform);
 
     /**
      * @brief Creates a vector from a string, format must be "(x, y)".
      *
      * @param vec String to create this vector from, format must be "(x, y)".
      */
-    Vector2(const std::string& vec);
+    Vector2f(const std::string& vec);
 
     /**
      * @brief Get the angle in degrees between from and to.
@@ -55,7 +55,7 @@ public:
      * @param from Vector to which the angular difference is measured.
      * @return Angle in degrees between from and to.
      */
-    static f32 angle(const Vector2& from, const Vector2& to);
+    static f32 angle(const Vector2f& from, const Vector2f& to);
 
     /**
      * @brief Get the distance between two points.
@@ -64,7 +64,7 @@ public:
      * @param p2 Second point.
      * @return Distance between two points.
      */
-    static f32 distance(const Vector2& p1, const Vector2& p2);
+    static f32 distance(const Vector2f& p1, const Vector2f& p2);
 
     /**
      * @brief Get the distance between two points squared.
@@ -73,7 +73,7 @@ public:
      * @param p2 Second point.
      * @return Distance between two points squared.
      */
-    static f32 distanceSquared(const Vector2& p1, const Vector2& p2);
+    static f32 distanceSquared(const Vector2f& p1, const Vector2f& p2);
 
     /**
      * @brief Get the dot product of two vectors.
@@ -82,7 +82,7 @@ public:
      * @param v2 Second vector.
      * @retunr Dot product of two vectors.
      */
-    static f32 dot(const Vector2& v1, const Vector2& v2);
+    static f32 dot(const Vector2f& v1, const Vector2f& v2);
 
     /**
      * @brief Normlizes this vector.
@@ -94,7 +94,7 @@ public:
      *
      * @return A normalized version of this vector.
      */
-    Vector2 normalized() const;
+    Vector2f normalized() const;
 
     /**
      * @brief Get the length of this vector.
@@ -117,15 +117,15 @@ public:
      */
     std::string toString() const;
 
-    Vector2& operator=(const Vector2& other);
+    Vector2f& operator=(const Vector2f& other);
 
-    Vector2& operator+=(const Vector2& other);
+    Vector2f& operator+=(const Vector2f& other);
 
-    Vector2& operator-=(const Vector2& other);
+    Vector2f& operator-=(const Vector2f& other);
 
-    Vector2& operator*=(const Vector2& other);
+    Vector2f& operator*=(const Vector2f& other);
 
-    Vector2& operator/=(const Vector2& other);
+    Vector2f& operator/=(const Vector2f& other);
 
     f32& operator[](uint32 i);
 
@@ -134,32 +134,32 @@ public:
     /**
      * @brief Shorthand for Vector2(0, -1).
      */
-    static const Vector2 DOWN;
+    static const Vector2f DOWN;
 
     /**
      * @brief Shorthand for Vector2(-1, 0).
      */
-    static const Vector2 LEFT;
+    static const Vector2f LEFT;
 
     /**
      * @brief Shorthand for Vector2(1, 1).
      */
-    static const Vector2 ONE;
+    static const Vector2f ONE;
 
     /**
      * @brief Shorthand for Vector2(1, 0).
      */
-    static const Vector2 RIGHT;
+    static const Vector2f RIGHT;
 
     /**
      * @brief Shorthand for Vector2(0, 1).
      */
-    static const Vector2 UP;
+    static const Vector2f UP;
 
     /**
      * @brief Shorthand for Vector2(0, 0).
      */
-    static const Vector2 ZERO;
+    static const Vector2f ZERO;
 
     /**
      * @brief X component of a vector.
@@ -172,22 +172,22 @@ public:
     f32 y;
 };
 
-Vector2 operator+(const Vector2& lhs, const Vector2& rhs);
+Vector2f operator+(const Vector2f& lhs, const Vector2f& rhs);
 
-Vector2 operator-(const Vector2& lhs, const Vector2& rhs);
+Vector2f operator-(const Vector2f& lhs, const Vector2f& rhs);
 
-Vector2 operator-(const Vector2& vector);
+Vector2f operator-(const Vector2f& vector);
 
-Vector2 operator*(const Vector2& lhs, const Vector2& rhs);
+Vector2f operator*(const Vector2f& lhs, const Vector2f& rhs);
 
-Vector2 operator*(const Vector2& lhs, f32 rhs);
+Vector2f operator*(const Vector2f& lhs, f32 rhs);
 
-Vector2 operator*(f32 lhs, const Vector2& rhs);
+Vector2f operator*(f32 lhs, const Vector2f& rhs);
 
-Vector2 operator/(const Vector2& lhs, const Vector2& rhs);
+Vector2f operator/(const Vector2f& lhs, const Vector2f& rhs);
 
-Vector2 operator/(const Vector2& lhs, f32 rhs);
-} // namespace snack
+Vector2f operator/(const Vector2f& lhs, f32 rhs);
+} // namespace chill
 
 /**
  * @struct chill::Vector2
