@@ -37,9 +37,15 @@ std::string Rectf::toString() const
 
 Rectf& Rectf::operator=(const Rectf& other)
 {
-    x = other.x;
-    y = other.y;
-    w = other.w;
-    h = other.h;
+    // Check for self assignemnt.
+    if (this != &other)
+    {
+        x = other.x;
+        y = other.y;
+        w = other.w;
+        h = other.h;
+    }
+
+    return *this;
 }
 } // namespace chill
