@@ -44,9 +44,9 @@ public:
     /**
      * @brief Creates a vector from a string, format must be "(x, y)".
      *
-     * @param vec String to create this vector from, format must be "(x, y)".
+     * @param str String to create this vector from, format must be "(x, y)".
      */
-    Vector2i(const std::string& vec);
+    Vector2i(const std::string& str);
 
     /**
      * @brief Get this vector as a nicely formated string: "(x, y)".

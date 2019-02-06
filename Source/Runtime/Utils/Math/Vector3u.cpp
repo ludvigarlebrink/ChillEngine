@@ -30,11 +30,11 @@ Vector3u::Vector3u(uint32 uniform)
 {
 }
 
-Vector3u::Vector3u(const std::string& vec)
+Vector3u::Vector3u(const std::string& str)
 {
-    x = static_cast<uint32>(std::stoi(vec.substr(vec.find_first_of("(") + 1u)));
-    y = static_cast<uint32>(std::stoi(vec.substr(vec.find_first_of(",") + 1u)));
-    z = static_cast<uint32>(std::stoi(vec.substr(vec.find_last_of(",") + 1u)));
+    x = static_cast<uint32>(std::stoi(str.substr(str.find_first_of("(") + 1u)));
+    y = static_cast<uint32>(std::stoi(str.substr(str.find_first_of(",") + 1u)));
+    z = static_cast<uint32>(std::stoi(str.substr(str.find_last_of(",") + 1u)));
 }
 
 std::string Vector3u::toString() const

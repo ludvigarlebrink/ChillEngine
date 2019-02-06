@@ -40,11 +40,11 @@ Vector3f::Vector3f(f32 uniform)
 {
 }
 
-Vector3f::Vector3f(const std::string& vec)
+Vector3f::Vector3f(const std::string& str)
 {
-    x = std::stof(vec.substr(vec.find_first_of("(") + 1u));
-    y = std::stof(vec.substr(vec.find_first_of(",") + 1u));
-    z = std::stof(vec.substr(vec.find_last_of(",") + 1u));
+    x = std::stof(str.substr(str.find_first_of("(") + 1u));
+    y = std::stof(str.substr(str.find_first_of(",") + 1u));
+    z = std::stof(str.substr(str.find_last_of(",") + 1u));
 }
 
 f32 Vector3f::angle(const Vector3f& from, const Vector3f& to)

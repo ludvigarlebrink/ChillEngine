@@ -45,12 +45,12 @@ public:
     /**
      * @brief Creates a vector from a string, format must be "(x, y, z)".
      *
-     * @param vec String to create this vector from, format must be "(x, y, z)".
+     * @param str String to create this vector from, format must be "(x, y, z)".
      */
-    Vector3i(const std::string& vec);
+    Vector3i(const std::string& str);
 
     /**
-     * @brief Get this vector as a nicely formated string: "(x, y)".
+     * @brief Get this vector as a nicely formated string: "(x, y, z)".
      *
      * @return A nicely formated string.
      */

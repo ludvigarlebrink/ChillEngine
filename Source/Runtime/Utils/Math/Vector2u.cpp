@@ -26,10 +26,10 @@ Vector2u::Vector2u(uint32 uniform)
 {
 }
 
-Vector2u::Vector2u(const std::string & vec)
+Vector2u::Vector2u(const std::string& str)
 {
-    x = std::stoi(vec.substr(vec.find_first_of("(") + 1u));
-    y = std::stoi(vec.substr(vec.find_first_of(",") + 1u));
+    x = static_cast<uint32>(std::stoi(str.substr(str.find_first_of("(") + 1u)));
+    y = static_cast<uint32>(std::stoi(str.substr(str.find_first_of(",") + 1u)));
 }
 
 std::string Vector2u::toString() const

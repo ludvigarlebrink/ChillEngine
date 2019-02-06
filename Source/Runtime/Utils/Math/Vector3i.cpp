@@ -39,11 +39,11 @@ Vector3i::Vector3i(int32 uniform)
 {
 }
 
-Vector3i::Vector3i(const std::string& vec)
+Vector3i::Vector3i(const std::string& str)
 {
-    x = std::stoi(vec.substr(vec.find_first_of("(") + 1u));
-    y = std::stoi(vec.substr(vec.find_first_of(",") + 1u));
-    z = std::stoi(vec.substr(vec.find_last_of(",") + 1u));
+    x = std::stoi(str.substr(str.find_first_of("(") + 1u));
+    y = std::stoi(str.substr(str.find_first_of(",") + 1u));
+    z = std::stoi(str.substr(str.find_last_of(",") + 1u));
 }
 
 std::string Vector3i::toString() const

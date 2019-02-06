@@ -45,9 +45,9 @@ public:
     /**
      * @brief Creates a vector from a string, format must be "(x, y, z)".
      *
-     * @param vec String to create this vector from, format must be "(x, y, z)".
+     * @param str String to create this vector from, format must be "(x, y, z)".
      */
-    Vector3f(const std::string& vec);
+    Vector3f(const std::string& str);
 
     /**
      * @brief Get the angle in degrees between from and to.
@@ -147,7 +147,7 @@ public:
     static Vector3f slerp(const Vector3f& start, const Vector3f& end, f32 t);
 
     /**
-     * @brief Get this vector as a nicely formated string: "(x, y)".
+     * @brief Get this vector as a nicely formated string: "(x, y, z)".
      *
      * @return A nicely formated string.
      */

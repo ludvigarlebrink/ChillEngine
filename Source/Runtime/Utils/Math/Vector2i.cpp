@@ -33,10 +33,10 @@ Vector2i::Vector2i(int32 uniform)
 {
 }
 
-Vector2i::Vector2i(const std::string& vec)
+Vector2i::Vector2i(const std::string& str)
 {
-    x = std::stoi(vec.substr(vec.find_first_of("(") + 1u));
-    y = std::stoi(vec.substr(vec.find_first_of(",") + 1u));
+    x = std::stoi(str.substr(str.find_first_of("(") + 1u));
+    y = std::stoi(str.substr(str.find_first_of(",") + 1u));
 }
 
 std::string Vector2i::toString() const

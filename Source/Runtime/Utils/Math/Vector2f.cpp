@@ -34,10 +34,10 @@ Vector2f::Vector2f(f32 uniform)
 {
 }
 
-Vector2f::Vector2f(const std::string& vec)
+Vector2f::Vector2f(const std::string& str)
 {
-    x = std::stof(vec.substr(vec.find_first_of("(") + 1u));
-    y = std::stof(vec.substr(vec.find_first_of(",") + 1u));
+    x = std::stof(str.substr(str.find_first_of("(") + 1u));
+    y = std::stof(str.substr(str.find_first_of(",") + 1u));
 }
 
 f32 Vector2f::angle(const Vector2f& from, const Vector2f& to)

@@ -44,9 +44,9 @@ public:
     /**
      * @brief Creates a vector from a string, format must be "(x, y)".
      *
-     * @param vec String to create this vector from, format must be "(x, y)".
+     * @param str String to create this vector from, format must be "(x, y)".
      */
-    Vector2f(const std::string& vec);
+    Vector2f(const std::string& str);
 
     /**
      * @brief Get the angle in degrees between from and to.
