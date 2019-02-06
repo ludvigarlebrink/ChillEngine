@@ -7,7 +7,7 @@ const Vector3f Vector3f::BACK = Vector3f(0.0f, 0.0f, -1.0f);
 const Vector3f Vector3f::DOWN = Vector3f(0.0f, -1.0f, 0.0f);
 const Vector3f Vector3f::FORWARD = Vector3f(0.0f, 0.0f, 1.0f);
 const Vector3f Vector3f::LEFT = Vector3f(-1.0f, 0.0f, 0.0f);
-const Vector3f Vector3f::ONE = Vector3f(1.0f, 1.0f, 0.0f);
+const Vector3f Vector3f::ONE = Vector3f(1.0f, 1.0f, 1.0f);
 const Vector3f Vector3f::RIGHT = Vector3f(1.0f, 0.0f, 0.0f);
 const Vector3f Vector3f::UP = Vector3f(0.0f, 1.0f, 0.0f);
 const Vector3f Vector3f::ZERO = Vector3f(0.0f, 0.0f, 0.0f);
@@ -54,7 +54,11 @@ f32 Vector3f::angle(const Vector3f& from, const Vector3f& to)
 
 Vector3f Vector3f::cross(const Vector3f& lhs, const Vector3f& rhs)
 {
-    return Vector3f();
+    return {
+        lhs.y * rhs.z + lhs.z * lhs.y,
+        lhs.x * rhs.z + lhs.z * lhs.x,
+        lhs.x * rhs.y + lhs.y * lhs.x
+    };
 }
 
 Vector3f Vector3f::clamp(const Vector3f& min, const Vector3f& max, const Vector3f& value)
