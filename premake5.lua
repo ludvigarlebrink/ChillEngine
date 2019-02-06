@@ -28,7 +28,7 @@ project "Utils"
     location "Source/Runtime/Utils"
     files {
         "Source/Runtime/Utils/**.hpp",
-        "Source/Runtime/Utils/**.hpp",
+        "Source/Runtime/Utils/**.cpp",
     }
     defines "UTILS_API_DLL_EXPORT"
 
@@ -37,7 +37,7 @@ project "Platform"
     location "Source/Runtime/Platform"
     files {
         "Source/Runtime/Platform/**.hpp",
-        "Source/Runtime/Platform/**.hpp",
+        "Source/Runtime/Platform/**.cpp",
     }
     defines "PLATFORM_API_DLL_EXPORT"
     includeSDL()
