@@ -32,13 +32,8 @@ end
 
 function useUtils()
     includedirs "Source/Runtime/Utils"
-     
-    filter { "kind:not StaticLib", "system:windows" }
+    filter { "kind:not StaticLib" }
         links { "Utils" }
-    
-    filter { "kind:not StaticLib", "system:not windows" }
-        links { "Utils" }
-
     filter {}
 end
 
@@ -46,9 +41,20 @@ workspace "ChillEngine"
     location "Solution"
     language "C++"
     cppdialect "C++17"
-
     architecture "x86_64"
     configurations { "Debug", "Release" }
+
+    filter { "configurations:Debug", "system:windows", "action:vs*"}
+        symbols "On"
+        targetdir "Builds/Debug"
+        systemversion(winSDKVersion() .. ".0")
+        objdir "Builds/debug/obj/%{prj.name}/%{cfg.longname}"
+
+    filter { "configurations:Release", "system:windows", "action:vs*"}
+        optimize "On"
+        targetdir "Builds/Release"
+        systemversion(winSDKVersion() .. ".0")
+        objdir "builds/release/obj/%{prj.name}/%{cfg.longname}"
 
 group "Runtime"
 project "Utils"
@@ -64,12 +70,10 @@ group "Dev"
 project "Utils_TEST"
     kind "ConsoleApp"
     location "Source/Dev/UnitTests/Utils_TEST"
-    targetdir ("Builds/UnitTests/Utils_TEST")
     files {
         "Source/Dev/UnitTests/Utils_TEST/**.hpp",
         "Source/Dev/UnitTests/Utils_TEST/**.cpp",
     }
-
     includeGTest()
     useUtils()
 
