@@ -7,26 +7,26 @@
 
 namespace chill
 {
-struct Vector2f;
+struct Vector2i;
 
 /**
  * @brief A simple rectangle.
  */
-struct UTILS_API Rectf
+struct UTILS_API Recti
 {
 public:
 
     /**
      * @brief Creates a rectangle.
      */
-    Rectf();
+    Recti();
 
     /**
      * @brief Copies a rectangle.
      *
      * @param other Rectangle to copy from.
      */
-    Rectf(const Rectf& other);
+    Recti(const Recti& other);
 
     /**
      * @brief Creates a rectangle.
@@ -36,14 +36,14 @@ public:
      * @param w Width.
      * @param h Height.
      */
-    Rectf(f32 x, f32 y, f32 w, f32 h);
+    Recti(int32 x, int32 y, int32 w, int32 h);
 
     /**
      * @brief Creates a rectangle from a string, format must be "(x, y, w, h)".
      *
      * @param vec String to create a rectangle from, format must be "(x, y, w, h)".
      */
-    Rectf(const std::string& str);
+    Recti(const std::string& str);
 
     /**
      * @brief Get this rectangle as a nicely formated string: "(x, y, w, h)".
@@ -58,34 +58,34 @@ public:
      * @param point Point to be tested.
      * @return True if point is contained within this rectangle. False if not.
      */
-    bool contains(const Vector2f& point);
+    bool contains(const Vector2i& point);
 
-    Rectf& operator=(const Rectf& other);
+    Recti& operator=(const Recti& other);
 
 public:
 
     /**
      * @brief Position along the x-axis of this rectangle.
      */
-    f32 x;
+    int32 x;
 
     /**
      * @brief Position along the y-axis of this rectangle.
      */
-    f32 y;
+    int32 y;
 
     /**
      * @brief Width this rectangle.
      */
-    f32 w;
+    int32 w;
 
     /**
      * @brief Height this rectangle.
      */
-    f32 h;
+    int32 h;
 };
 } // namespace chill
 
 /**
- * @struct chill::Rectf
+ * @struct chill::Recti
  */

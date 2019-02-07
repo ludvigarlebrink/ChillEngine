@@ -1,9 +1,9 @@
-#include "Rectf.hpp"
-#include "Vector2f.hpp"
+#include "Recti.hpp"
+#include "Vector2i.hpp"
 
 namespace chill
 {
-Rectf::Rectf()
+Recti::Recti()
     : x(0.0f)
     , y(0.0f)
     , w(0.0f)
@@ -11,7 +11,7 @@ Rectf::Rectf()
 {
 }
 
-Rectf::Rectf(const Rectf& other)
+Recti::Recti(const Recti& other)
     : x(other.x)
     , y(other.y)
     , w(other.w)
@@ -19,7 +19,7 @@ Rectf::Rectf(const Rectf& other)
 {
 }
 
-Rectf::Rectf(f32 x, f32 y, f32 w, f32 h)
+Recti::Recti(int32 x, int32 y, int32 w, int32 h)
     : x(x)
     , y(y)
     , w(w)
@@ -27,7 +27,7 @@ Rectf::Rectf(f32 x, f32 y, f32 w, f32 h)
 {
 }
 
-Rectf::Rectf(const std::string& str)
+Recti::Recti(const std::string& str)
 {
     std::string sub = str.substr(str.find_first_of("(") + 1u);
     x = std::stof(sub);
@@ -39,12 +39,12 @@ Rectf::Rectf(const std::string& str)
     h = std::stof(sub);
 }
 
-std::string Rectf::toString() const
+std::string Recti::toString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(w) + ", " + std::to_string(h) + ")";
 }
 
-bool Rectf::contains(const Vector2f& point)
+bool Recti::contains(const Vector2i& point)
 {
     if (x > point.x || y > point.y)
     {
@@ -59,7 +59,7 @@ bool Rectf::contains(const Vector2f& point)
     return true;
 }
 
-Rectf& Rectf::operator=(const Rectf& other)
+Recti& Recti::operator=(const Recti& other)
 {
     // Check for self assignemnt.
     if (this != &other)
