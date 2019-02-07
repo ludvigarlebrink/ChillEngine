@@ -37,6 +37,24 @@ function useUtils()
     filter {}
 end
 
+function usePlatform()
+    includedirs "Source/Runtime/Platform"
+    filter { "kind:not StaticLib" }
+        links { "Platform" }
+    filter {}
+    includeSDL()
+    linkSDL()
+    useUtils()
+end
+
+function useRenderCore()
+    includedirs "Source/Runtime/RenderCore"
+    filter { "kind:not StaticLib" }
+        links { "RenderCore" }
+    filter {}
+    usePlatform()
+end
+
 workspace "ChillEngine"
     location "Solution"
     language "C++"
@@ -48,13 +66,21 @@ workspace "ChillEngine"
         symbols "On"
         targetdir "Builds/Debug"
         systemversion(winSDKVersion() .. ".0")
-        objdir "Builds/debug/obj/%{prj.name}/%{cfg.longname}"
+        objdir "Builds/Debug/obj/%{prj.name}/%{cfg.longname}"
 
     filter { "configurations:Release", "system:windows", "action:vs*"}
         optimize "On"
         targetdir "Builds/Release"
         systemversion(winSDKVersion() .. ".0")
-        objdir "builds/release/obj/%{prj.name}/%{cfg.longname}"
+        objdir "builds/Debug/obj/%{prj.name}/%{cfg.longname}"
+    filter {}
+
+    -- Copy files.
+    filter { "system:windows", "action:vs*" }
+        -- SDL
+        os.copyfile("ThirdParty/SDL/Lib/Win64/SDL2.dll", "Builds/Debug/SDL2.dll")
+        os.copyfile("ThirdParty/SDL/Lib/Win64/SDL2.dll", "Builds/Release/SDL2.dll")
+    filter {}
 
 group "Runtime"
 project "Utils"
@@ -88,3 +114,29 @@ project "Platform"
     defines "PLATFORM_API_DLL_EXPORT"
     includeSDL()
     linkSDL()
+    useUtils()
+
+group "Runtime"
+project "RenderCore"
+    kind "SharedLib"
+    location "Source/Runtime/RenderCore"
+    files {
+        "Source/Runtime/RenderCore/**.hpp",
+        "Source/Runtime/RenderCore/**.cpp",
+        "Source/Runtime/RenderCore/glad/glad.h",
+        "Source/Runtime/RenderCore/glad/khrplatform.h",
+        "Source/Runtime/RenderCore/glad/glad.c"
+    }
+    defines "RENDER_CORE_API_DLL_EXPORT"
+    usePlatform()
+
+group "Main"
+project "Main"
+    kind "ConsoleApp"
+    location "Source/Main"
+    files {
+        "Source/Main/**.hpp",
+        "Source/Main/**.cpp",
+    }
+    useRenderCore()
+
