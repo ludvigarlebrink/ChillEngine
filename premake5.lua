@@ -30,7 +30,9 @@ function includeGTest()
     }
 end
 
-function linkUtils()
+function useUtils()
+    includedirs "Source/Runtime/Utils"
+     
     filter { "kind:not StaticLib", "system:windows" }
         links { "Utils" }
     
@@ -46,7 +48,7 @@ workspace "ChillEngine"
     cppdialect "C++17"
 
     architecture "x86_64"
-    configurations { "Debug", "Release", "Debug_Editor", "Release_Editor" }
+    configurations { "Debug", "Release" }
 
 group "Runtime"
 project "Utils"
@@ -62,19 +64,14 @@ group "Dev"
 project "Utils_TEST"
     kind "ConsoleApp"
     location "Source/Dev/UnitTests/Utils_TEST"
-    targetdir ("Build/UnitTests/Utils_TEST")
-    
-    includeGTest()
+    targetdir ("Builds/UnitTests/Utils_TEST")
     files {
         "Source/Dev/UnitTests/Utils_TEST/**.hpp",
         "Source/Dev/UnitTests/Utils_TEST/**.cpp",
     }
-    
-    includedirs {
-        "Source/Runtime/Utils"
-    }
-    
-    linkUtils()
+
+    includeGTest()
+    useUtils()
 
 group "Runtime"
 project "Platform"
