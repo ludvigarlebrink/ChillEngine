@@ -76,6 +76,8 @@ Matrix2f& Matrix2f::operator*=(const Matrix2f& other)
     m[1][0] = mat.m[0][0] * other.m[0][1] + mat.m[0][1] * other.m[1][1];
     m[0][1] = mat.m[1][0] * other.m[0][0] + mat.m[1][1] * other.m[1][0];
     m[1][1] = mat.m[1][0] * other.m[0][1] + mat.m[1][1] * other.m[1][1];
+    
+    return *this;
 }
 
 f32* Matrix2f::operator[](uint32 i)

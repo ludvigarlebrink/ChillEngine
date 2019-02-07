@@ -63,6 +63,8 @@ LinearColor& LinearColor::operator+=(const LinearColor& other)
     g += other.g;
     b += other.b;
     a += other.a;
+
+    return *this;
 }
 
 LinearColor& LinearColor::operator-=(const LinearColor& other)
@@ -71,6 +73,8 @@ LinearColor& LinearColor::operator-=(const LinearColor& other)
     g -= other.g;
     b -= other.b;
     a -= other.a;
+
+    return *this;
 }
 
 LinearColor& LinearColor::operator*=(const LinearColor& other)
@@ -79,6 +83,8 @@ LinearColor& LinearColor::operator*=(const LinearColor& other)
     g *= other.g;
     b *= other.b;
     a *= other.a;
+
+    return *this;
 }
 
 LinearColor& LinearColor::operator*=(f32 v)
@@ -87,6 +93,8 @@ LinearColor& LinearColor::operator*=(f32 v)
     g *= v;
     b *= v;
     a *= v;
+
+    return *this;
 }
 
 LinearColor& LinearColor::operator/=(const LinearColor& other)
@@ -95,6 +103,8 @@ LinearColor& LinearColor::operator/=(const LinearColor& other)
     g /= other.g;
     b /= other.b;
     a /= other.a;
+
+    return *this;
 }
 
 LinearColor& LinearColor::operator/=(f32 v)
@@ -103,10 +113,12 @@ LinearColor& LinearColor::operator/=(f32 v)
     g /= v;
     b /= v;
     a /= v;
+
+    return *this;
 }
 
 f32& LinearColor::operator[](uint32 i)
 {
-    // TODO: insert return statement here
+    return (&r)[i];
 }
 } // namespace chill

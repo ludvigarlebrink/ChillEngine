@@ -10,11 +10,11 @@
 
 #include "gmock/gmock.h"
 
-namespace gdt
+namespace chill
 {
-    namespace test
-    {
-        /*Put mocks under*/
-        // Google mock tutorial: https://github.com/google/googletest/blob/master/googlemock/docs/ForDummies.md
-    }
+namespace test
+{
+    /*Put mocks under*/
+    // Google mock tutorial: https://github.com/google/googletest/blob/master/googlemock/docs/ForDummies.md
+}
 }
