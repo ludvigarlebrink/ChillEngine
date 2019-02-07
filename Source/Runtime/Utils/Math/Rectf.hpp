@@ -2,6 +2,7 @@
 
 #include "../UtilsAPI.hpp"
 #include "../BaseTypes.hpp"
+#include "Vector2f.hpp"
 
 #include <string>
 
@@ -49,6 +50,14 @@ public:
      * @return A nicely formated string.
      */
     std::string toString() const;
+
+    /**
+     * @brief Test if this rectangle contains a point.
+     *
+     * @param point Point to be tested.
+     * @return True if point is contained within this rectangle. False if not.
+     */
+    bool contains(const Vector2f& point);
 
     Rectf& operator=(const Rectf& other);
 

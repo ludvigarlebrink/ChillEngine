@@ -36,6 +36,7 @@ public:
     f32 tMax;
 };
 } // namespace chill
+
 /**
  * @struct chill::Ray2d
  */

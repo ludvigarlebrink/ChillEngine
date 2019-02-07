@@ -35,6 +35,11 @@ std::string Rectf::toString() const
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(w) + ", " + std::to_string(h) + ")";
 }
 
+bool Rectf::contains(const Vector2f & point)
+{
+    return false;
+}
+
 Rectf& Rectf::operator=(const Rectf& other)
 {
     // Check for self assignemnt.
