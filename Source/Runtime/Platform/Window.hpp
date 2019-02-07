@@ -51,7 +51,9 @@ private:
 } // namespace chill
 
 /**
- * @class chill::Window.
+ * @class chill::Window
+ * @ingroup Platform
+ * @author Ludvig Arlebrink
  *
  * @code
  * // Create a window.

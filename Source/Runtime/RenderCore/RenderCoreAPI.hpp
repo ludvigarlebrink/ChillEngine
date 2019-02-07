@@ -5,3 +5,9 @@
 #else
 #define RENDER_CORE_API __declspec(dllimport)
 #endif
+
+/**
+ * @defgroup Platform
+ *
+ * A collection of platform specific features.
+ */
