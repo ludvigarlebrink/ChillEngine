@@ -48,6 +48,7 @@ workspace "ChillEngine"
     architecture "x86_64"
     configurations { "Debug", "Release", "Debug_Editor", "Release_Editor" }
 
+group "Runtime"
 project "Utils"
     kind "SharedLib"
     location "Source/Runtime/Utils"
@@ -56,7 +57,8 @@ project "Utils"
         "Source/Runtime/Utils/**.cpp",
     }
     defines "UTILS_API_DLL_EXPORT"
-    
+
+group "Dev"
 project "Utils_TEST"
     kind "ConsoleApp"
     location "Source/Dev/UnitTests/Utils_TEST"
@@ -74,6 +76,7 @@ project "Utils_TEST"
     
     linkUtils()
 
+group "Runtime"
 project "Platform"
     kind "SharedLib"
     location "Source/Runtime/Platform"
