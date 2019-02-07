@@ -1,10 +1,10 @@
 /**
-* @file     UtilsTest.cpp
-* @author   Marek Cernak
-* @date     2/7/2019
-*
-* @brief Utils module tests
-*/
+ * @file     UtilsTest.cpp
+ * @author   Marek Cernak
+ * @date     2/7/2019
+ *
+ * @brief Utils module tests
+ */
 
 #include "Math/Vector2f.hpp"
 #include <gtest/gtest.h>

@@ -4,6 +4,7 @@
 
 # C/C++ source files
 !*.c
+!*.cc
 !*.cpp
 !*.h
 !*.hpp
