@@ -51,6 +51,11 @@ public:
 
 public:
 
+    /**
+     * @brief Shorthand for Matrix2f(1.0f).
+     */
+    static const Matrix2f IDENTITY;
+
     f32 m[2][2];
 };
 

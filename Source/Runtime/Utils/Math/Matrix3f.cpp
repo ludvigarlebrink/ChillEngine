@@ -33,8 +33,8 @@ Matrix3f::Matrix3f(const Matrix3f& other)
     rows[2][2] = other.rows[2][2];
 }
 
-Matrix3f::Matrix3f(f32 ax, f32 ay, f32 az, f32 bx, f32 by, f32 bz,
-    f32 cx, f32 cy, f32 cz)
+Matrix3f::Matrix3f(f32 ax, f32 bx, f32 cx, f32 ay, f32 by, f32 cy,
+    f32 az, f32 bz, f32 cz)
 {
     rows[0][0] = ax;
     rows[0][1] = ay;

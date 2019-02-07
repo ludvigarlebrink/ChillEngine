@@ -3,6 +3,8 @@
 
 namespace chill
 {
+const Matrix2f Matrix2f::IDENTITY = Matrix2f(1.0f);
+
 Matrix2f::Matrix2f()
 {
     m[0][0] = 0.0f;
