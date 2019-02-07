@@ -3,6 +3,8 @@
 #include "../UtilsAPI.hpp"
 #include "../BaseTypes.hpp"
 
+#include <string>
+
 namespace chill
 {
 struct Vector4f;
@@ -40,6 +42,8 @@ public:
     Matrix4f(const Vector4f& col1, const Vector4f& col2, const Vector4f& col3, const Vector4f& col4);
 
     Matrix4f(f32 scale);
+
+    std::string toString() const;
 
     Matrix4f& operator=(const Matrix4f& other);
 

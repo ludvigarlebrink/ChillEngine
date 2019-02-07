@@ -119,30 +119,30 @@ Matrix4f::Matrix4f(f32 scale)
     rows[3][3] = 1.0f;
 }
 
-Matrix4f& Matrix4f::operator=(const Matrix4f& m)
+Matrix4f& Matrix4f::operator=(const Matrix4f& other)
 {
     // Check for self assignemnt.
-    if (this != &m)
+    if (this != &other)
     {
-        rows[0][0] = m.rows[0][0];
-        rows[0][1] = m.rows[0][1];
-        rows[0][2] = m.rows[0][2];
-        rows[0][3] = m.rows[0][3];
+        rows[0][0] = other.rows[0][0];
+        rows[0][1] = other.rows[0][1];
+        rows[0][2] = other.rows[0][2];
+        rows[0][3] = other.rows[0][3];
 
-        rows[1][0] = m.rows[1][0];
-        rows[1][1] = m.rows[1][1];
-        rows[1][2] = m.rows[1][2];
-        rows[1][3] = m.rows[1][3];
+        rows[1][0] = other.rows[1][0];
+        rows[1][1] = other.rows[1][1];
+        rows[1][2] = other.rows[1][2];
+        rows[1][3] = other.rows[1][3];
 
-        rows[2][0] = m.rows[2][0];
-        rows[2][1] = m.rows[2][1];
-        rows[2][2] = m.rows[2][2];
-        rows[2][3] = m.rows[2][3];
+        rows[2][0] = other.rows[2][0];
+        rows[2][1] = other.rows[2][1];
+        rows[2][2] = other.rows[2][2];
+        rows[2][3] = other.rows[2][3];
 
-        rows[3][0] = m.rows[3][0];
-        rows[3][1] = m.rows[3][1];
-        rows[3][2] = m.rows[3][2];
-        rows[3][3] = m.rows[3][3];
+        rows[3][0] = other.rows[3][0];
+        rows[3][1] = other.rows[3][1];
+        rows[3][2] = other.rows[3][2];
+        rows[3][3] = other.rows[3][3];
     }
 
     return *this;
