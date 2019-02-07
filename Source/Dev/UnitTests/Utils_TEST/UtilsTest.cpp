@@ -17,7 +17,7 @@ namespace test
 /**
  * @brief Base class for utils unit tests.
  */
-class CUtilsTestBase : public ::testing::Test
+class CUtilsTestBase : public testing::Test
 {
 
 protected:
