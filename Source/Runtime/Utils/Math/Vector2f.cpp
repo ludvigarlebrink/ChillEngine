@@ -1,5 +1,13 @@
 #include "Vector2f.hpp"
 #include "Mathf.hpp"
+#include "Vector2i.hpp"
+#include "Vector2u.hpp"
+#include "Vector3f.hpp"
+#include "Vector3i.hpp"
+#include "Vector3u.hpp"
+#include "Vector4f.hpp"
+#include "Vector4i.hpp"
+#include "Vector4u.hpp"
 
 namespace chill
 {
@@ -19,6 +27,54 @@ Vector2f::Vector2f()
 Vector2f::Vector2f(const Vector2f& other)
     : x(other.x)
     , y(other.y)
+{
+}
+
+Vector2f::Vector2f(const Vector2i& other)
+    : x(static_cast<f32>(other.x))
+    , y(static_cast<f32>(other.y))
+{
+}
+
+Vector2f::Vector2f(const Vector2u& other)
+    : x(static_cast<f32>(other.x))
+    , y(static_cast<f32>(other.y))
+{
+}
+
+Vector2f::Vector2f(const Vector3f& other)
+    : x(other.x)
+    , y(other.y)
+{
+}
+
+Vector2f::Vector2f(const Vector3i& other)
+    : x(other.x)
+    , y(other.y)
+{
+}
+
+Vector2f::Vector2f(const Vector3u& other)
+    : x(static_cast<f32>(other.x))
+    , y(static_cast<f32>(other.y))
+{
+}
+
+Vector2f::Vector2f(const Vector4f& other)
+    : x(other.x)
+    , y(other.y)
+{
+}
+
+Vector2f::Vector2f(const Vector4i& other)
+    : x(static_cast<f32>(other.x))
+    , y(static_cast<f32>(other.y))
+{
+}
+
+Vector2f::Vector2f(const Vector4u& other)
+    : x(static_cast<f32>(other.x))
+    , y(static_cast<f32>(other.y))
 {
 }
 
@@ -45,12 +101,12 @@ f32 Vector2f::angle(const Vector2f& from, const Vector2f& to)
     return Mathf::radToDeg(acos(dot(from, to)));
 }
 
-Vector2f Vector2f::clamp(const Vector2f& min, const Vector2f& max, const Vector2f& value)
+Vector2f& Vector2f::clamp(const Vector2f& min, const Vector2f& max)
 {
-    return { 
-        Mathf::clamp(min.x, max.x, value.x),
-        Mathf::clamp(min.y, max.y, value.y),
-    };
+    x = Mathf::clamp(min.x, max.x, x);
+    y = Mathf::clamp(min.y, max.y, y);
+
+    return *this;
 }
 
 f32 Vector2f::distance(const Vector2f& p1, const Vector2f& p2)

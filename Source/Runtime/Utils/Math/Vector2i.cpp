@@ -1,4 +1,12 @@
 #include "Vector2i.hpp"
+#include "Vector2f.hpp"
+#include "Vector2u.hpp"
+#include "Vector3f.hpp"
+#include "Vector3i.hpp"
+#include "Vector3u.hpp"
+#include "Vector4f.hpp"
+#include "Vector4i.hpp"
+#include "Vector4u.hpp"
 
 namespace chill
 {
@@ -15,9 +23,57 @@ Vector2i::Vector2i()
 {
 }
 
+Vector2i::Vector2i(const Vector2f& other)
+    : x(static_cast<int32>(other.x))
+    , y(static_cast<int32>(other.y))
+{
+}
+
 Vector2i::Vector2i(const Vector2i& other)
     : x(other.x)
     , y(other.y)
+{
+}
+
+Vector2i::Vector2i(const Vector2u& other)
+    : x(static_cast<int32>(other.x))
+    , y(static_cast<int32>(other.y))
+{
+}
+
+Vector2i::Vector2i(const Vector3f& other)
+    : x(static_cast<int32>(other.x))
+    , y(static_cast<int32>(other.y))
+{
+}
+
+Vector2i::Vector2i(const Vector3i& other)
+    : x(other.x)
+    , y(other.y)
+{
+}
+
+Vector2i::Vector2i(const Vector3u& other)
+    : x(static_cast<int32>(other.x))
+    , y(static_cast<int32>(other.y))
+{
+}
+
+Vector2i::Vector2i(const Vector4f& other)
+    : x(static_cast<int32>(other.x))
+    , y(static_cast<int32>(other.y))
+{
+}
+
+Vector2i::Vector2i(const Vector4i& other)
+    : x(other.x)
+    , y(other.y)
+{
+}
+
+Vector2i::Vector2i(const Vector4u& other)
+    : x(static_cast<int32>(other.x))
+    , y(static_cast<int32>(other.y))
 {
 }
 

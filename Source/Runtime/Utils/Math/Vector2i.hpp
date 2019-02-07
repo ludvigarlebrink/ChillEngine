@@ -7,6 +7,15 @@
 
 namespace chill
 {
+struct Vector2f;
+struct Vector2u;
+struct Vector3f;
+struct Vector3i;
+struct Vector3u;
+struct Vector4f;
+struct Vector4i;
+struct Vector4u;
+
 /**
  * @brief A vector, or a point, with two components.
  */
@@ -24,7 +33,63 @@ public:
      *
      * @param other Vector to copy from.
      */
+    Vector2i(const Vector2f& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
     Vector2i(const Vector2i& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2i(const Vector2u& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2i(const Vector3f& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2i(const Vector3i& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2i(const Vector3u& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2i(const Vector4f& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2i(const Vector4i& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2i(const Vector4u& other);
 
     /**
      * @brief Creates a vector.

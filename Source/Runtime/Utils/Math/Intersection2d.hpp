@@ -5,7 +5,8 @@
 
 namespace chill
 {
-struct Circlef;
+struct AABounds2d;
+struct Circle2d;
 
 /**
  * @brief A collection of intersection tests in 2d-space.
@@ -15,13 +16,31 @@ class UTILS_API Intersection2d
 public:
 
     /**
+     * @brief Test if two axis-aligned bounds intersects.
+     *
+     * @param a First axis-aligned bounds to test.
+     * @param b Second axis-aligned bounds to test.
+     * @return True the two axis-aligned bounds intersects. False if not.
+     */
+    static bool test(const AABounds2d& a, const AABounds2d& b);
+
+    /**
      * @brief Test if two circles intersects.
      *
-     * @param c1 First circle to test.
-     * @param c2 Second circle to test.
+     * @param a First circle to test.
+     * @param b Second circle to test.
      * @return True the two circles intersects. False if not.
      */
-    static bool test(const Circlef& c1, const Circlef& c2);
+    static bool test(const Circle2d& a, const Circle2d& b);
+
+    /**
+     * @brief Test if axis-aligned bounds intersects with a circle.
+     *
+     * @param a Axis-aligned bounds to test.
+     * @param b Circle to test.
+     * @return True if intersects. False if not.
+     */
+    static bool test(const AABounds2d& a, const Circle2d& b);
 };
 } // namespace chill
 

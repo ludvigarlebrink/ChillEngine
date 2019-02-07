@@ -7,6 +7,15 @@
 
 namespace chill
 {
+struct Vector2f;
+struct Vector2i;
+struct Vector2u;
+struct Vector3f;
+struct Vector3i;
+struct Vector3u;
+struct Vector4i;
+struct Vector4u;
+
 /**
  * @brief A vector, or a point, with three components.
  */
@@ -24,7 +33,138 @@ public:
      *
      * @param other Vector to copy from.
      */
+    Vector4f(const Vector2f& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     * @param z Value of the z component.
+     */
+    Vector4f(const Vector2f& other, f32 z);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     * @param z Value of the z component.
+     * @param w Value of the w component.
+     */
+    Vector4f(const Vector2f& other, f32 z, f32 w);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector4f(const Vector2i& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     * @param z Value of the z component.
+     */
+    Vector4f(const Vector2i& other, f32 z);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     * @param z Value of the z component.
+     * @param w Value of the w component.
+     */
+    Vector4f(const Vector2i& other, f32 z, f32 w);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector4f(const Vector2u& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     * @param z Value of the z component.
+     */
+    Vector4f(const Vector2u& other, f32 z);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     * @param z Value of the z component.
+     * @param w Value of the w component.
+     */
+    Vector4f(const Vector2u& other, f32 z, f32 w);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector4f(const Vector3f& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     * @param w Value of the w component.
+     */
+    Vector4f(const Vector3f& other, f32 w);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector4f(const Vector3i& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     * @param w Value of the w component.
+     */
+    Vector4f(const Vector3i& other, f32 w);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector4f(const Vector3u& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     * @param w Value of the w component.
+     */
+    Vector4f(const Vector3u& other, f32 w);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
     Vector4f(const Vector4f& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector4f(const Vector4i& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector4f(const Vector4u& other);
 
     /**
      * @brief Creates a vector.

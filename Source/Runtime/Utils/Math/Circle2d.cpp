@@ -1,32 +1,32 @@
-#include "Circlef.hpp"
+#include "Circle2d.hpp"
 
 namespace chill
 {
-Circlef::Circlef()
+Circle2d::Circle2d()
     : origin({ 0.0f, 0.0f } )
     , radius(0.0f)
 {
 }
 
-Circlef::Circlef(const Circlef& other)
+Circle2d::Circle2d(const Circle2d& other)
     : origin(other.origin)
     , radius(other.radius)
 {
 }
 
-Circlef::Circlef(const Vector2f& origin, f32 radius)
+Circle2d::Circle2d(const Vector2f& origin, f32 radius)
     : origin(origin)
     , radius(radius)
 {
 }
 
-Circlef::Circlef(f32 xOrigin, f32 yOrigin, f32 radius)
+Circle2d::Circle2d(f32 xOrigin, f32 yOrigin, f32 radius)
     : origin({ xOrigin, yOrigin })
     , radius(radius)
 {
 }
 
-Circlef& Circlef::operator=(const Circlef& other)
+Circle2d& Circle2d::operator=(const Circle2d& other)
 {
     // Check for self assignemnt.
     if (this != &other)

@@ -61,13 +61,11 @@ Vector3f Vector3f::cross(const Vector3f& lhs, const Vector3f& rhs)
     };
 }
 
-Vector3f Vector3f::clamp(const Vector3f& min, const Vector3f& max, const Vector3f& value)
+void Vector3f::clamp(const Vector3f& min, const Vector3f& max)
 {
-    return {
-        Mathf::clamp(min.x, max.x, value.x),
-        Mathf::clamp(min.y, max.y, value.y),
-        Mathf::clamp(min.z, max.z, value.z)
-    };
+    x = Mathf::clamp(min.x, max.x, x);
+    y = Mathf::clamp(min.y, max.y, y);
+    z = Mathf::clamp(min.z, max.z, z);
 }
 
 f32 Vector3f::distance(const Vector3f& p1, const Vector3f& p2)
@@ -104,17 +102,15 @@ Vector3f Vector3f::lerp(const Vector3f& start, const Vector3f& end, f32 t)
 
 Vector3f Vector3f::nlerp(const Vector3f& start, const Vector3f& end, f32 t)
 {
-    return lerp(start, end, t).normalize();
+    return lerp(start, end, t).normalized();
 }
 
-Vector3f& Vector3f::normalize()
+void Vector3f::normalize()
 {
     f32 len = sqrt(x * x + y * y + z * z);
     x /= len;
     y /= len;
     z /= len;
-
-    return *this;
 }
 
 Vector3f Vector3f::normalized() const

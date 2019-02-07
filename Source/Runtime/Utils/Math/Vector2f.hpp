@@ -7,6 +7,15 @@
 
 namespace chill
 {
+struct Vector2i;
+struct Vector2u;
+struct Vector3f;
+struct Vector3i;
+struct Vector3u;
+struct Vector4f;
+struct Vector4i;
+struct Vector4u;
+
 /**
  * @brief A vector, or a point, with two components.
  */
@@ -25,6 +34,62 @@ public:
      * @param other Vector to copy from.
      */
     Vector2f(const Vector2f& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2f(const Vector2i& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2f(const Vector2u& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2f(const Vector3f& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2f(const Vector3i& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2f(const Vector3u& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2f(const Vector4f& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2f(const Vector4i& other);
+
+    /**
+     * @brief Copies a vector.
+     *
+     * @param other Vector to copy from.
+     */
+    Vector2f(const Vector4u& other);
 
     /**
      * @brief Creates a vector.
@@ -57,7 +122,14 @@ public:
      */
     static f32 angle(const Vector2f& from, const Vector2f& to);
 
-    static Vector2f clamp(const Vector2f& min, const Vector2f& max, const Vector2f& value);
+    /**
+     * @brief Clamp this vector.
+     *
+     * @param min Minimum value of this vector.
+     * @param max Maximum value of this vector.
+     * @return Reference to this vector.
+     */
+    Vector2f& clamp(const Vector2f& min, const Vector2f& max);
 
     /**
      * @brief Get the distance between two points.

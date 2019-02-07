@@ -9,22 +9,22 @@ namespace chill
 /**
  * @brief A circle in 2d-space.
  */
-struct UTILS_API Circlef
+struct UTILS_API Circle2d
 {
 public:
 
     /**
      * @brief Creates a circle.
      */
-    Circlef();
+    Circle2d();
 
-    Circlef(const Circlef& other);
+    Circle2d(const Circle2d& other);
 
-    Circlef(const Vector2f& origin, f32 radius);
+    Circle2d(const Vector2f& origin, f32 radius);
 
-    Circlef(f32 xOrigin, f32 yOrigin, f32 radius);
+    Circle2d(f32 xOrigin, f32 yOrigin, f32 radius);
 
-    Circlef& operator=(const Circlef& other);
+    Circle2d& operator=(const Circle2d& other);
 
 public:
 

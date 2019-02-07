@@ -67,7 +67,13 @@ public:
      */
     static Vector3f cross(const Vector3f& lhs, const Vector3f& rhs);
 
-    static Vector3f clamp(const Vector3f& min, const Vector3f& max, const Vector3f& value);
+    /**
+     * @brief Clamp this vector.
+     *
+     * @param min Minimum value of this vector.
+     * @param max Maximum value of this vector.
+     */
+    void clamp(const Vector3f& min, const Vector3f& max);
 
     /**
      * @brief Get the distance between two points.
@@ -132,10 +138,8 @@ public:
 
     /**
      * @brief Normlizes this vector.
-     *
-     * @return Reference to this vector.
      */
-    Vector3f& normalize();
+    void normalize();
 
     /**
      * @brief Creates a normalized version of this vector.
