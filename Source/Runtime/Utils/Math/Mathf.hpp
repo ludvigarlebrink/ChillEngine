@@ -41,6 +41,22 @@ public:
     static f32 lerp(f32 start, f32 end, f32 t);
 
     /**
+     * @brief Get the maximum of two floats.
+     *
+     * @param a First floats.
+     * @param b Second floats.
+     */
+    static f32 max(f32 a, f32 b);
+
+    /**
+     * @brief Get the minimum of two floats.
+     *
+     * @param a First floats.
+     * @param b Second floats.
+     */
+    static f32 min(f32 a, f32 b);
+
+    /**
      * @brief Converts radians to degrees.
      *
      * @param rad Radians as be converted.

@@ -3,6 +3,13 @@
 
 namespace chill
 {
+const LinearColor LinearColor::BLACK = LinearColor(0.0f, 0.0f, 0.0f, 1.0f);
+const LinearColor LinearColor::BLUE = LinearColor(0.0f, 0.0f, 1.0f, 1.0f);
+const LinearColor LinearColor::GREEN = LinearColor(0.0f, 1.0f, 0.0f, 1.0f);
+const LinearColor LinearColor::RED = LinearColor(1.0f, 0.0f, 0.0f, 1.0f);
+const LinearColor LinearColor::WHITE = LinearColor(1.0f, 1.0f, 1.0f, 1.0f);
+const LinearColor LinearColor::YELLOW = LinearColor(1.0f, 1.0f, 0.0f, 1.0f);
+
 LinearColor::LinearColor()
     : r(1.0f)
     , g(1.0f)

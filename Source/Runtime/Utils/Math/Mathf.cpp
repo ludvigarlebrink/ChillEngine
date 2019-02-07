@@ -29,6 +29,16 @@ f32 Mathf::lerp(f32 start, f32 end, f32 t)
     return start + t * (end - start);
 }
 
+f32 Mathf::max(f32 a, f32 b)
+{
+    return a > b ? a : b;
+}
+
+f32 Mathf::min(f32 a, f32 b)
+{
+    return a < b ? a : b;
+}
+
 f32 Mathf::radToDeg(f32 rad)
 {
     return rad * 57.2957795f;

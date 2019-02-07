@@ -4,10 +4,10 @@
 namespace chill
 {
 Recti::Recti()
-    : x(0.0f)
-    , y(0.0f)
-    , w(0.0f)
-    , h(0.0f)
+    : x(0)
+    , y(0)
+    , w(0)
+    , h(0)
 {
 }
 
@@ -30,13 +30,13 @@ Recti::Recti(int32 x, int32 y, int32 w, int32 h)
 Recti::Recti(const std::string& str)
 {
     std::string sub = str.substr(str.find_first_of("(") + 1u);
-    x = std::stof(sub);
+    x = std::stoi(sub);
     sub = sub.substr(sub.find_first_of(",") + 1u);
-    y = std::stof(sub);
+    y = std::stoi(sub);
     sub = sub.substr(sub.find_first_of(",") + 1u);
-    w = std::stof(sub);
+    w = std::stoi(sub);
     sub = sub.substr(sub.find_first_of(",") + 1u);
-    h = std::stof(sub);
+    h = std::stoi(sub);
 }
 
 std::string Recti::toString() const
