@@ -10,7 +10,7 @@
 
 #include "gmock/gmock.h"
 
-namespace gdt
+namespace chill
 {
     namespace test
     {

@@ -6,11 +6,11 @@
 * @brief Utils module tests
 */
 
-#include "Math/Vector2.hpp"
+//#include "Math/Vector2.hpp"
 #include <gtest/gtest.h>
 #include <memory>
 
-namespace gdt
+namespace chill
 {
     namespace test
     {
