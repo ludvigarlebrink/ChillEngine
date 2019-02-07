@@ -15,6 +15,31 @@ function linkSDL()
     filter {}
 end
 
+function includeGTest()
+    files {
+        "ThirdParty/googletest-release-1.8.1/googletest/src/gtest-all.cc",
+        "ThirdParty/googletest-release-1.8.1/googlemock/src/gmock_main.cc",
+        "ThirdParty/googletest-release-1.8.1/googlemock/src/gmock-all.cc"
+    }
+
+    includedirs {
+        "ThirdParty/googletest-release-1.8.1/googletest/include",
+        "ThirdParty/googletest-release-1.8.1/googletest/src",
+        "ThirdParty/googletest-release-1.8.1/googlemock/include",
+        "ThirdParty/googletest-release-1.8.1/googletest/src"
+    }
+end
+
+function linkUtils()
+    filter { "kind:not StaticLib", "system:windows" }
+        links { "Utils" }
+    
+    filter { "kind:not StaticLib", "system:not windows" }
+        links { "Utils" }
+
+    filter {}
+end
+
 workspace "ChillEngine"
     location "Solution"
     language "C++"
@@ -31,6 +56,23 @@ project "Utils"
         "Source/Runtime/Utils/**.cpp",
     }
     defines "UTILS_API_DLL_EXPORT"
+    
+project "Utils_TEST"
+    kind "ConsoleApp"
+    location "Source/Dev/UnitTests/Utils_TEST"
+    targetdir ("Build/UnitTests/Utils_TEST")
+    
+    includeGTest()
+    files {
+        "Source/Dev/UnitTests/Utils_TEST/**.hpp",
+        "Source/Dev/UnitTests/Utils_TEST/**.cpp",
+    }
+    
+    includedirs {
+        "Source/Runtime/Utils"
+    }
+    
+    linkUtils()
 
 project "Platform"
     kind "SharedLib"
