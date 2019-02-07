@@ -18,10 +18,13 @@
 !*.htm
 !*.html
 !*.css
+!*.js
+!*.png
 !.git*
 
 # Special files
 !premake5.exe
+!docs.doxyfile
 
 # Third party binaries
 !ThirdParty/SDL/Lib/Win32/*
