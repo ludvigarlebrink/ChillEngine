@@ -159,7 +159,7 @@ bool Shader::loadFromString(const std::string& vertexShaderSource, const std::st
     return true;
 }
 
-void Shader::setMatrix2f(int32 location, Matrix2f& mat)
+void Shader::setMatrix2f(uint32 location, Matrix2f& mat)
 {
     use();
     glUniformMatrix2fv(location, 1, GL_FALSE, &mat[0][0]);
@@ -171,7 +171,7 @@ void Shader::setMatrix2fSlow(const std::string& name, Matrix2f& mat)
     glUniformMatrix2fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMatrix3f(int32 location, Matrix3f& mat)
+void Shader::setMatrix3f(uint32 location, Matrix3f& mat)
 {
     use();
     glUniformMatrix3fv(location, 1, GL_FALSE, &mat[0][0]);
@@ -183,10 +183,22 @@ void Shader::setMatrix3fSlow(const std::string& name, Matrix3f& mat)
     glUniformMatrix3fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
+void Shader::setMatrix4f(uint32 location, Matrix4f& mat)
+{
+    use();
+    glUniformMatrix4fv(location, 1, GL_FALSE, &mat[0][0]);
+}
+
 void Shader::setMatrix4fSlow(const std::string& name, Matrix4f& mat)
 {
     use();
     glUniformMatrix4fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+}
+
+void Shader::setVector2f(uint32 location, Vector2f & vec)
+{
+    use();
+    glUniform2fv(location, 1, &vec[0]);
 }
 
 void Shader::setVector2fSlow(const std::string& name, Vector2f& vec)
@@ -195,10 +207,22 @@ void Shader::setVector2fSlow(const std::string& name, Vector2f& vec)
     glUniform2fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
+void Shader::setVector2i(uint32 location, Vector2i& vec)
+{
+    use();
+    glUniform2iv(location, 1, &vec[0]);
+}
+
 void Shader::setVector2iSlow(const std::string& name, Vector2i& vec)
 {
     use();
     glUniform2iv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
+}
+
+void Shader::setVector2u(uint32 location, Vector2u& vec)
+{
+    use();
+    glUniform2uiv(location, 1, &vec[0]);
 }
 
 void Shader::setVector2uSlow(const std::string& name, Vector2u& vec)
@@ -207,10 +231,22 @@ void Shader::setVector2uSlow(const std::string& name, Vector2u& vec)
     glUniform2uiv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
+void Shader::setVector3f(uint32 location, Vector3f & vec)
+{
+    use();
+    glUniform3fv(location, 1, &vec[0]);
+}
+
 void Shader::setVector3fSlow(const std::string& name, Vector3f& vec)
 {
     use();
     glUniform3fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
+}
+
+void Shader::setVector3i(uint32 location, Vector3i& vec)
+{
+    use();
+    glUniform3iv(location, 1, &vec[0]);
 }
 
 void Shader::setVector3iSlow(const std::string& name, Vector3i& vec)
@@ -219,10 +255,22 @@ void Shader::setVector3iSlow(const std::string& name, Vector3i& vec)
     glUniform3iv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
+void Shader::setVector3u(uint32 location, Vector3u& vec)
+{
+    use();
+    glUniform3uiv(location, 1, &vec[0]);
+}
+
 void Shader::setVector3uSlow(const std::string& name, Vector3u& vec)
 {
     use();
     glUniform3uiv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
+}
+
+void Shader::setVector4f(uint32 location, Vector4f & vec)
+{
+    use();
+    glUniform4fv(location, 1, &vec[0]);
 }
 
 void Shader::setVector4fSlow(const std::string& name, Vector4f& vec)
@@ -231,10 +279,22 @@ void Shader::setVector4fSlow(const std::string& name, Vector4f& vec)
     glUniform4fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
+void Shader::setVector4i(uint32 location, Vector4i& vec)
+{
+    use();
+    glUniform4iv(location, 1, &vec[0]);
+}
+
 void Shader::setVector4iSlow(const std::string& name, Vector4i& vec)
 {
     use();
     glUniform4iv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
+}
+
+void Shader::setVector4u(uint32 location, Vector4u& vec)
+{
+    use();
+    glUniform4uiv(location, 1, &vec[0]);
 }
 
 void Shader::setVector4uSlow(const std::string& name, Vector4u& vec)

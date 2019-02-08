@@ -77,7 +77,7 @@ public:
      * @param location Location of uniform.
      * @param mat Matrix.
      */
-    void setMatrix2f(int32 location, Matrix2f& mat);
+    void setMatrix2f(uint32 location, Matrix2f& mat);
 
     /**
      * @brief Set a matrix uniform, slow.
@@ -93,7 +93,7 @@ public:
      * @param location Location of uniform.
      * @param mat Matrix.
      */
-    void setMatrix3f(int32 location, Matrix3f& mat);
+    void setMatrix3f(uint32 location, Matrix3f& mat);
 
     /**
      * @brief Set a matrix uniform, slow.
@@ -104,6 +104,14 @@ public:
     void setMatrix3fSlow(const std::string& name, Matrix3f& mat);
 
     /**
+     * @brief Set a matrix uniform.
+     *
+     * @param location Location of uniform.
+     * @param mat Matrix.
+     */
+    void setMatrix4f(uint32 location, Matrix4f& mat);
+
+    /**
      * @brief Set a matrix uniform, slow.
      *
      * @param name Name of uniform.
@@ -112,74 +120,146 @@ public:
     void setMatrix4fSlow(const std::string& name, Matrix4f& mat);
 
     /**
+     * @brief Set a vector uniform.
+     *
+     * @param location Location of uniform.
+     * @param vec Vector.
+     */
+    void setVector2f(uint32 location, Vector2f& vec);
+
+    /**
      * @brief Set a vector uniform, slow.
      *
      * @param name Name of uniform.
-     * @param mat Matrix.
+     * @param vec Vector.
      */
     void setVector2fSlow(const std::string& name, Vector2f& vec);
 
     /**
+     * @brief Set a vector uniform.
+     *
+     * @param location Location of uniform.
+     * @param vec Vector.
+     */
+    void setVector2i(uint32 location, Vector2i& vec);
+
+    /**
      * @brief Set a vector uniform, slow.
      *
      * @param name Name of uniform.
-     * @param mat Matrix.
+     * @param vec Vector.
      */
     void setVector2iSlow(const std::string& name, Vector2i& vec);
 
     /**
+     * @brief Set a vector uniform.
+     *
+     * @param location Location of uniform.
+     * @param vec Vector.
+     */
+    void setVector2u(uint32 location, Vector2u& vec);
+
+    /**
      * @brief Set a vector uniform, slow.
      *
      * @param name Name of uniform.
-     * @param mat Matrix.
+     * @param vec Vector.
      */
     void setVector2uSlow(const std::string& name, Vector2u& vec);
 
     /**
+     * @brief Set a vector uniform.
+     *
+     * @param location Location of uniform.
+     * @param vec Vector.
+     */
+    void setVector3f(uint32 location, Vector3f& vec);
+
+    /**
      * @brief Set a vector uniform, slow.
      *
      * @param name Name of uniform.
-     * @param mat Matrix.
+     * @param vec Vector.
      */
     void setVector3fSlow(const std::string& name, Vector3f& vec);
 
     /**
+     * @brief Set a vector uniform.
+     *
+     * @param location Location of uniform.
+     * @param vec Vector.
+     */
+    void setVector3i(uint32 location, Vector3i& vec);
+
+    /**
      * @brief Set a vector uniform, slow.
      *
      * @param name Name of uniform.
-     * @param mat Matrix.
+     * @param vec Vector.
      */
     void setVector3iSlow(const std::string& name, Vector3i& vec);
 
     /**
+     * @brief Set a vector uniform.
+     *
+     * @param location Location of uniform.
+     * @param vec Vector.
+     */
+    void setVector3u(uint32 location, Vector3u& vec);
+
+    /**
      * @brief Set a vector uniform, slow.
      *
      * @param name Name of uniform.
-     * @param mat Matrix.
+     * @param vec Vector.
      */
     void setVector3uSlow(const std::string& name, Vector3u& vec);
 
     /**
+     * @brief Set a vector uniform.
+     *
+     * @param location Location of uniform.
+     * @param vec Vector.
+     */
+    void setVector4f(uint32 location, Vector4f& vec);
+
+    /**
      * @brief Set a vector uniform, slow.
      *
      * @param name Name of uniform.
-     * @param mat Matrix.
+     * @param vec Vector.
      */
     void setVector4fSlow(const std::string& name, Vector4f& vec);
 
     /**
-     * @brief Set a vector uniform, slow.
+     * @brief Set a vector uniform.
      *
-     * @param name Name of uniform.
-     * @param mat Matrix.
+     * @param location Location of uniform.
+     * @param vec Vector.
      */
-    void setVector4iSlow(const std::string& name, Vector4i& vec);
+    void setVector4i(uint32 location, Vector4i& vec);
 
     /**
      * @brief Set a vector uniform, slow.
      *
      * @param name Name of uniform.
-     * @param mat Matrix.
+     * @param vec Vector.
+     */
+    void setVector4iSlow(const std::string& name, Vector4i& vec);
+
+    /**
+     * @brief Set a vector uniform.
+     *
+     * @param location Location of uniform.
+     * @param vec Vector.
+     */
+    void setVector4u(uint32 location, Vector4u& vec);
+
+    /**
+     * @brief Set a vector uniform, slow.
+     *
+     * @param name Name of uniform.
+     * @param vec Vector.
      */
     void setVector4uSlow(const std::string& name, Vector4u& vec);
 
