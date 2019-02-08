@@ -9,6 +9,12 @@ int main(int argc, char* argv[])
 
     while (true)
     {
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            // Event polling.
+        }
+
         win.setClearColor(Color::RED);
         win.clear();
 
