@@ -53,6 +53,12 @@ void Matrix2f::transpose()
     m[1][0] = mat.m[0][1];
 }
 
+std::string Matrix2f::toString() const
+{
+    return "(" + std::to_string(m[0][0]) + ", " + std::to_string(m[1][0]) + ")\n"
+        "(" + std::to_string(m[0][1]) + ", " + std::to_string(m[1][1]) + ")";
+}
+
 Matrix2f& Matrix2f::operator=(const Matrix2f& other)
 {
     // Check for self assignemnt.

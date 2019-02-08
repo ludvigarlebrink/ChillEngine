@@ -65,6 +65,13 @@ public:
      */
     void transpose();
 
+    /**
+     * @brief Get this matrix as a nicely formated string.
+     *
+     * @return Matrix as a nicely formated string.
+     */
+    std::string toString() const;
+
     Matrix2f& operator=(const Matrix2f& other);
 
     Matrix2f& operator*=(const Matrix2f& other);

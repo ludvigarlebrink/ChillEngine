@@ -43,6 +43,13 @@ public:
         f32 ay, f32 by, f32 cy,
         f32 az, f32 bz, f32 cz);
 
+    /**
+     * @brief Creates a matrix.
+     *
+     * @param col1 First column.
+     * @param col2 Second column.
+     * @param col3 Third column.
+     */
     Matrix3f(const Vector3f& col1, const Vector3f& col2, const Vector3f& col3);
 
     /**
@@ -58,6 +65,13 @@ public:
     Matrix3f(f32 scale);
 
     /**
+     * @brief Get this matrix as a nicely formated string.
+     *
+     * @return Matrix as a nicely formated string.
+     */
+    std::string toString() const;
+
+    /**
      * @brief Transpose this matrix.
      */
     void transpose();
@@ -69,9 +83,14 @@ public:
 public:
 
     /**
+     * @brief Shorthand for Matrix2f(1.0f).
+     */
+    static const Matrix3f IDENTITY;
+
+    /**
      * @brief Matrix data.
      */
-    f32 rows[3][3];
+    f32 m[3][3];
 };
 } // namespace chill
 
