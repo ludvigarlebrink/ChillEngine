@@ -42,4 +42,5 @@ public:
 
 /**
  * @struct chill::Circlef
+ * @ingroup Math
  */

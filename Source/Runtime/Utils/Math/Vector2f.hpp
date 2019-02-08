@@ -281,4 +281,5 @@ Vector2f operator/(const Vector2f& lhs, f32 rhs);
 
 /**
  * @struct chill::Vector2f
+ * @ingroup Math
  */

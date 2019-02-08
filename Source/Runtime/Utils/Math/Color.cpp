@@ -2,6 +2,13 @@
 
 namespace chill
 {
+const Color Color::BLACK = Color(0u, 0u, 0u, 255u);
+const Color Color::BLUE = Color(0u, 0u, 255u, 255u);
+const Color Color::GREEN = Color(0u, 255u, 0u, 255u);
+const Color Color::RED = Color(255u, 0u, 0u, 255u);
+const Color Color::WHITE = Color(255u, 255u, 255u, 255u);
+const Color Color::YELLOW = Color(255u, 255u, 0u, 255u);
+
 Color::Color()
     : r(255u)
     , g(255u)
@@ -62,5 +69,10 @@ Color& Color::operator=(const Color& other)
     }
 
     return *this;
+}
+
+uint8& Color::operator[](uint32 i)
+{
+    return (&r)[i];
 }
 } // namespace chill

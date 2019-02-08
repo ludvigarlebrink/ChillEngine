@@ -8,7 +8,7 @@
 namespace chill
 {
 /**
- * @brief A vector, or a point, with three components.
+ * @brief A vector, or a point, with four components.
  */
 struct UTILS_API Vector4u
 {
@@ -113,4 +113,5 @@ Vector4u operator/(const Vector4u& lhs, uint32 rhs);
 
 /**
  * @struct chill::Vector4u
+ * @ingroup Math
  */

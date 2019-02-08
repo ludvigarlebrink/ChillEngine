@@ -250,4 +250,5 @@ Vector3f operator/(const Vector3f& lhs, f32 rhs);
 
 /**
  * @struct chill::Vector3f
+ * @ingroup Math
  */

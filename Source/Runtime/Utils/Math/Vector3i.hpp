@@ -149,4 +149,5 @@ Vector3i operator/(const Vector3i& lhs, int32 rhs);
 
 /**
  * @struct chill::Vector3i
+ * @ingroup Math
  */

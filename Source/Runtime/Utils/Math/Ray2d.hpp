@@ -69,12 +69,24 @@ public:
 
 public:
 
+    /**
+     * @brief Point of the ray origin.
+     */
     Vector2f origin;
+
+    /**
+     * @brief Direction in which the ray will shoot.
+     */
     Vector2f direction;
+
+    /**
+     * @brief Essentially the max length of the ray.
+     */
     f32 tMax;
 };
 } // namespace chill
 
 /**
  * @struct chill::Ray2d
+ * @ingroup Math
  */

@@ -7,7 +7,5 @@
 #endif
 
 /**
- * @defgroup Platform
- *
- * A collection of platform specific features.
+ * @defgroup RenderCore Render Core
  */

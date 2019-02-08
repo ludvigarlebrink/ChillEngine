@@ -198,4 +198,5 @@ Vector2i operator/(const Vector2i& lhs, int32 rhs);
 
 /**
  * @struct chill::Vector2i
+ * @ingroup Math
  */

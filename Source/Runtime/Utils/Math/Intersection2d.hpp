@@ -32,18 +32,10 @@ public:
      * @return True the two circles intersects. False if not.
      */
     static bool test(const Circle2d& a, const Circle2d& b);
-
-    /**
-     * @brief Test if axis-aligned bounds intersects with a circle.
-     *
-     * @param a Axis-aligned bounds to test.
-     * @param b Circle to test.
-     * @return True if intersects. False if not.
-     */
-    static bool test(const AABounds2d& a, const Circle2d& b);
 };
 } // namespace chill
 
 /**
  * @class chill::Intersection2d
+ * @ingroup Math
  */

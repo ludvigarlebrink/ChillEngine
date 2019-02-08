@@ -17,7 +17,7 @@ struct Vector4i;
 struct Vector4u;
 
 /**
- * @brief A vector, or a point, with three components.
+ * @brief A vector, or a point, with four components.
  */
 struct UTILS_API Vector4f
 {
@@ -255,4 +255,5 @@ Vector4f operator/(const Vector4f& lhs, f32 rhs);
 
 /**
  * @struct chill::Vector4f
+ * @ingroup Math
  */

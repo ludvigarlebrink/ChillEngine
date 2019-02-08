@@ -118,3 +118,8 @@ public:
     f32 a;
 };
 } // namespace chill
+
+/**
+ * @class chill::LinearColor
+ * @ingroup Math
+ */

@@ -37,4 +37,6 @@ public:
 
 /**
  * @struct chill::AABounds2d
+ * @ingroup Math
  */
+

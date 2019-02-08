@@ -75,4 +75,5 @@ public:
 
 /**
  * @class chill::Mathf
+ * @ingroup Math
  */

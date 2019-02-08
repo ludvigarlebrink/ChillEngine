@@ -88,4 +88,5 @@ public:
 
 /**
  * @struct chill::Recti
+ * @ingroup Math
  */

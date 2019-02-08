@@ -54,3 +54,8 @@ public:
     f32 rows[4][4];
 };
 } // namespace chill
+
+/**
+ * @class chill::Matrix4f
+ * @ingroup Math
+ */

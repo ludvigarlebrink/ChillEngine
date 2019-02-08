@@ -5,3 +5,9 @@
 #else
 #define PLATFORM_API __declspec(dllimport)
 #endif
+
+/**
+ * @defgroup Platform
+ *
+ * A collection of platform specific features.
+ */

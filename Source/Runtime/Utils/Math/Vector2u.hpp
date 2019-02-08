@@ -101,4 +101,6 @@ Vector2u operator/(const Vector2u& lhs, uint32 rhs);
 
 /**
  * @struct chill::Vector2u
+ * @ingroup Math
  */
+

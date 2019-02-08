@@ -107,4 +107,5 @@ Vector3u operator/(const Vector3u& lhs, uint32 rhs);
 
 /**
  * @struct chill::Vector3u
+ * @ingroup Math
  */
