@@ -170,7 +170,7 @@ Vector4f::Vector4f(f32 x, f32 y, f32 z, f32 w)
 {
 }
 
-Vector4f::Vector4f(uint32 uniform)
+Vector4f::Vector4f(f32 uniform)
     : x(uniform)
     , y(uniform)
     , z(uniform)

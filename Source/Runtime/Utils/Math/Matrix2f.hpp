@@ -3,6 +3,8 @@
 #include "../UtilsAPI.hpp"
 #include "../BaseTypes.hpp"
 
+#include <string>
+
 namespace chill
 {
 struct Vector2f;

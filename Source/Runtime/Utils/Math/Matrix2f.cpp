@@ -55,7 +55,7 @@ void Matrix2f::transpose()
 
 std::string Matrix2f::toString() const
 {
-    return "(" + std::to_string(m[0][0]) + ", " + std::to_string(m[1][0]) + ")\n"
+    return "(" + std::to_string(m[0][0]) + ", " + std::to_string(m[1][0]) + ")\n" +
         "(" + std::to_string(m[0][1]) + ", " + std::to_string(m[1][1]) + ")";
 }
 

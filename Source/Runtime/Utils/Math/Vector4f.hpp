@@ -181,7 +181,7 @@ public:
      *
      * @param uniform Value of both components.
      */
-    Vector4f(uint32 uniform);
+    Vector4f(f32 uniform);
 
     /**
      * @brief Creates a vector from a string, format must be "(x, y, z, w)".

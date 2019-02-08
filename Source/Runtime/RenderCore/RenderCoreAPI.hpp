@@ -8,4 +8,7 @@
 
 /**
  * @defgroup RenderCore Render Core
+ *
+ * Render Core works like a wrapper for OpenGL, so that OpenGL can be used
+ * in a object oriented way.
  */

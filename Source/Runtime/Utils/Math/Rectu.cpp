@@ -4,10 +4,10 @@
 namespace chill
 {
 Rectu::Rectu()
-    : x(0.0f)
-    , y(0.0f)
-    , w(0.0f)
-    , h(0.0f)
+    : x(0u)
+    , y(0u)
+    , w(0u)
+    , h(0u)
 {
 }
 
@@ -30,13 +30,13 @@ Rectu::Rectu(uint32 x, uint32 y, uint32 w, uint32 h)
 Rectu::Rectu(const std::string& str)
 {
     std::string sub = str.substr(str.find_first_of("(") + 1u);
-    x = std::stof(sub);
+    x = static_cast<uint32>(std::stoi(sub));
     sub = sub.substr(sub.find_first_of(",") + 1u);
-    y = std::stof(sub);
+    y = static_cast<uint32>(std::stoi(sub));
     sub = sub.substr(sub.find_first_of(",") + 1u);
-    w = std::stof(sub);
+    w = static_cast<uint32>(std::stoi(sub));
     sub = sub.substr(sub.find_first_of(",") + 1u);
-    h = std::stof(sub);
+    h = static_cast<uint32>(std::stoi(sub));
 }
 
 std::string Rectu::toString() const
