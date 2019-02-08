@@ -103,7 +103,7 @@ project "Utils"
 group "Dev"
 project "Utils_TEST"
     kind "ConsoleApp"
-    location "Source/Dev/UnitTests/Utils_TEST"
+    location "Source/Dev/Utils_TEST"
     files {
         "Source/Dev/UnitTests/Utils_TEST/**.hpp",
         "Source/Dev/UnitTests/Utils_TEST/**.cpp",
