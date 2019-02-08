@@ -55,6 +55,14 @@ function useRenderCore()
     usePlatform()
 end
 
+function useECS()
+    includedirs "Source/Runtime/ECS"
+    filter { "kind:not StaticLib" }
+        links { "ECS" }
+    filter {}
+    useECS()
+end
+
 workspace "ChillEngine"
     location "Solution"
     language "C++"
@@ -130,6 +138,17 @@ project "RenderCore"
     defines "RENDER_CORE_API_DLL_EXPORT"
     usePlatform()
 
+group "Runtime"
+project "ECS"
+    kind "SharedLib"
+    location "Source/Runtime/ECS"
+    files {
+        "Source/Runtime/ECS/**.hpp",
+        "Source/Runtime/ECS/**.cpp",
+    }
+    defines "ECS_API_DLL_EXPORT"
+    useRenderCore()
+    
 group "Main"
 project "Main"
     kind "ConsoleApp"

@@ -5,7 +5,6 @@
 
 namespace chill
 {
-
 /**
  * @brief A color (or colour for you english people) in linear space.
  */
