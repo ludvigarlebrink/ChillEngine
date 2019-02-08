@@ -5,3 +5,12 @@
 #else
 #define UTILS_API __declspec(dllimport)
 #endif
+
+/**
+ * @defgroup Utils
+ *
+ * A collection of utility features.
+ *
+ * @addtogroup Math
+ * @ingroup Utils
+ */

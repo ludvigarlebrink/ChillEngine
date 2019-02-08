@@ -6,7 +6,7 @@
  * @brief Utils module tests
  */
 
-//#include "Math/Vector2.hpp"
+#include "Math/Vector2f.hpp"
 #include <gtest/gtest.h>
 #include <memory>
 
@@ -15,33 +15,35 @@ namespace chill
 namespace test
 {
 /**
- * @brief Base class for graphics unit tests.
+ * @brief Base class for utils unit tests.
  */
 class CUtilsTestBase : public ::testing::Test
 {
 
 protected:
 
-    /*
+    /**
      * @brief Define ctor for to initialize for the whole test suite.
      */
     CUtilsTestBase()
     {
     }
 
-    /*
+    /**
      * @brief Define dtor to cleanup after the whole test suite finishes.
      */
-    ~CUtilsTestBase() {}
+    ~CUtilsTestBase()
+    {
+    }
 
-    /*
+    /**
      * @brief Setup before each test.
      */
     void SetUp() override
     {
     }
 
-    /*
+    /**
      * @brief Cleanup after each test.
      */
     void TearDown() override
@@ -58,4 +60,4 @@ TEST_F(CUtilsTestBase, ExampleTest)
 {
 }
 } // namespace test
-} // namespace chill
+} // namesapce chill

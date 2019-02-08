@@ -16,7 +16,7 @@ public:
 
     virtual ~Shader();
 
-public:
+private:
 
     int32 m_shaderProgram;
 };
