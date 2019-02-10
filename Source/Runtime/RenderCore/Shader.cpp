@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include <streambuf>
+#include <iostream>
 
 namespace chill
 {
@@ -72,12 +73,12 @@ bool Shader::load(const std::string& vertexShaderFilename, const std::string& ge
 
 bool Shader::loadFromString(const std::string& vertexShaderSource, const std::string& fragmentShaderSource)
 {
-    return load(vertexShaderSource, "", fragmentShaderSource);
+    return loadFromString(vertexShaderSource, "", fragmentShaderSource);
 }
 
 bool Shader::loadFromString(const std::string& vertexShaderSource, const std::string& geometryShaderSource, const std::string& fragmentShaderSource)
 {
-    if (m_shaderProgram != 0u)
+    if (m_shaderProgram)
     {
         glDeleteProgram(m_shaderProgram);
         m_shaderProgram = 0u;
@@ -321,7 +322,8 @@ bool Shader::checkProgramLinkErrors(uint32 program)
     if (!success)
     {
         glGetProgramInfoLog(program, 1024, NULL, infoLog);
-        // @todo Log errors.
+        // @todo Add propper logger.
+        std::cout << "Program ERROR: " << infoLog << "\n";
         return false;
     }
 
@@ -337,7 +339,8 @@ bool Shader::checkShaderCompileErrors(uint32 shader, const std::string& type)
     if (!success)
     {
         glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-        // @todo Log errors.
+        // @todo Add propper logger.
+        std::cout << type << "ERROR: " << infoLog << "\n";
         return false;
     }
 
