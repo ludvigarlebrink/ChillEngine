@@ -62,13 +62,13 @@ void VertexArray::load(void* pVertexData, int32 vertexSize, int32 vertexCount, u
 void* VertexArray::mapForReading()
 {
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glMapBuffer(GL_ARRAY_BUFFER, GL_READ_ONLY);
+    return glMapBuffer(GL_ARRAY_BUFFER, GL_READ_ONLY);
 }
 
 void* VertexArray::mapForWriting()
 {
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+    return glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 }
 
 void VertexArray::render()
