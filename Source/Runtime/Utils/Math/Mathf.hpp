@@ -62,7 +62,7 @@ public:
      * @param rad Radians as be converted.
      * @return Degrees.
      */
-    static f32 radToDeg(f32 rad);
+    static f32 RadToDeg(f32 rad);
 
 public:
 

@@ -47,12 +47,12 @@ Vector3f::Vector3f(const std::string& str)
     z = std::stof(str.substr(str.find_last_of(",") + 1u));
 }
 
-f32 Vector3f::angle(const Vector3f& from, const Vector3f& to)
+f32 Vector3f::Angle(const Vector3f& from, const Vector3f& to)
 {
-    return Mathf::radToDeg(acos(dot(from, to)));
+    return Mathf::RadToDeg(acos(Dot(from, to)));
 }
 
-Vector3f Vector3f::cross(const Vector3f& lhs, const Vector3f& rhs)
+Vector3f Vector3f::Cross(const Vector3f& lhs, const Vector3f& rhs)
 {
     return {
         lhs.y * rhs.z + lhs.z * lhs.y,
@@ -61,51 +61,51 @@ Vector3f Vector3f::cross(const Vector3f& lhs, const Vector3f& rhs)
     };
 }
 
-void Vector3f::clamp(const Vector3f& min, const Vector3f& max)
+void Vector3f::Clamp(const Vector3f& min, const Vector3f& max)
 {
-    x = Mathf::clamp(min.x, max.x, x);
-    y = Mathf::clamp(min.y, max.y, y);
-    z = Mathf::clamp(min.z, max.z, z);
+    x = Mathf::Clamp(min.x, max.x, x);
+    y = Mathf::Clamp(min.y, max.y, y);
+    z = Mathf::Clamp(min.z, max.z, z);
 }
 
-f32 Vector3f::distance(const Vector3f& p1, const Vector3f& p2)
-{
-    Vector3f v = p2 - p1;
-    return v.length();
-}
-
-f32 Vector3f::distanceSquared(const Vector3f& p1, const Vector3f& p2)
+f32 Vector3f::Distance(const Vector3f& p1, const Vector3f& p2)
 {
     Vector3f v = p2 - p1;
-    return v.lengthSquared();
+    return v.Length();
 }
 
-f32 Vector3f::dot(const Vector3f& lhs, const Vector3f& rhs)
+f32 Vector3f::DistanceSquared(const Vector3f& p1, const Vector3f& p2)
+{
+    Vector3f v = p2 - p1;
+    return v.LengthSquared();
+}
+
+f32 Vector3f::Dot(const Vector3f& lhs, const Vector3f& rhs)
 {
     return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
 }
 
-f32 Vector3f::length() const
+f32 Vector3f::Length() const
 {
     return abs(x * x + y * y + z * z);
 }
 
-f32 Vector3f::lengthSquared() const
+f32 Vector3f::LengthSquared() const
 {
     return sqrt(abs(x * x + y * y + z * z));
 }
 
-Vector3f Vector3f::lerp(const Vector3f& start, const Vector3f& end, f32 t)
+Vector3f Vector3f::Lerp(const Vector3f& start, const Vector3f& end, f32 t)
 {
     return start + t * (end - start);
 }
 
-Vector3f Vector3f::nlerp(const Vector3f& start, const Vector3f& end, f32 t)
+Vector3f Vector3f::Nlerp(const Vector3f& start, const Vector3f& end, f32 t)
 {
-    return lerp(start, end, t).normalized();
+    return Lerp(start, end, t).Normalized();
 }
 
-void Vector3f::normalize()
+void Vector3f::Normalize()
 {
     f32 len = sqrt(x * x + y * y + z * z);
     x /= len;
@@ -113,22 +113,22 @@ void Vector3f::normalize()
     z /= len;
 }
 
-Vector3f Vector3f::normalized() const
+Vector3f Vector3f::Normalized() const
 {
     f32 len = sqrt(x * x + y * y + z * z);
     return { x / len, y / len, z / len };
 }
 
-Vector3f Vector3f::slerp(const Vector3f& start, const Vector3f& end, f32 t)
+Vector3f Vector3f::Slerp(const Vector3f& start, const Vector3f& end, f32 t)
 {
-    f32 d = Mathf::clamp(-1.0f, 1.0f, Vector3f::dot(start, end));
+    f32 d = Mathf::Clamp(-1.0f, 1.0f, Vector3f::Dot(start, end));
     f32 theta = acos(d) * t;
     Vector3f rev = end - start * d;
-    rev.normalize();
+    rev.Normalize();
     return (start * cos(theta)) + (rev * sin(theta));
 }
 
-std::string Vector3f::toString() const
+std::string Vector3f::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ")";
 }

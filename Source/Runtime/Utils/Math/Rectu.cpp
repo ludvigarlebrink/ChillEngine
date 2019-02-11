@@ -39,12 +39,12 @@ Rectu::Rectu(const std::string& str)
     h = static_cast<uint32>(std::stoi(sub));
 }
 
-std::string Rectu::toString() const
+std::string Rectu::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(w) + ", " + std::to_string(h) + ")";
 }
 
-bool Rectu::contains(const Vector2u& point)
+bool Rectu::Contains(const Vector2u& point)
 {
     if (x > point.x || y > point.y)
     {

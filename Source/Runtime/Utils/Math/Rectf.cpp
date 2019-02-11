@@ -39,12 +39,12 @@ Rectf::Rectf(const std::string& str)
     h = std::stof(sub);
 }
 
-std::string Rectf::toString() const
+std::string Rectf::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(w) + ", " + std::to_string(h) + ")";
 }
 
-bool Rectf::contains(const Vector2f& point)
+bool Rectf::Contains(const Vector2f& point)
 {
     if (x > point.x || y > point.y)
     {

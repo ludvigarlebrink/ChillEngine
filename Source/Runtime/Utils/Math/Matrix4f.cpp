@@ -121,7 +121,7 @@ Matrix4f::Matrix4f(f32 scale)
     m[3][3] = 1.0f;
 }
 
-std::string Matrix4f::toString() const
+std::string Matrix4f::ToString() const
 {
     return "(" + std::to_string(m[0][0]) + ", " + std::to_string(m[1][0]) + ", " + std::to_string(m[2][0]) + ", " + std::to_string(m[3][0]) + ")\n"
         "(" + std::to_string(m[0][1]) + ", " + std::to_string(m[1][1]) + ", " + std::to_string(m[2][1]) + ", " + std::to_string(m[3][1]) + ")\n"

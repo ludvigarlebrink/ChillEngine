@@ -53,7 +53,7 @@ public:
      *
      * @return A nicely formated string.
      */
-    std::string toString() const;
+    std::string ToString() const;
 
     Vector2u& operator=(const Vector2u& other);
 

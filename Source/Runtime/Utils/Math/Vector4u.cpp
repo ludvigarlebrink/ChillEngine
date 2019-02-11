@@ -38,7 +38,7 @@ Vector4u::Vector4u(const std::string& vec)
 {
 }
 
-std::string Vector4u::toString() const
+std::string Vector4u::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ", " + std::to_string(w) + ")";
 }

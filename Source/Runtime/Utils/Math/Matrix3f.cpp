@@ -81,7 +81,7 @@ Matrix3f::Matrix3f(f32 scale)
     m[2][2] = 1.0f;
 }
 
-std::string Matrix3f::toString() const
+std::string Matrix3f::ToString() const
 {
     return "(" + std::to_string(m[0][0]) + ", " + std::to_string(m[1][0]) + ", " + std::to_string(m[2][0]) + ")\n" +
         "(" + std::to_string(m[0][1]) + ", " + std::to_string(m[1][1]) + ", " + std::to_string(m[2][1]) + ")\n" +

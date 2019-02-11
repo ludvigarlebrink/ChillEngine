@@ -39,12 +39,12 @@ Recti::Recti(const std::string& str)
     h = std::stoi(sub);
 }
 
-std::string Recti::toString() const
+std::string Recti::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(w) + ", " + std::to_string(h) + ")";
 }
 
-bool Recti::contains(const Vector2i& point)
+bool Recti::Contains(const Vector2i& point)
 {
     if (x > point.x || y > point.y)
     {

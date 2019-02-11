@@ -44,10 +44,10 @@ LinearColor::LinearColor(f32 r, f32 g, f32 b)
 
 void LinearColor::clamp()
 {
-    r = Mathf::clamp(0.0f, 1.0f, r);
-    g = Mathf::clamp(0.0f, 1.0f, g);
-    b = Mathf::clamp(0.0f, 1.0f, b);
-    a = Mathf::clamp(0.0f, 1.0f, a);
+    r = Mathf::Clamp(0.0f, 1.0f, r);
+    g = Mathf::Clamp(0.0f, 1.0f, g);
+    b = Mathf::Clamp(0.0f, 1.0f, b);
+    a = Mathf::Clamp(0.0f, 1.0f, a);
 }
 
 LinearColor& LinearColor::operator=(const LinearColor& other)

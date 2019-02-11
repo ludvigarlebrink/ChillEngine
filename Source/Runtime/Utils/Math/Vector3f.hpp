@@ -56,7 +56,7 @@ public:
      * @param from Vector to which the angular difference is measured.
      * @return Angle in degrees between from and to.
      */
-    static f32 angle(const Vector3f& from, const Vector3f& to);
+    static f32 Angle(const Vector3f& from, const Vector3f& to);
 
     /**
      * @brief Get the cross product of two vectors.
@@ -65,7 +65,7 @@ public:
      * @param v2 Second vector.
      * @retunr Cross product of two vectors.
      */
-    static Vector3f cross(const Vector3f& lhs, const Vector3f& rhs);
+    static Vector3f Cross(const Vector3f& lhs, const Vector3f& rhs);
 
     /**
      * @brief Clamp this vector.
@@ -73,7 +73,7 @@ public:
      * @param min Minimum value of this vector.
      * @param max Maximum value of this vector.
      */
-    void clamp(const Vector3f& min, const Vector3f& max);
+    void Clamp(const Vector3f& min, const Vector3f& max);
 
     /**
      * @brief Get the distance between two points.
@@ -82,7 +82,7 @@ public:
      * @param p2 Second point.
      * @return Distance between two points.
      */
-    static f32 distance(const Vector3f& p1, const Vector3f& p2);
+    static f32 Distance(const Vector3f& p1, const Vector3f& p2);
 
     /**
      * @brief Get the distance between two points squared.
@@ -91,7 +91,7 @@ public:
      * @param p2 Second point.
      * @return Distance between two points squared.
      */
-    static f32 distanceSquared(const Vector3f& p1, const Vector3f& p2);
+    static f32 DistanceSquared(const Vector3f& p1, const Vector3f& p2);
 
     /**
      * @brief Get the dot product of two vectors.
@@ -100,21 +100,21 @@ public:
      * @param v2 Second vector.
      * @retunr Dot product of two vectors.
      */
-    static f32 dot(const Vector3f& lhs, const Vector3f& rhs);
+    static f32 Dot(const Vector3f& lhs, const Vector3f& rhs);
 
     /**
      * @brief Get the length of this vector.
      *
      * @return Length of this vector.
      */
-    f32 length() const;
+    f32 Length() const;
 
     /**
      * @brief Get the squared length of this vector.
      *
      * @return Squared length of this vector.
      */
-    f32 lengthSquared() const;
+    f32 LengthSquared() const;
 
     /**
      * @param Linear interpolation between two vectors.
@@ -124,7 +124,7 @@ public:
      * @param t Interpolation value.
      * @return A linear interpolated vector.
      */
-    static Vector3f lerp(const Vector3f& start, const Vector3f& end, f32 t);
+    static Vector3f Lerp(const Vector3f& start, const Vector3f& end, f32 t);
 
     /**
      * @param Normalized linear interpolation between two vectors.
@@ -134,28 +134,28 @@ public:
      * @param t Interpolation value.
      * @return A normalized linear interpolated vector.
      */
-    static Vector3f nlerp(const Vector3f& start, const Vector3f& end, f32 t);
+    static Vector3f Nlerp(const Vector3f& start, const Vector3f& end, f32 t);
 
     /**
      * @brief Normlizes this vector.
      */
-    void normalize();
+    void Normalize();
 
     /**
      * @brief Creates a normalized version of this vector.
      *
      * @return A normalized version of this vector.
      */
-    Vector3f normalized() const;
+    Vector3f Normalized() const;
 
-    static Vector3f slerp(const Vector3f& start, const Vector3f& end, f32 t);
+    static Vector3f Slerp(const Vector3f& start, const Vector3f& end, f32 t);
 
     /**
      * @brief Get this vector as a nicely formated string: "(x, y, z)".
      *
      * @return A nicely formated string.
      */
-    std::string toString() const;
+    std::string ToString() const;
 
     Vector3f& operator=(const Vector3f& other);
 
