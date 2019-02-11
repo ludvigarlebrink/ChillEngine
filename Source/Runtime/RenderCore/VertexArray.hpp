@@ -45,14 +45,14 @@ public:
     /**
      * @brief Bind this vertex array.
      */
-    void bind();
+    void Bind();
 
     /**
      * @brief Enables an attribute.
      *
      * @param index Index of attribute to enable.
      */
-    void enableAttrib(int32 index);
+    void EnableAttrib(int32 index);
     
     /**
      * @brief This class will load (or copy) data from the ram to the v-ram.
@@ -63,7 +63,7 @@ public:
      * @param pElementData
      * @param elementCount
      */
-    void load(void* pVertexData, int32 vertexSize, int32 vertexCount, uint32* pElementData, int32 elementCount);
+    void Load(void* pVertexData, int32 vertexSize, int32 vertexCount, uint32* pElementData, int32 elementCount);
 
     /**
      * @brief Maps the array buffer for reading.
@@ -72,7 +72,7 @@ public:
      *
      * Call unmap once done reading.
      */
-    void* mapForReading();
+    void* MapForReading();
 
     /**
      * @brief Maps the array buffer for reading.
@@ -114,17 +114,17 @@ public:
      *
      * And there we have it! A simple batch renderer.
      */
-    void* mapForWriting();
+    void* MapForWriting();
 
     /**
      * @brief Render this vertex array.
      */
-    void render();
+    void Render();
 
     /**
      * @brief Render this vertex array.
      */
-    void render(int32 count, int32 start);
+    void Render(int32 count, int32 start);
 
     /**
      * @brief Set a pointer to an attribute in the vertex array.
@@ -132,15 +132,15 @@ public:
      * @param index
      * @param type
      * @param offset
-     */
-    void setAttribPtr(int32 index, Type type, int32 offset);
+     */s
+    void SetAttribPtr(int32 index, Type type, int32 offset);
 
     /**
      * @brief Unmaps the buffer.
      *
      * Call this function when done reading or writing to the buffer.
      */
-    void unmap();
+    void Unmap();
 
 private:
 
