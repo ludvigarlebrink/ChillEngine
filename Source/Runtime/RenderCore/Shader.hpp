@@ -283,6 +283,6 @@ private:
 } // namespace chill
 
 /**
- * @class Shader
+ * @class chill::Shader
  * @ingroup RenderCore
  */

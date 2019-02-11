@@ -26,8 +26,14 @@ public:
         F32,
         INT32,
         VECTOR2F,
+        VECTOR2I,
+        VECTOR2U,
         VECTOR3F,
-        VECTOR4F
+        VECTOR3I,
+        VECTOR3U,
+        VECTOR4F,
+        VECTOR4I,
+        VECTOR4U
     };
 
 public:
@@ -123,6 +129,9 @@ public:
 
     /**
      * @brief Render this vertex array.
+     *
+     * @param count Number of vertices to render.
+     * @param start Start index of the vertex array.
      */
     void Render(int32 count, int32 start);
 
@@ -132,7 +141,7 @@ public:
      * @param index
      * @param type
      * @param offset
-     */s
+     */
     void SetAttribPtr(int32 index, Type type, int32 offset);
 
     /**
@@ -154,7 +163,7 @@ private:
 } // namespace chill
 
 /**
- * @class VertexArray
+ * @class chill::VertexArray
  * @ingroup RenderCore
  *
  * @code

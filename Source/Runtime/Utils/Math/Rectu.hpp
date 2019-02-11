@@ -50,7 +50,7 @@ public:
      *
      * @return A nicely formated string.
      */
-    std::string toString() const;
+    std::string ToString() const;
 
     /**
      * @brief Test if this rectangle contains a point.
@@ -58,7 +58,7 @@ public:
      * @param point Point to be tested.
      * @return True if point is contained within this rectangle. False if not.
      */
-    bool contains(const Vector2u& point);
+    bool Contains(const Vector2u& point);
 
     Rectu& operator=(const Rectu& other);
 

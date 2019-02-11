@@ -11,7 +11,7 @@ RenderWindow::RenderWindow()
 RenderWindow::RenderWindow(const std::string& title, int32 width, int32 height)
     : m_pWindow(nullptr)
 {
-    create(title, width, height);
+    Create(title, width, height);
 }
 
 RenderWindow::~RenderWindow()
@@ -27,12 +27,12 @@ RenderWindow::~RenderWindow()
     }
 }
 
-void RenderWindow::clear()
+void RenderWindow::Clear()
 {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-bool RenderWindow::create(const std::string& title, int32 width, int32 height)
+bool RenderWindow::Create(const std::string& title, int32 width, int32 height)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -63,12 +63,12 @@ bool RenderWindow::create(const std::string& title, int32 width, int32 height)
     return true;
 }
 
-void RenderWindow::setClearColor(const LinearColor& clearColor)
+void RenderWindow::SetClearColor(const LinearColor& clearColor)
 {
     glClearColor(clearColor.r, clearColor.g, clearColor.b, clearColor.a);
 }
 
-void RenderWindow::present()
+void RenderWindow::Present()
 {
     SDL_GL_SwapWindow(m_pWindow);
 }

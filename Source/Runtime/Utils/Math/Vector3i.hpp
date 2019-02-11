@@ -54,7 +54,7 @@ public:
      *
      * @return A nicely formated string.
      */
-    std::string toString() const;
+    std::string ToString() const;
 
     Vector3i& operator=(const Vector3i& other);
 

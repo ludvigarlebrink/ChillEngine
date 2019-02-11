@@ -71,7 +71,7 @@ public:
      *
      * @return Matrix as a nicely formated string.
      */
-    std::string toString() const;
+    std::string ToString() const;
 
     /**
      * @brief Transpose this matrix.

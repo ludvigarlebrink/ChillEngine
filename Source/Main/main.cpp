@@ -40,15 +40,15 @@ int main(int argc, char* argv[])
     };
 
     Shader s;
-    if (!s.loadFromString(vertexShaderSource, fragmentShaderSource))
+    if (!s.LoadFromString(vertexShaderSource, fragmentShaderSource))
     {
         std::cout << "something went wrong\n";
     }
 
     VertexArray a;
-    a.load(v, sizeof(Vertex), 4, indices, 6);
-    a.setAttribPtr(0, VertexArray::Type::VECTOR2F, 0);
-    a.enableAttrib(0);
+    a.Load(v, sizeof(Vertex), 4, indices, 6);
+    a.SetAttribPtr(0, VertexArray::Type::VECTOR2F, 0);
+    a.EnableAttrib(0);
 
     while (true)
     {
@@ -58,12 +58,12 @@ int main(int argc, char* argv[])
             // Event polling.
         }
 
-        win.setClearColor(LinearColor(1.0f, 0, 0, 1.0f));
-        win.clear();
-        s.use();
-        a.bind();
-        a.render();
-        win.present();
+        win.SetClearColor(LinearColor(1.0f, 0, 0, 1.0f));
+        win.Clear();
+        s.Use();
+        a.Bind();
+        a.Render();
+        win.Present();
     }
 
     SDL_Quit();

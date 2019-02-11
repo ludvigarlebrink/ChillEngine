@@ -23,17 +23,17 @@ VertexArray::~VertexArray()
     }
 }
 
-void VertexArray::bind()
+void VertexArray::Bind()
 {
     glBindVertexArray(m_vao);
 }
 
-void VertexArray::enableAttrib(int32 index)
+void VertexArray::EnableAttrib(int32 index)
 {
     glEnableVertexAttribArray(index);
 }
 
-void VertexArray::load(void* pVertexData, int32 vertexSize, int32 vertexCount, uint32* pElementData, int32 elementCount)
+void VertexArray::Load(void* pVertexData, int32 vertexSize, int32 vertexCount, uint32* pElementData, int32 elementCount)
 {
     m_vertexSize = vertexSize;
     m_vertexCount = vertexCount;
@@ -59,29 +59,29 @@ void VertexArray::load(void* pVertexData, int32 vertexSize, int32 vertexCount, u
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32) * elementCount, pElementData, GL_STATIC_DRAW);
 }
 
-void* VertexArray::mapForReading()
+void* VertexArray::MapForReading()
 {
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
     return glMapBuffer(GL_ARRAY_BUFFER, GL_READ_ONLY);
 }
 
-void* VertexArray::mapForWriting()
+void* VertexArray::MapForWriting()
 {
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
     return glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 }
 
-void VertexArray::render()
+void VertexArray::Render()
 {
     glDrawElements(GL_TRIANGLES, m_elementCount, GL_UNSIGNED_INT, 0);
 }
 
-void VertexArray::render(int32 count, int32 start)
+void VertexArray::Render(int32 count, int32 start)
 {
     glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, reinterpret_cast<void*>(start));
 }
 
-void VertexArray::setAttribPtr(int32 index, Type type, int32 offset)
+void VertexArray::SetAttribPtr(int32 index, Type type, int32 offset)
 {
     switch (type)
     {
@@ -105,7 +105,7 @@ void VertexArray::setAttribPtr(int32 index, Type type, int32 offset)
     }
 }
 
-void VertexArray::unmap()
+void VertexArray::Unmap()
 {
     glUnmapBuffer(GL_ARRAY_BUFFER);
     glBindBuffer(GL_ARRAY_BUFFER, 0);

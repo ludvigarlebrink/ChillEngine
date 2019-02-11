@@ -38,7 +38,7 @@ public:
     /**
      * @brief Clears the backbuffer.
      */
-    void clear();
+    void Clear();
 
     /**
      * @brief Creates a window.
@@ -48,19 +48,19 @@ public:
      * @param height Height of this window.
      * @return True if successfully created. False if not.
      */
-    bool create(const std::string& title, int32 width, int32 height);
+    bool Create(const std::string& title, int32 width, int32 height);
 
     /**
      * @brief Set the color the backbuffer will be cleared with.
      *
      * @param clearColor Color the backbuffer will be cleared with.
      */
-    void setClearColor(const LinearColor& clearColor);
+    void SetClearColor(const LinearColor& clearColor);
 
     /**
      * @brief Swap the front with the backbuffer.
      */
-    void present();
+    void Present();
 
 private:
 

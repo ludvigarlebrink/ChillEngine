@@ -20,7 +20,7 @@ public:
      * @param value Float to be clamped.
      * @return Clamped float.
      */
-    static f32 clamp(f32 min, f32 max, f32 value);
+    static f32 Clamp(f32 min, f32 max, f32 value);
 
     /**
      * @brief Converts degrees to radians.
@@ -28,7 +28,7 @@ public:
      * @param deg Degrees as be converted.
      * @return Radians.
      */
-    static f32 degToRad(f32 deg);
+    static f32 DegToRad(f32 deg);
 
     /**
      * @param Linear interpolation between two floats.
@@ -38,7 +38,7 @@ public:
      * @param t Interpolation value.
      * @return A linear interpolated value.
      */
-    static f32 lerp(f32 start, f32 end, f32 t);
+    static f32 Lerp(f32 start, f32 end, f32 t);
 
     /**
      * @brief Get the maximum of two floats.
@@ -46,7 +46,7 @@ public:
      * @param a First floats.
      * @param b Second floats.
      */
-    static f32 max(f32 a, f32 b);
+    static f32 Max(f32 a, f32 b);
 
     /**
      * @brief Get the minimum of two floats.
@@ -54,7 +54,7 @@ public:
      * @param a First floats.
      * @param b Second floats.
      */
-    static f32 min(f32 a, f32 b);
+    static f32 Min(f32 a, f32 b);
 
     /**
      * @brief Converts radians to degrees.
