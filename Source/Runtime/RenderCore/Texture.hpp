@@ -4,6 +4,11 @@
 
 namespace chill
 {
+class Image;
+
+/**
+ * @brief A texture.
+ */
 class Texture
 {
 public:
@@ -22,4 +27,4 @@ private:
 
     uint32 m_textureId;
 };
-}
+} // namespace chill
