@@ -15,6 +15,10 @@ function linkSDL()
     filter {}
 end
 
+function includeSTB()
+    includedirs "ThirdParty/STB/Include"
+end
+
 function includeGTest()
     files {
         "ThirdParty/googletest-release-1.8.1/googletest/src/gtest-all.cc",
@@ -53,6 +57,7 @@ function useRenderCore()
         links { "RenderCore" }
     filter {}
     usePlatform()
+    includeSTB()
 end
 
 function useECS()
@@ -136,6 +141,7 @@ project "RenderCore"
         "Source/Runtime/RenderCore/glad/glad.c"
     }
     defines "RENDER_CORE_API_DLL_EXPORT"
+    includeSTB()
     usePlatform()
 
 group "Runtime"
