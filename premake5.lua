@@ -15,6 +15,17 @@ function linkSDL()
     filter {}
 end
 
+function includeFreeType()
+    includedirs "ThirdParty/freetype/Include"
+end
+
+function linkFreeType()
+    libdirs "ThirdParty/freetype/Lib/Win64/"
+    filter "kind:not StaticLib"
+        links "freetype"
+    filter {}
+end
+
 function includeSTB()
     includedirs "ThirdParty/STB/Include"
 end
@@ -93,6 +104,9 @@ workspace "ChillEngine"
         -- SDL
         os.copyfile("ThirdParty/SDL/Lib/Win64/SDL2.dll", "Builds/Debug/SDL2.dll")
         os.copyfile("ThirdParty/SDL/Lib/Win64/SDL2.dll", "Builds/Release/SDL2.dll")
+        -- FreeType
+        os.copyfile("ThirdParty/freetype/Lib/Win64/freetype.dll", "Builds/Debug/freetype.dll")
+        os.copyfile("ThirdParty/freetype/Lib/Win64/freetype.dll", "Builds/Release/freetype.dll")
     filter {}
 
 group "Runtime"
