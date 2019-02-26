@@ -28,7 +28,7 @@ void VertexArray::Bind()
     glBindVertexArray(m_vao);
 }
 
-void VertexArray::EnableAttrib(int32 index)
+void VertexArray::EnableAttribute(int32 index)
 {
     glEnableVertexAttribArray(index);
 }
@@ -76,9 +76,9 @@ void VertexArray::Render()
     glDrawElements(GL_TRIANGLES, m_elementCount, GL_UNSIGNED_INT, 0);
 }
 
-void VertexArray::Render(int32 count, int32 start)
+void VertexArray::Render(int32 count)
 {
-    glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, reinterpret_cast<void*>(start));
+    glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, 0);
 }
 
 void VertexArray::SetAttribPtr(int32 index, Type type, int32 offset)

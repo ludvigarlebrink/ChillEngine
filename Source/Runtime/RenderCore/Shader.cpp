@@ -160,6 +160,18 @@ bool Shader::LoadFromString(const std::string& vertexShaderSource, const std::st
     return true;
 }
 
+void Shader::SetInt(uint32 location, int32 value)
+{
+    Use();
+    glUniform1i(location, value);
+}
+
+void Shader::SetIntSlow(const std::string& name, int32 value)
+{
+    Use();
+    glUniform1i(glGetUniformLocation(m_shaderProgram, name.c_str()), value);
+}
+
 void Shader::SetMatrix2f(uint32 location, Matrix2f& mat)
 {
     Use();

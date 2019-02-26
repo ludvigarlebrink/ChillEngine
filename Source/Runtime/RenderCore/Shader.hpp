@@ -71,6 +71,10 @@ public:
      */
     bool LoadFromString(const std::string& vertexShaderSource, const std::string& geometryShaderSource, const std::string& fragmentShaderSource);
 
+    void SetInt(uint32 location, int32 value);
+
+    void SetIntSlow(const std::string& name, int32 value);
+
     /**
      * @brief Set a matrix uniform.
      *

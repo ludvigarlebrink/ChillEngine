@@ -58,7 +58,7 @@ public:
      *
      * @param index Index of attribute to enable.
      */
-    void EnableAttrib(int32 index);
+    void EnableAttribute(int32 index);
     
     /**
      * @brief This class will load (or copy) data from the ram to the v-ram.
@@ -131,9 +131,8 @@ public:
      * @brief Render this vertex array.
      *
      * @param count Number of vertices to render.
-     * @param start Start index of the vertex array.
      */
-    void Render(int32 count, int32 start);
+    void Render(int32 count);
 
     /**
      * @brief Set a pointer to an attribute in the vertex array.
