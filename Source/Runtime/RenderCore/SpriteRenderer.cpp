@@ -101,19 +101,19 @@ void SpriteRenderer::Submit(Texture* pTexture, const Recti& sourceRect, const Re
 {
     SpriteVertex v1 = {};
     v1.position = Vector2f(static_cast<f32>(distRect.x / 800.0f) - 1.0f, static_cast<f32>(distRect.y / 600.0f) - 1.0f);
-    v1.textureCoordinates = Vector2f(0.0f, 1.0f);
+    v1.textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y + sourceRect.h) / static_cast<f32>(pTexture->GetHeight()));
 
     SpriteVertex v2 = {};
     v2.position = Vector2f((static_cast<f32>(distRect.x + distRect.w) / 800.0f) - 1.0f, static_cast<f32>(distRect.y / 600.0f) - 1.0f);
-    v2.textureCoordinates = Vector2f(1.0f, 1.0f);
+    v2.textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x + sourceRect.w) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y + sourceRect.h) / static_cast<f32>(pTexture->GetHeight()));
 
     SpriteVertex v3 = {};
     v3.position = Vector2f((static_cast<f32>(distRect.x + distRect.w) / 800.0f) - 1.0f, (static_cast<f32>(distRect.y + distRect.h) / 600.0f) - 1.0f);
-    v3.textureCoordinates = Vector2f(1.0f, 0.0f);
+    v3.textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x + sourceRect.w) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y) / static_cast<f32>(pTexture->GetHeight()));
 
     SpriteVertex v4 = {};
-    v1.position = Vector2f(static_cast<f32>(distRect.x / 800.0f) - 1.0f, (static_cast<f32>(distRect.y + distRect.h) / 600.0f) - 1.0f);
-    v1.textureCoordinates = Vector2f(0.0f, 0.0f);
+    v4.position = Vector2f(static_cast<f32>(distRect.x / 800.0f) - 1.0f, (static_cast<f32>(distRect.y + distRect.h) / 600.0f) - 1.0f);
+    v1.textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y) / static_cast<f32>(pTexture->GetHeight()));
 
     std::vector<SpriteVertex>& vertices = m_renderBucket[pTexture];
 

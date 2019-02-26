@@ -20,6 +20,16 @@ Texture::~Texture()
     TearDown();
 }
 
+int32 Texture::GetHeight() const
+{
+    return m_height;
+}
+
+int32 Texture::GetWidth() const
+{
+    return m_width;
+}
+
 bool Texture::LoadFromFile(const std::string& filename)
 {
     uint8* data = stbi_load(filename.c_str(), &m_width, &m_height, &m_components, STBI_rgb_alpha);

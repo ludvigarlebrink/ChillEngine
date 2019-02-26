@@ -25,6 +25,10 @@ public:
      * @brief Destroys a texture.
      */
     virtual ~Texture();
+
+    int32 GetHeight() const;
+
+    int32 GetWidth() const;
     
     bool LoadFromFile(const std::string& filename);
 
