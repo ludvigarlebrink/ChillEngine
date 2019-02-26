@@ -67,6 +67,8 @@ function useRenderCore()
     filter { "kind:not StaticLib" }
         links { "RenderCore" }
     filter {}
+    includeFreeType()
+    linkFreeType()
     usePlatform()
     includeSTB()
 end
@@ -155,6 +157,8 @@ project "RenderCore"
         "Source/Runtime/RenderCore/glad/glad.c"
     }
     defines "RENDER_CORE_API_DLL_EXPORT"
+    includeFreeType()
+    linkFreeType()
     includeSTB()
     usePlatform()
 
