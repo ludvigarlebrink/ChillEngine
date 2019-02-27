@@ -18,10 +18,10 @@ class RENDER_CORE_API TextRenderer final : public Renderer
 {
 private:
 
-    struct GlyphVertex
+    struct CharacterVertex
     {
         Vector2f position;
-        Vector2f textureCoordiantes;
+        Vector2f textureCoordinates;
     };
 
 public:
@@ -30,13 +30,9 @@ public:
 
     ~TextRenderer();
 
-    void Begin();
-
-    void End();
-
     void Render() override;
 
-    void Submit(const std::string& text, Font* pTexture, const Vector2f& position);
+    void Submit(const std::string& text, Font* pFont, const Vector2f& position);
 
 private:
 
@@ -51,6 +47,6 @@ private:
 
     Shader* m_pShader;
     VertexArray* m_pVertexArray;
-    std::unordered_map<Font*, std::vector<GlyphVertex>> m_renderBucket;
+    std::unordered_map<Font*, std::vector<CharacterVertex>> m_renderBucket;
 };
 } // namespace chill

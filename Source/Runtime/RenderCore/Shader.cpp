@@ -8,11 +8,9 @@
 
 namespace chill
 {
-uint32 Shader::m_activeShaderProgram = 0u;
-
 Shader::Shader()
     : m_shaderProgram(0u)
-{    
+{
 }
 
 Shader::~Shader()
@@ -162,167 +160,137 @@ bool Shader::LoadFromString(const std::string& vertexShaderSource, const std::st
 
 void Shader::SetInt(uint32 location, int32 value)
 {
-    Use();
     glUniform1i(location, value);
 }
 
 void Shader::SetIntSlow(const std::string& name, int32 value)
 {
-    Use();
     glUniform1i(glGetUniformLocation(m_shaderProgram, name.c_str()), value);
 }
 
 void Shader::SetMatrix2f(uint32 location, Matrix2f& mat)
 {
-    Use();
     glUniformMatrix2fv(location, 1, GL_FALSE, &mat[0][0]);
 }
 
 void Shader::SetMatrix2fSlow(const std::string& name, Matrix2f& mat)
 {
-    Use();
     glUniformMatrix2fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
 void Shader::SetMatrix3f(uint32 location, Matrix3f& mat)
 {
-    Use();
     glUniformMatrix3fv(location, 1, GL_FALSE, &mat[0][0]);
 }
 
 void Shader::SetMatrix3fSlow(const std::string& name, Matrix3f& mat)
 {
-    Use();
     glUniformMatrix3fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
 void Shader::SetMatrix4f(uint32 location, Matrix4f& mat)
 {
-    Use();
     glUniformMatrix4fv(location, 1, GL_FALSE, &mat[0][0]);
 }
 
 void Shader::SetMatrix4fSlow(const std::string& name, Matrix4f& mat)
 {
-    Use();
     glUniformMatrix4fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
 void Shader::SetVector2f(uint32 location, Vector2f & vec)
 {
-    Use();
     glUniform2fv(location, 1, &vec[0]);
 }
 
 void Shader::SetVector2fSlow(const std::string& name, Vector2f& vec)
 {
-    Use();
     glUniform2fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
 void Shader::SetVector2i(uint32 location, Vector2i& vec)
 {
-    Use();
     glUniform2iv(location, 1, &vec[0]);
 }
 
 void Shader::SetVector2iSlow(const std::string& name, Vector2i& vec)
 {
-    Use();
     glUniform2iv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
 void Shader::SetVector2u(uint32 location, Vector2u& vec)
 {
-    Use();
     glUniform2uiv(location, 1, &vec[0]);
 }
 
 void Shader::SetVector2uSlow(const std::string& name, Vector2u& vec)
 {
-    Use();
     glUniform2uiv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
 void Shader::SetVector3f(uint32 location, Vector3f & vec)
 {
-    Use();
     glUniform3fv(location, 1, &vec[0]);
 }
 
 void Shader::SetVector3fSlow(const std::string& name, Vector3f& vec)
 {
-    Use();
     glUniform3fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
 void Shader::SetVector3i(uint32 location, Vector3i& vec)
 {
-    Use();
     glUniform3iv(location, 1, &vec[0]);
 }
 
 void Shader::SetVector3iSlow(const std::string& name, Vector3i& vec)
 {
-    Use();
     glUniform3iv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
 void Shader::SetVector3u(uint32 location, Vector3u& vec)
 {
-    Use();
     glUniform3uiv(location, 1, &vec[0]);
 }
 
 void Shader::SetVector3uSlow(const std::string& name, Vector3u& vec)
 {
-    Use();
     glUniform3uiv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
 void Shader::SetVector4f(uint32 location, Vector4f & vec)
 {
-    Use();
     glUniform4fv(location, 1, &vec[0]);
 }
 
 void Shader::SetVector4fSlow(const std::string& name, Vector4f& vec)
 {
-    Use();
     glUniform4fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
 void Shader::SetVector4i(uint32 location, Vector4i& vec)
 {
-    Use();
     glUniform4iv(location, 1, &vec[0]);
 }
 
 void Shader::SetVector4iSlow(const std::string& name, Vector4i& vec)
 {
-    Use();
     glUniform4iv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
 void Shader::SetVector4u(uint32 location, Vector4u& vec)
 {
-    Use();
     glUniform4uiv(location, 1, &vec[0]);
 }
 
 void Shader::SetVector4uSlow(const std::string& name, Vector4u& vec)
 {
-    Use();
     glUniform4uiv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
 void Shader::Use()
 {
-    if (m_shaderProgram != m_activeShaderProgram)
-    {
-        glUseProgram(m_shaderProgram);
-        m_activeShaderProgram = m_shaderProgram;
-    }
+    glUseProgram(m_shaderProgram);
 }
 
 bool Shader::CheckProgramLinkErrors(uint32 program)

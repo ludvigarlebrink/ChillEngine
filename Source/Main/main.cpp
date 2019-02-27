@@ -4,6 +4,8 @@
 #include "Math/Math.hpp"
 #include "SpriteRenderer.hpp"
 #include "Texture.hpp"
+#include "Font.hpp"
+#include "TextRenderer.hpp"
 #include <iostream>
 
 using namespace chill;
@@ -18,6 +20,11 @@ int main(int argc, char* argv[])
         std::cout << "Could not find image\n";
     }
 
+    Font* font = new Font();
+    font->LoadTTF("Data/arial.ttf", 24);
+
+    TextRenderer textRenderer;
+
     while (true)
     {
         SDL_Event event;
@@ -26,14 +33,16 @@ int main(int argc, char* argv[])
             // Event polling.
         }
 
-        spriteRenderer.Begin();
         spriteRenderer.Submit(texture, Recti(0, 0, 256, 256));
-        spriteRenderer.End();
+
+
+        textRenderer.Submit("the quick brown fox jumps over the lazy dog", font, Vector2f(0.0f, 500.0f));
 
         win.SetClearColor(LinearColor(1.0f, 0, 0, 1.0f));
         win.Clear();
 
         spriteRenderer.Render();
+        textRenderer.Render();
 
         win.Present();
     }

@@ -1,4 +1,5 @@
 #include "TextRenderer.hpp"
+#include "Font.hpp"
 
 #include <iostream>
 
@@ -20,11 +21,11 @@ static const char* fragmentShaderSource = "#version 450 core\n"
 "uniform sampler2D Texture1;\n"
 "void main()\n"
 "{\n"
-"   vec4 col = texture(Texture1, vsTexCoord);\n"
-"   if (col.a < 0.9) {\n"
+"   float col = texture(Texture1, vsTexCoord).x;\n"
+"   if (col < 0.9) {\n"
 "       discard;\n"
 "   }\n"
-"   fragColor = col;"
+"   fragColor = vec4(1.0, 1.0, 1.0, col);"
 "}\n\0";
 
 TextRenderer::TextRenderer()
@@ -41,24 +42,60 @@ TextRenderer::~TextRenderer()
     TearDown();
 }
 
-void TextRenderer::Begin()
+void TextRenderer::Render()
 {
+    m_pShader->Use();
+    m_pShader->SetIntSlow("Texture1", 0);
+
+    m_pVertexArray->Bind();
+
+    for (auto r : m_renderBucket)
+    {
+        CharacterVertex* pVert = static_cast<CharacterVertex*>(m_pVertexArray->MapForWriting());
+        memcpy(pVert, r.second.data(), sizeof(CharacterVertex) * r.second.size());
+        m_pVertexArray->Unmap();
+        Font* pFont = r.first;
+        pFont->Bind(0);
+        m_pVertexArray->Render(static_cast<int32>(r.second.size() * 1.5f));
+    }
+
     m_renderBucket.clear();
 }
 
-void TextRenderer::End()
+void TextRenderer::Submit(const std::string& text, Font* pFont, const Vector2f& position)
 {
-}
+    std::vector<CharacterVertex>& vertices = m_renderBucket[pFont];
 
-void TextRenderer::Render()
-{
-}
+    int32 x = position.x;
 
-void TextRenderer::Submit(const std::string& text, Font* pTexture, const Vector2f& position)
-{
     for (auto c : text)
     {
-        
+        Font::Character& character = pFont->GetCharacter(c);
+
+        f32 xPos = x + static_cast<f32>(character.bearing.x);
+        f32 yPos = position.y - static_cast<f32>(character.size.y - character.bearing.y);
+        f32 xMin = (xPos / 800.0f * 2.0f) - 1.0f;
+        f32 yMin = (yPos / 600.0f * 2.0f) - 1.0f;
+        f32 xMax = ((xPos + character.size.x) / 800.0f * 2.0f) - 1.0f;
+        f32 yMax = ((yPos + character.size.y) / 600.0f * 2.0f) - 1.0f;
+
+        CharacterVertex v[4];
+        v[0].position = Vector2f(xMin, yMin);
+        v[1].position = Vector2f(xMax, yMin);
+        v[2].position = Vector2f(xMax, yMax);
+        v[3].position = Vector2f(xMin, yMax);
+
+        v[0].textureCoordinates = Vector2f(character.texturePosition.x, character.texturePosition.y + character.textureSize.y);
+        v[1].textureCoordinates = Vector2f(character.texturePosition.x + character.textureSize.x, character.texturePosition.y + character.textureSize.y);
+        v[2].textureCoordinates = Vector2f(character.texturePosition.x + character.textureSize.x, character.texturePosition.y);
+        v[3].textureCoordinates = Vector2f(character.texturePosition.x, character.texturePosition.y);
+
+        vertices.push_back(v[0]);
+        vertices.push_back(v[1]);
+        vertices.push_back(v[2]);
+        vertices.push_back(v[3]);
+
+        x += (character.advance >> 6);
     }
 }
 void TextRenderer::SetUp()
@@ -77,17 +114,19 @@ void TextRenderer::SetUp()
     uint32 indexCount = m_maxCharacters * 6;
     uint32* indices = new uint32[indexCount];
 
+    uint32 vertexCounter = 0;
     for (uint32 i = 0u; i < indexCount; i += 6)
     {
-        indices[i] = i + 0u;
-        indices[i + 1] = i + 1u;
-        indices[i + 2] = i + 2u;
-        indices[i + 3] = i + 2u;
-        indices[i + 4] = i + 3u;
-        indices[i + 5] = i + 0u;
+        indices[i] = vertexCounter + 0u;
+        indices[i + 1] = vertexCounter + 1u;
+        indices[i + 2] = vertexCounter + 2u;
+        indices[i + 3] = vertexCounter + 2u;
+        indices[i + 4] = vertexCounter + 3u;
+        indices[i + 5] = vertexCounter + 0u;
+        vertexCounter += 4u;
     }
 
-    m_pVertexArray->Load(nullptr, sizeof(GlyphVertex), m_maxCharacters * 4, indices, indexCount);
+    m_pVertexArray->Load(nullptr, sizeof(CharacterVertex), m_maxCharacters * 4, indices, indexCount);
     m_pVertexArray->SetAttribPtr(0, VertexArray::Type::VECTOR2F, 0);
     m_pVertexArray->SetAttribPtr(1, VertexArray::Type::VECTOR2F, sizeof(Vector2f));
     m_pVertexArray->EnableAttribute(0);

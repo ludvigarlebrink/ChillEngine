@@ -64,6 +64,8 @@ public:
      */
     static f32 RadToDeg(f32 rad);
 
+    static uint32 UpperPowerOfTwo(uint32 v);
+
 public:
 
     /**

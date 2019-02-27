@@ -280,8 +280,6 @@ private:
 
 private:
 
-    static uint32 m_activeShaderProgram;
-
     uint32 m_shaderProgram;
 };
 } // namespace chill

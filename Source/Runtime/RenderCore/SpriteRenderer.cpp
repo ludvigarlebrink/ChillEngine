@@ -27,7 +27,7 @@ static const char* fragmentShaderSource = "#version 450 core\n"
 "   if (col.a < 0.9) {\n"
 "       discard;\n"
 "   }\n"
-"   fragColor = col;"
+"   fragColor = vec4(col.xyz, 1.0);"
 "}\n\0";
 
 SpriteRenderer::SpriteRenderer()
@@ -42,15 +42,6 @@ SpriteRenderer::SpriteRenderer()
 SpriteRenderer::~SpriteRenderer()
 {
     TearDown();
-}
-
-void SpriteRenderer::Begin()
-{
-    m_renderBucket.clear();
-}
-
-void SpriteRenderer::End()
-{
 }
 
 void SpriteRenderer::Render()
@@ -69,58 +60,60 @@ void SpriteRenderer::Render()
         pTex->Bind(0);
         m_pVertexArray->Render(static_cast<int32>(r.second.size() * 1.5f));
     }
+
+    m_renderBucket.clear();
 }
 
 void SpriteRenderer::Submit(Texture* pTexture, const Recti& distRect)
 {
-    SpriteVertex v1 = {};
-    v1.position = Vector2f(static_cast<f32>(distRect.x / 800.0f) - 1.0f, static_cast<f32>(distRect.y / 600.0f) - 1.0f);
-    v1.textureCoordinates = Vector2f(0.0f, 1.0f);
+    f32 xMin = static_cast<f32>(distRect.x / 800.0f * 2.0f) - 1.0f;
+    f32 yMin = static_cast<f32>(distRect.y / 600.0f * 2.0f) - 1.0f;
+    f32 xMax = (static_cast<f32>(distRect.x + distRect.w) / 800.0f * 2.0f) - 1.0f;
+    f32 yMax = (static_cast<f32>(distRect.y + distRect.h) / 600.0f * 2.0f) - 1.0f;
 
-    SpriteVertex v2 = {};
-    v2.position = Vector2f((static_cast<f32>(distRect.x + distRect.w) / 800.0f) - 1.0f, static_cast<f32>(distRect.y / 600.0f) - 1.0f);
-    v2.textureCoordinates = Vector2f(1.0f, 1.0f);
+    SpriteVertex v[4];
+    v[0].position = Vector2f(xMin, yMin);
+    v[1].position = Vector2f(xMax, yMin);
+    v[2].position = Vector2f(xMax, yMax);
+    v[3].position = Vector2f(xMin, yMax);
 
-    SpriteVertex v3 = {};
-    v3.position = Vector2f((static_cast<f32>(distRect.x + distRect.w) / 800.0f) - 1.0f, (static_cast<f32>(distRect.y + distRect.h) / 600.0f) - 1.0f);
-    v3.textureCoordinates = Vector2f(1.0f, 0.0f);
-
-    SpriteVertex v4 = {};
-    v4.position = Vector2f(static_cast<f32>(distRect.x / 800.0f) - 1.0f, (static_cast<f32>(distRect.y + distRect.h) / 600.0f) - 1.0f);
-    v4.textureCoordinates = Vector2f(0.0f, 0.0f);
+    v[0].textureCoordinates = Vector2f(0.0f, 1.0f);
+    v[1].textureCoordinates = Vector2f(1.0f, 1.0f);
+    v[2].textureCoordinates = Vector2f(1.0f, 0.0f);
+    v[3].textureCoordinates = Vector2f(0.0f, 0.0f);
 
     std::vector<SpriteVertex>& vertices = m_renderBucket[pTexture];
 
-    vertices.push_back(v1);
-    vertices.push_back(v2);
-    vertices.push_back(v3);
-    vertices.push_back(v4);
+    vertices.push_back(v[0]);
+    vertices.push_back(v[1]);
+    vertices.push_back(v[2]);
+    vertices.push_back(v[3]);
 }
 
 void SpriteRenderer::Submit(Texture* pTexture, const Recti& sourceRect, const Recti& distRect)
 {
-    SpriteVertex v1 = {};
-    v1.position = Vector2f(static_cast<f32>(distRect.x / 800.0f) - 1.0f, static_cast<f32>(distRect.y / 600.0f) - 1.0f);
-    v1.textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y + sourceRect.h) / static_cast<f32>(pTexture->GetHeight()));
+    f32 xMin = static_cast<f32>(distRect.x / 800.0f * 2.0f) - 1.0f;
+    f32 yMin = static_cast<f32>(distRect.y / 600.0f * 2.0f) - 1.0f;
+    f32 xMax = (static_cast<f32>(distRect.x + distRect.w) / 800.0f * 2.0f) - 1.0f;
+    f32 yMax = (static_cast<f32>(distRect.y + distRect.h) / 600.0f * 2.0f) - 1.0f;
 
-    SpriteVertex v2 = {};
-    v2.position = Vector2f((static_cast<f32>(distRect.x + distRect.w) / 800.0f) - 1.0f, static_cast<f32>(distRect.y / 600.0f) - 1.0f);
-    v2.textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x + sourceRect.w) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y + sourceRect.h) / static_cast<f32>(pTexture->GetHeight()));
-
-    SpriteVertex v3 = {};
-    v3.position = Vector2f((static_cast<f32>(distRect.x + distRect.w) / 800.0f) - 1.0f, (static_cast<f32>(distRect.y + distRect.h) / 600.0f) - 1.0f);
-    v3.textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x + sourceRect.w) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y) / static_cast<f32>(pTexture->GetHeight()));
-
-    SpriteVertex v4 = {};
-    v4.position = Vector2f(static_cast<f32>(distRect.x / 800.0f) - 1.0f, (static_cast<f32>(distRect.y + distRect.h) / 600.0f) - 1.0f);
-    v1.textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y) / static_cast<f32>(pTexture->GetHeight()));
+    SpriteVertex v[4];
+    v[0].position = Vector2f(xMin, yMin);
+    v[1].position = Vector2f(xMax, yMin);
+    v[2].position = Vector2f(xMax, yMax);
+    v[3].position = Vector2f(xMin, yMax);
+    
+    v[0].textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y + sourceRect.h) / static_cast<f32>(pTexture->GetHeight()));
+    v[1].textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x + sourceRect.w) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y + sourceRect.h) / static_cast<f32>(pTexture->GetHeight()));
+    v[2].textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x + sourceRect.w) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y) / static_cast<f32>(pTexture->GetHeight()));
+    v[3].textureCoordinates = Vector2f(static_cast<f32>(sourceRect.x) / static_cast<f32>(pTexture->GetWidth()), static_cast<f32>(sourceRect.y) / static_cast<f32>(pTexture->GetHeight()));
 
     std::vector<SpriteVertex>& vertices = m_renderBucket[pTexture];
 
-    vertices.push_back(v1);
-    vertices.push_back(v2);
-    vertices.push_back(v3);
-    vertices.push_back(v4);
+    vertices.push_back(v[0]);
+    vertices.push_back(v[1]);
+    vertices.push_back(v[2]);
+    vertices.push_back(v[3]);
 }
 
 void SpriteRenderer::SetUp()
@@ -139,14 +132,16 @@ void SpriteRenderer::SetUp()
     uint32 indexCount = m_maxSprites * 6;
     uint32* indices = new uint32[indexCount];
 
+    uint32 vertexCounter = 0;
     for (uint32 i = 0u; i < indexCount; i += 6)
     {
-        indices[i] = i + 0u;
-        indices[i + 1] = i + 1u;
-        indices[i + 2] = i + 2u;
-        indices[i + 3] = i + 2u;
-        indices[i + 4] = i + 3u;
-        indices[i + 5] = i + 0u;
+        indices[i] = vertexCounter + 0u;
+        indices[i + 1] = vertexCounter + 1u;
+        indices[i + 2] = vertexCounter + 2u;
+        indices[i + 3] = vertexCounter + 2u;
+        indices[i + 4] = vertexCounter + 3u;
+        indices[i + 5] = vertexCounter + 0u;
+        vertexCounter += 4u;
     }
 
     m_pVertexArray->Load(nullptr, sizeof(SpriteVertex), m_maxSprites * 4, indices, indexCount);

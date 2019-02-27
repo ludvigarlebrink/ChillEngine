@@ -43,4 +43,16 @@ f32 Mathf::RadToDeg(f32 rad)
 {
     return rad * 57.2957795f;
 }
+
+uint32 Mathf::UpperPowerOfTwo(uint32 v)
+{
+    --v;
+    v |= v >> 1;
+    v |= v >> 2;
+    v |= v >> 4;
+    v |= v >> 8;
+    v |= v >> 16;
+    ++v;
+    return v;
+}
 } // namespace chill

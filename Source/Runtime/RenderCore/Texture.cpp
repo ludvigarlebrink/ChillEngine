@@ -8,7 +8,7 @@ namespace chill
 {
 Texture::Texture()
     : m_isInitialized(false)
-    , m_components(0)
+    , m_format(Format::RGBA)
     , m_height(0)
     , m_width(0)
     , m_textureId(0u)
@@ -18,6 +18,27 @@ Texture::Texture()
 Texture::~Texture()
 {
     TearDown();
+}
+
+void Texture::Create(int32 width, int32 height, Format format, void* pData)
+{
+    SetUp();
+    m_width = width;
+    m_height = height;
+    m_format = format;
+    uint32 glFormat = ToGLFormat(m_format);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, m_width, m_height, 0, GL_RED, GL_UNSIGNED_BYTE, pData);
+}
+
+void Texture::CreateSubTexture(int32 xOffset, int32 yOffset, int32 width, int32 height, void* pData)
+{
+    glBindTexture(GL_TEXTURE_2D, m_textureId);
+    glTexSubImage2D(GL_TEXTURE_2D, 0, xOffset, yOffset, width, height, ToGLFormat(m_format), GL_UNSIGNED_BYTE, pData);
+}
+
+Texture::Format Texture::GetFormat() const
+{
+    return m_format;
 }
 
 int32 Texture::GetHeight() const
@@ -32,18 +53,31 @@ int32 Texture::GetWidth() const
 
 bool Texture::LoadFromFile(const std::string& filename)
 {
-    uint8* data = stbi_load(filename.c_str(), &m_width, &m_height, &m_components, STBI_rgb_alpha);
-    if (!data)
+    int32 format = 0;
+    uint8* pData = stbi_load(filename.c_str(), &m_width, &m_height, &format, STBI_rgb_alpha);
+    if (!pData)
     {
         return false;
     }
 
+    switch (format)
+    {
+    case STBI_rgb:
+        m_format = Format::RGB;
+        break;
+    case STBI_rgb_alpha:
+        m_format = Format::RGBA;
+        break;
+    default:
+        break;
+    }
+
     SetUp();
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_width, m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_width, m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pData);
     glGenerateMipmap(GL_TEXTURE_2D);
 
-    stbi_image_free(data);
+    stbi_image_free(pData);
 
     return true;
 }
@@ -59,6 +93,8 @@ void Texture::SetUp()
     TearDown();
     glGenTextures(1, &m_textureId);
     glBindTexture(GL_TEXTURE_2D, m_textureId);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -73,6 +109,22 @@ void Texture::TearDown()
         glDeleteTextures(1, &m_textureId);
         m_textureId = 0u;
         m_isInitialized = false;
+    }
+}
+uint32 Texture::ToGLFormat(Format format)
+{
+    switch (m_format)
+    {
+    case Format::R:
+        return GL_RED;
+    case Format::RG:
+        return GL_RG;
+    case Format::RGB:
+        return GL_RGB;
+    case Format::RGBA:
+        return GL_RGBA;
+    default:
+        break;
     }
 }
 } // namespace chill

@@ -31,10 +31,6 @@ public:
 
     ~SpriteRenderer();
 
-    void Begin();
-
-    void End();
-
     void Render() override;
 
     void Submit(Texture* pTexture, const Recti& distRect);
