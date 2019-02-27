@@ -27,6 +27,10 @@ Font::Character Font::GetCharacter(uchar character) const
     return m_characters[character];
 }
 
+int32 Font::GetFontSize() const
+{
+    return m_fontSize;
+}
 
 Texture* Font::GetTexture() const
 {
@@ -52,7 +56,7 @@ void Font::LoadTTF(const std::string& filename, int32 fontSize)
     FT_Set_Pixel_Sizes(face, 0, m_fontSize);
 
     int32 maxWidth = 0;
-    int32 maxHeight = 0;
+    uint32 verticalOffset = 0u;
     for (uchar c = 0u; c < 128u; ++c)
     {
         if (!FT_Load_Char(face, c, FT_LOAD_RENDER))
@@ -65,22 +69,17 @@ void Font::LoadTTF(const std::string& filename, int32 fontSize)
             {
                 maxWidth = face->glyph->bitmap.width;
             }
-
-            if (maxWidth < face->glyph->bitmap.rows)
-            {
-                maxHeight = face->glyph->bitmap.rows;
-            }
         }
     }
 
     uint32 textureSize = 0u;
-    uint32 characterSize = 0;
+    uint32 characterSize = 0u;
 
-    // We will create a 11 * 12 grid of glyphs.
-    if (maxWidth < maxHeight)
+    // We will create a 12 * 12 grid of glyphs.
+    if (maxWidth < fontSize)
     {
-        textureSize = Mathf::UpperPowerOfTwo(static_cast<uint32>(maxHeight * 12));
-        characterSize = static_cast<uint32>(maxHeight);
+        textureSize = Mathf::UpperPowerOfTwo(static_cast<uint32>(fontSize * 12));
+        characterSize = static_cast<uint32>(fontSize);
     }
     else
     {
@@ -106,5 +105,9 @@ void Font::LoadTTF(const std::string& filename, int32 fontSize)
 
     FT_Done_Face(face);
     FT_Done_FreeType(ft);
+}
+
+void Font::TearDown()
+{
 }
 } // namespace chill

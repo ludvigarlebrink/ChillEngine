@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
     }
 
     Font* font = new Font();
-    font->LoadTTF("Data/arial.ttf", 24);
+    font->LoadTTF("Data/arial.ttf", 18);
 
     TextRenderer textRenderer;
 
@@ -34,9 +34,7 @@ int main(int argc, char* argv[])
         }
 
         spriteRenderer.Submit(texture, Recti(0, 0, 256, 256));
-
-
-        textRenderer.Submit("the quick brown fox jumps over the lazy dog", font, Vector2f(0.0f, 500.0f));
+        textRenderer.Submit("Very good engine\nArchitecture", font, Vector2f(0.0f, 500.0f), LinearColor(0.4f, 1.0f, 0.3f, 1.0f));
 
         win.SetClearColor(LinearColor(1.0f, 0, 0, 1.0f));
         win.Clear();

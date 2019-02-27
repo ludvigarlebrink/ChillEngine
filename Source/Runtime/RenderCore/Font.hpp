@@ -34,9 +34,15 @@ public:
 
     Character GetCharacter(uchar character) const;
 
+    int32 GetFontSize() const;
+
     Texture* GetTexture() const;
 
     void LoadTTF(const std::string& filename, int32 fontSize);
+
+private:
+
+    void TearDown();
 
 private:
 

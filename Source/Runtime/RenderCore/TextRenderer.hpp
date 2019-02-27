@@ -22,6 +22,7 @@ private:
     {
         Vector2f position;
         Vector2f textureCoordinates;
+        LinearColor color;
     };
 
 public:
@@ -32,7 +33,7 @@ public:
 
     void Render() override;
 
-    void Submit(const std::string& text, Font* pFont, const Vector2f& position);
+    void Submit(const std::string& text, Font* pFont, const Vector2f& position, const LinearColor& color);
 
 private:
 

@@ -8,24 +8,24 @@ namespace chill
 static const char* vertexShaderSource = "#version 450 core\n"
 "layout (location = 0) in vec2 position;\n"
 "layout (location = 1) in vec2 texCoords;\n"
+"layout (location = 2) in vec4 color;\n"
 "out vec2 vsTexCoord;\n"
+"out vec4 vsColor;\n"
 "void main()\n"
 "{\n"
 "   gl_Position = vec4(position.x, position.y, 0.0, 1.0);\n"
 "   vsTexCoord = texCoords;\n"
+"   vsColor = color;\n"
 "}\0";
 
 static const char* fragmentShaderSource = "#version 450 core\n"
 "out vec4 fragColor;\n"
 "in vec2 vsTexCoord;\n"
+"in vec4 vsColor;\n"
 "uniform sampler2D Texture1;\n"
 "void main()\n"
 "{\n"
-"   float col = texture(Texture1, vsTexCoord).x;\n"
-"   if (col < 0.9) {\n"
-"       discard;\n"
-"   }\n"
-"   fragColor = vec4(1.0, 1.0, 1.0, col);"
+"   fragColor = vec4(vsColor.rgb, texture(Texture1, vsTexCoord).r * vsColor.a);"
 "}\n\0";
 
 TextRenderer::TextRenderer()
@@ -44,6 +44,7 @@ TextRenderer::~TextRenderer()
 
 void TextRenderer::Render()
 {
+    EnableBlending(true);
     m_pShader->Use();
     m_pShader->SetIntSlow("Texture1", 0);
 
@@ -59,21 +60,30 @@ void TextRenderer::Render()
         m_pVertexArray->Render(static_cast<int32>(r.second.size() * 1.5f));
     }
 
+    EnableBlending(false);
     m_renderBucket.clear();
 }
 
-void TextRenderer::Submit(const std::string& text, Font* pFont, const Vector2f& position)
+void TextRenderer::Submit(const std::string& text, Font* pFont, const Vector2f& position, const LinearColor& color)
 {
     std::vector<CharacterVertex>& vertices = m_renderBucket[pFont];
 
     int32 x = position.x;
+    int32 y = position.y;
 
     for (auto c : text)
     {
+        if (c == '\n')
+        {
+            x = position.x;
+            y -= pFont->GetFontSize() * 1.2f;
+            continue;
+        }
+
         Font::Character& character = pFont->GetCharacter(c);
 
         f32 xPos = x + static_cast<f32>(character.bearing.x);
-        f32 yPos = position.y - static_cast<f32>(character.size.y - character.bearing.y);
+        f32 yPos = y - static_cast<f32>(character.size.y - character.bearing.y);
         f32 xMin = (xPos / 800.0f * 2.0f) - 1.0f;
         f32 yMin = (yPos / 600.0f * 2.0f) - 1.0f;
         f32 xMax = ((xPos + character.size.x) / 800.0f * 2.0f) - 1.0f;
@@ -90,14 +100,20 @@ void TextRenderer::Submit(const std::string& text, Font* pFont, const Vector2f& 
         v[2].textureCoordinates = Vector2f(character.texturePosition.x + character.textureSize.x, character.texturePosition.y);
         v[3].textureCoordinates = Vector2f(character.texturePosition.x, character.texturePosition.y);
 
+        v[0].color = color;
+        v[1].color = color;
+        v[2].color = color;
+        v[3].color = color;
+
         vertices.push_back(v[0]);
         vertices.push_back(v[1]);
         vertices.push_back(v[2]);
         vertices.push_back(v[3]);
 
-        x += (character.advance >> 6);
+        x += character.advance >> 6;
     }
 }
+
 void TextRenderer::SetUp()
 {
     TearDown();
@@ -127,10 +143,15 @@ void TextRenderer::SetUp()
     }
 
     m_pVertexArray->Load(nullptr, sizeof(CharacterVertex), m_maxCharacters * 4, indices, indexCount);
-    m_pVertexArray->SetAttribPtr(0, VertexArray::Type::VECTOR2F, 0);
+    int32 offset = 0;
+    m_pVertexArray->SetAttribPtr(0, VertexArray::Type::VECTOR2F, offset);
+    offset += sizeof(Vector2f);
     m_pVertexArray->SetAttribPtr(1, VertexArray::Type::VECTOR2F, sizeof(Vector2f));
+    offset += sizeof(LinearColor);
+    m_pVertexArray->SetAttribPtr(2, VertexArray::Type::VECTOR4F, sizeof(LinearColor));
     m_pVertexArray->EnableAttribute(0);
     m_pVertexArray->EnableAttribute(1);
+    m_pVertexArray->EnableAttribute(2);
 
     delete indices;
     m_isInitialized = true;
