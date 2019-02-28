@@ -149,6 +149,17 @@ project "ECS"
     defines "ECS_API_DLL_EXPORT"
     useRenderCore()
     
+group "Runtime"
+project "Engine"
+    kind "SharedLib"
+    location "Source/Runtime/Engine"
+    files {
+        "Source/Runtime/Engine/**.hpp",
+        "Source/Runtime/Engine/**.cpp",
+    }
+    defines "ENGINE_API_DLL_EXPORT"
+    useECS()
+
 group "Main"
 project "Main"
     kind "ConsoleApp"
