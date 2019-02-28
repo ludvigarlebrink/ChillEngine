@@ -78,6 +78,14 @@ function useECS()
     filter { "kind:not StaticLib" }
         links { "ECS" }
     filter {}
+    useRenderCore()
+end
+
+function useEngine()
+    includedirs "Source/Runtime/Engine"
+    filter { "kind:not StaticLib" }
+        links { "Engine" }
+    filter {}
     useECS()
 end
 
@@ -192,5 +200,5 @@ project "Main"
         "Source/Main/**.hpp",
         "Source/Main/**.cpp",
     }
-    useRenderCore()
+    useEngine()
 

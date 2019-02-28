@@ -68,8 +68,8 @@ void TextRenderer::Submit(const std::string& text, Font* pFont, const Vector2f& 
 {
     std::vector<CharacterVertex>& vertices = m_renderBucket[pFont];
 
-    int32 x = position.x;
-    int32 y = position.y;
+    int32 x = static_cast<int32>(position.x);
+    int32 y = static_cast<int32>(position.y);
 
     for (auto c : text)
     {
