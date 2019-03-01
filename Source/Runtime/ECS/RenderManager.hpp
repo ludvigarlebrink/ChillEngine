@@ -46,7 +46,7 @@ T* RenderManager::GetRenderer()
     auto itr = m_renderers.find(typeid(T).hash_code());
     if (itr != m_renderers.end())
     {
-        return static_cast<T*>(itr->second());
+        return static_cast<T*>(itr->second);
     }
     return nullptr;
 }

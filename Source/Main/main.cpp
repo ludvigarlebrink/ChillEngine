@@ -6,6 +6,7 @@
 #include "Texture.hpp"
 #include "Font.hpp"
 #include "TextRenderer.hpp"
+#include "UIManager.hpp"
 #include <iostream>
 
 using namespace chill;
