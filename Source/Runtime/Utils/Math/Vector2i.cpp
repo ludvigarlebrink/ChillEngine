@@ -95,7 +95,7 @@ Vector2i::Vector2i(const std::string& str)
     y = std::stoi(str.substr(str.find_first_of(",") + 1u));
 }
 
-std::string Vector2i::toString() const
+std::string Vector2i::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
 }

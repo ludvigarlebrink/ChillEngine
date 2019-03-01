@@ -195,7 +195,7 @@ public:
      *
      * @return A nicely formated string.
      */
-    std::string toString() const;
+    std::string ToString() const;
 
     Vector4f& operator=(const Vector4f& other);
 

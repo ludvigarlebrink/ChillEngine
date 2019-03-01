@@ -37,7 +37,7 @@ Vector3u::Vector3u(const std::string& str)
     z = static_cast<uint32>(std::stoi(str.substr(str.find_last_of(",") + 1u)));
 }
 
-std::string Vector3u::toString() const
+std::string Vector3u::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ")";
 }

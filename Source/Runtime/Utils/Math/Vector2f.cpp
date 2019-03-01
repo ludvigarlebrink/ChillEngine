@@ -96,52 +96,52 @@ Vector2f::Vector2f(const std::string& str)
     y = std::stof(str.substr(str.find_first_of(",") + 1u));
 }
 
-f32 Vector2f::angle(const Vector2f& from, const Vector2f& to)
+f32 Vector2f::Angle(const Vector2f& from, const Vector2f& to)
 {
-    return Mathf::radToDeg(acos(dot(from, to)));
+    return Mathf::RadToDeg(acos(Dot(from, to)));
 }
 
-Vector2f& Vector2f::clamp(const Vector2f& min, const Vector2f& max)
+Vector2f& Vector2f::Clamp(const Vector2f& min, const Vector2f& max)
 {
-    x = Mathf::clamp(min.x, max.x, x);
-    y = Mathf::clamp(min.y, max.y, y);
+    x = Mathf::Clamp(min.x, max.x, x);
+    y = Mathf::Clamp(min.y, max.y, y);
 
     return *this;
 }
 
-f32 Vector2f::distance(const Vector2f& p1, const Vector2f& p2)
+f32 Vector2f::Distance(const Vector2f& p1, const Vector2f& p2)
 {
     Vector2f v = p2 - p1;
-    return v.length();
+    return v.Length();
 }
 
-f32 Vector2f::distanceSquared(const Vector2f& p1, const Vector2f& p2)
+f32 Vector2f::DistanceSquared(const Vector2f& p1, const Vector2f& p2)
 {
     Vector2f v = p2 - p1;
-    return v.lengthSquared();
+    return v.LengthSquared();
 }
 
-f32 Vector2f::dot(const Vector2f& lhs, const Vector2f& rhs)
+f32 Vector2f::Dot(const Vector2f& lhs, const Vector2f& rhs)
 {
     return lhs.x * rhs.x + lhs.y * rhs.y;
 }
 
-f32 Vector2f::length() const
+f32 Vector2f::Length() const
 {
     return abs(x * x + y * y);
 }
 
-f32 Vector2f::lengthSquared() const
+f32 Vector2f::LengthSquared() const
 {
     return sqrt(abs(x * x + y * y));
 }
 
-Vector2f Vector2f::lerp(const Vector2f& start, const Vector2f& end, f32 t)
+Vector2f Vector2f::Lerp(const Vector2f& start, const Vector2f& end, f32 t)
 {
     return start + t * (end - start);
 }
 
-Vector2f& Vector2f::normalize()
+Vector2f& Vector2f::Normalize()
 {
     f32 len = sqrt(x * x + y * y);
     x /= len;
@@ -150,13 +150,13 @@ Vector2f& Vector2f::normalize()
     return *this;
 }
 
-Vector2f Vector2f::normalized() const
+Vector2f Vector2f::Normalized() const
 {
     f32 len = sqrt(x * x + y * y);
     return { x / len, y / len };
 }
 
-std::string Vector2f::toString() const
+std::string Vector2f::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
 }

@@ -120,7 +120,7 @@ public:
      * @param from Vector to which the angular difference is measured.
      * @return Angle in degrees between from and to.
      */
-    static f32 angle(const Vector2f& from, const Vector2f& to);
+    static f32 Angle(const Vector2f& from, const Vector2f& to);
 
     /**
      * @brief Clamp this vector.
@@ -129,7 +129,7 @@ public:
      * @param max Maximum value of this vector.
      * @return Reference to this vector.
      */
-    Vector2f& clamp(const Vector2f& min, const Vector2f& max);
+    Vector2f& Clamp(const Vector2f& min, const Vector2f& max);
 
     /**
      * @brief Get the distance between two points.
@@ -138,7 +138,7 @@ public:
      * @param p2 Second point.
      * @return Distance between two points.
      */
-    static f32 distance(const Vector2f& p1, const Vector2f& p2);
+    static f32 Distance(const Vector2f& p1, const Vector2f& p2);
 
     /**
      * @brief Get the distance between two points squared.
@@ -147,7 +147,7 @@ public:
      * @param p2 Second point.
      * @return Distance between two points squared.
      */
-    static f32 distanceSquared(const Vector2f& p1, const Vector2f& p2);
+    static f32 DistanceSquared(const Vector2f& p1, const Vector2f& p2);
 
     /**
      * @brief Get the dot product of two vectors.
@@ -156,21 +156,21 @@ public:
      * @param v2 Second vector.
      * @retunr Dot product of two vectors.
      */
-    static f32 dot(const Vector2f& lhs, const Vector2f& rhs);
+    static f32 Dot(const Vector2f& lhs, const Vector2f& rhs);
     
     /**
      * @brief Get the length of this vector.
      *
      * @return Length of this vector.
      */
-    f32 length() const;
+    f32 Length() const;
 
     /**
      * @brief Get the squared length of this vector.
      *
      * @return Squared length of this vector.
      */
-    f32 lengthSquared() const;
+    f32 LengthSquared() const;
 
     /**
      * @param Linear interpolation between two vectors.
@@ -180,28 +180,28 @@ public:
      * @param t Interpolation value.
      * @return A linear interpolated vector.
      */
-    static Vector2f lerp(const Vector2f& start, const Vector2f& end, f32 t);
+    static Vector2f Lerp(const Vector2f& start, const Vector2f& end, f32 t);
 
     /**
      * @brief Normlizes this vector.
      *
      * @return Reference to this vector.
      */
-    Vector2f& normalize();
+    Vector2f& Normalize();
 
     /**
      * @brief Creates a normalized version of this vector.
      *
      * @return A normalized version of this vector.
      */
-    Vector2f normalized() const;
+    Vector2f Normalized() const;
 
     /**
      * @brief Get this vector as a nicely formated string: "(x, y)".
      *
      * @return A nicely formated string.
      */
-    std::string toString() const;
+    std::string ToString() const;
 
     Vector2f& operator=(const Vector2f& other);
 

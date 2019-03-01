@@ -46,7 +46,7 @@ Vector3i::Vector3i(const std::string& str)
     z = std::stoi(str.substr(str.find_last_of(",") + 1u));
 }
 
-std::string Vector3i::toString() const
+std::string Vector3i::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ")";
 }

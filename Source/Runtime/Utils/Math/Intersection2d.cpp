@@ -4,7 +4,7 @@
 
 namespace chill
 {
-bool Intersection2d::test(const AABounds2d& a, const AABounds2d& b)
+bool Intersection2d::Test(const AABounds2d& a, const AABounds2d& b)
 {
     if (a.max.x < b.min.x || a.min.x > b.max.x)
     {
@@ -18,10 +18,10 @@ bool Intersection2d::test(const AABounds2d& a, const AABounds2d& b)
 
     return true;
 }
-bool Intersection2d::test(const Circle2d& a, const Circle2d& b)
+bool Intersection2d::Test(const Circle2d& a, const Circle2d& b)
 {
     f32 radius = a.radius + b.radius;
-    if (radius * radius < Vector2f::distance(a.origin, b.origin))
+    if (radius * radius < Vector2f::Distance(a.origin, b.origin))
     {
         return false;
     }

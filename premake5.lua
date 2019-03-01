@@ -15,6 +15,21 @@ function linkSDL()
     filter {}
 end
 
+function includeFreeType()
+    includedirs "ThirdParty/freetype/Include"
+end
+
+function linkFreeType()
+    libdirs "ThirdParty/freetype/Lib/Win64/"
+    filter "kind:not StaticLib"
+        links "freetype"
+    filter {}
+end
+
+function includeSTB()
+    includedirs "ThirdParty/STB/Include"
+end
+
 function includeGTest()
     files {
         "ThirdParty/googletest-release-1.8.1/googletest/src/gtest-all.cc",
@@ -52,13 +67,24 @@ function useRenderCore()
     filter { "kind:not StaticLib" }
         links { "RenderCore" }
     filter {}
+    includeFreeType()
+    linkFreeType()
     usePlatform()
+    includeSTB()
 end
 
 function useECS()
     includedirs "Source/Runtime/ECS"
     filter { "kind:not StaticLib" }
         links { "ECS" }
+    filter {}
+    useRenderCore()
+end
+
+function useEngine()
+    includedirs "Source/Runtime/Engine"
+    filter { "kind:not StaticLib" }
+        links { "Engine" }
     filter {}
     useECS()
 end
@@ -88,6 +114,9 @@ workspace "ChillEngine"
         -- SDL
         os.copyfile("ThirdParty/SDL/Lib/Win64/SDL2.dll", "Builds/Debug/SDL2.dll")
         os.copyfile("ThirdParty/SDL/Lib/Win64/SDL2.dll", "Builds/Release/SDL2.dll")
+        -- FreeType
+        os.copyfile("ThirdParty/freetype/Lib/Win64/freetype.dll", "Builds/Debug/freetype.dll")
+        os.copyfile("ThirdParty/freetype/Lib/Win64/freetype.dll", "Builds/Release/freetype.dll")
     filter {}
 
 group "Runtime"
@@ -136,6 +165,9 @@ project "RenderCore"
         "Source/Runtime/RenderCore/glad/glad.c"
     }
     defines "RENDER_CORE_API_DLL_EXPORT"
+    includeFreeType()
+    linkFreeType()
+    includeSTB()
     usePlatform()
 
 group "Runtime"
@@ -168,5 +200,5 @@ project "Main"
         "Source/Main/**.hpp",
         "Source/Main/**.cpp",
     }
-    useRenderCore()
+    useEngine()
 

@@ -4,14 +4,13 @@
 
 #include <fstream>
 #include <streambuf>
+#include <iostream>
 
 namespace chill
 {
-uint32 Shader::m_activeShaderProgram = 0u;
-
 Shader::Shader()
     : m_shaderProgram(0u)
-{    
+{
 }
 
 Shader::~Shader()
@@ -23,17 +22,17 @@ Shader::~Shader()
     }
 }
 
-uint32 Shader::getUniformLocation(const std::string& name) const
+uint32 Shader::GetUniformLocation(const std::string& name) const
 {
     return glGetUniformLocation(m_shaderProgram, name.c_str());
 }
 
-bool Shader::load(const std::string& vertexShaderFilename, const std::string& fragmentShaderFilename)
+bool Shader::Load(const std::string& vertexShaderFilename, const std::string& fragmentShaderFilename)
 {
-    return load(vertexShaderFilename, "", fragmentShaderFilename);
+    return Load(vertexShaderFilename, "", fragmentShaderFilename);
 }
 
-bool Shader::load(const std::string& vertexShaderFilename, const std::string& geometryShaderFilename, const std::string& fragmentShaderFilename)
+bool Shader::Load(const std::string& vertexShaderFilename, const std::string& geometryShaderFilename, const std::string& fragmentShaderFilename)
 {
     std::ifstream vert(vertexShaderFilename);
     if (!vert.is_open())
@@ -64,20 +63,20 @@ bool Shader::load(const std::string& vertexShaderFilename, const std::string& ge
         std::string geomSource((std::istreambuf_iterator<char>(vert)), std::istreambuf_iterator<char>());
         geom.close();
 
-        return loadFromString(vertSource, geomSource, fragSource);
+        return LoadFromString(vertSource, geomSource, fragSource);
     }
 
-    return loadFromString(vertSource, "", fragSource);
+    return LoadFromString(vertSource, "", fragSource);
 }
 
-bool Shader::loadFromString(const std::string& vertexShaderSource, const std::string& fragmentShaderSource)
+bool Shader::LoadFromString(const std::string& vertexShaderSource, const std::string& fragmentShaderSource)
 {
-    return load(vertexShaderSource, "", fragmentShaderSource);
+    return LoadFromString(vertexShaderSource, "", fragmentShaderSource);
 }
 
-bool Shader::loadFromString(const std::string& vertexShaderSource, const std::string& geometryShaderSource, const std::string& fragmentShaderSource)
+bool Shader::LoadFromString(const std::string& vertexShaderSource, const std::string& geometryShaderSource, const std::string& fragmentShaderSource)
 {
-    if (m_shaderProgram != 0u)
+    if (m_shaderProgram)
     {
         glDeleteProgram(m_shaderProgram);
         m_shaderProgram = 0u;
@@ -89,7 +88,7 @@ bool Shader::loadFromString(const std::string& vertexShaderSource, const std::st
     const char* vertexChars = vertexShaderSource.c_str();
     glShaderSource(vert, 1, &vertexChars, NULL);
     glCompileShader(vert);
-    if (!checkShaderCompileErrors(vert, "Vertex"))
+    if (!CheckShaderCompileErrors(vert, "Vertex"))
     {
         glDeleteShader(vert);
         glDeleteProgram(m_shaderProgram);
@@ -101,7 +100,7 @@ bool Shader::loadFromString(const std::string& vertexShaderSource, const std::st
     const char* fragChars = fragmentShaderSource.c_str();
     glShaderSource(frag, 1, &fragChars, NULL);
     glCompileShader(frag);
-    if (!checkShaderCompileErrors(frag, "Fragment"))
+    if (!CheckShaderCompileErrors(frag, "Fragment"))
     {
         glDeleteShader(vert);
         glDeleteShader(frag);
@@ -117,7 +116,7 @@ bool Shader::loadFromString(const std::string& vertexShaderSource, const std::st
         const char* geomChars = geometryShaderSource.c_str();
         glShaderSource(geom, 1, &geomChars, NULL);
         glCompileShader(geom);
-        if (!checkShaderCompileErrors(geom, "Geometry"))
+        if (!CheckShaderCompileErrors(geom, "Geometry"))
         {
             glDeleteShader(vert);
             glDeleteShader(frag);
@@ -136,7 +135,7 @@ bool Shader::loadFromString(const std::string& vertexShaderSource, const std::st
     }
 
     glLinkProgram(m_shaderProgram);
-    if (!checkProgramLinkErrors(m_shaderProgram))
+    if (!CheckProgramLinkErrors(m_shaderProgram))
     {
         glDeleteShader(vert);
         glDeleteShader(frag);
@@ -159,160 +158,142 @@ bool Shader::loadFromString(const std::string& vertexShaderSource, const std::st
     return true;
 }
 
-void Shader::setMatrix2f(uint32 location, Matrix2f& mat)
+void Shader::SetInt(uint32 location, int32 value)
 {
-    use();
+    glUniform1i(location, value);
+}
+
+void Shader::SetIntSlow(const std::string& name, int32 value)
+{
+    glUniform1i(glGetUniformLocation(m_shaderProgram, name.c_str()), value);
+}
+
+void Shader::SetMatrix2f(uint32 location, Matrix2f& mat)
+{
     glUniformMatrix2fv(location, 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMatrix2fSlow(const std::string& name, Matrix2f& mat)
+void Shader::SetMatrix2fSlow(const std::string& name, Matrix2f& mat)
 {
-    use();
     glUniformMatrix2fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMatrix3f(uint32 location, Matrix3f& mat)
+void Shader::SetMatrix3f(uint32 location, Matrix3f& mat)
 {
-    use();
     glUniformMatrix3fv(location, 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMatrix3fSlow(const std::string& name, Matrix3f& mat)
+void Shader::SetMatrix3fSlow(const std::string& name, Matrix3f& mat)
 {
-    use();
     glUniformMatrix3fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMatrix4f(uint32 location, Matrix4f& mat)
+void Shader::SetMatrix4f(uint32 location, Matrix4f& mat)
 {
-    use();
     glUniformMatrix4fv(location, 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMatrix4fSlow(const std::string& name, Matrix4f& mat)
+void Shader::SetMatrix4fSlow(const std::string& name, Matrix4f& mat)
 {
-    use();
     glUniformMatrix4fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setVector2f(uint32 location, Vector2f & vec)
+void Shader::SetVector2f(uint32 location, Vector2f & vec)
 {
-    use();
     glUniform2fv(location, 1, &vec[0]);
 }
 
-void Shader::setVector2fSlow(const std::string& name, Vector2f& vec)
+void Shader::SetVector2fSlow(const std::string& name, Vector2f& vec)
 {
-    use();
     glUniform2fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
-void Shader::setVector2i(uint32 location, Vector2i& vec)
+void Shader::SetVector2i(uint32 location, Vector2i& vec)
 {
-    use();
     glUniform2iv(location, 1, &vec[0]);
 }
 
-void Shader::setVector2iSlow(const std::string& name, Vector2i& vec)
+void Shader::SetVector2iSlow(const std::string& name, Vector2i& vec)
 {
-    use();
     glUniform2iv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
-void Shader::setVector2u(uint32 location, Vector2u& vec)
+void Shader::SetVector2u(uint32 location, Vector2u& vec)
 {
-    use();
     glUniform2uiv(location, 1, &vec[0]);
 }
 
-void Shader::setVector2uSlow(const std::string& name, Vector2u& vec)
+void Shader::SetVector2uSlow(const std::string& name, Vector2u& vec)
 {
-    use();
     glUniform2uiv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
-void Shader::setVector3f(uint32 location, Vector3f & vec)
+void Shader::SetVector3f(uint32 location, Vector3f & vec)
 {
-    use();
     glUniform3fv(location, 1, &vec[0]);
 }
 
-void Shader::setVector3fSlow(const std::string& name, Vector3f& vec)
+void Shader::SetVector3fSlow(const std::string& name, Vector3f& vec)
 {
-    use();
     glUniform3fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
-void Shader::setVector3i(uint32 location, Vector3i& vec)
+void Shader::SetVector3i(uint32 location, Vector3i& vec)
 {
-    use();
     glUniform3iv(location, 1, &vec[0]);
 }
 
-void Shader::setVector3iSlow(const std::string& name, Vector3i& vec)
+void Shader::SetVector3iSlow(const std::string& name, Vector3i& vec)
 {
-    use();
     glUniform3iv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
-void Shader::setVector3u(uint32 location, Vector3u& vec)
+void Shader::SetVector3u(uint32 location, Vector3u& vec)
 {
-    use();
     glUniform3uiv(location, 1, &vec[0]);
 }
 
-void Shader::setVector3uSlow(const std::string& name, Vector3u& vec)
+void Shader::SetVector3uSlow(const std::string& name, Vector3u& vec)
 {
-    use();
     glUniform3uiv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
-void Shader::setVector4f(uint32 location, Vector4f & vec)
+void Shader::SetVector4f(uint32 location, Vector4f & vec)
 {
-    use();
     glUniform4fv(location, 1, &vec[0]);
 }
 
-void Shader::setVector4fSlow(const std::string& name, Vector4f& vec)
+void Shader::SetVector4fSlow(const std::string& name, Vector4f& vec)
 {
-    use();
     glUniform4fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
-void Shader::setVector4i(uint32 location, Vector4i& vec)
+void Shader::SetVector4i(uint32 location, Vector4i& vec)
 {
-    use();
     glUniform4iv(location, 1, &vec[0]);
 }
 
-void Shader::setVector4iSlow(const std::string& name, Vector4i& vec)
+void Shader::SetVector4iSlow(const std::string& name, Vector4i& vec)
 {
-    use();
     glUniform4iv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
-void Shader::setVector4u(uint32 location, Vector4u& vec)
+void Shader::SetVector4u(uint32 location, Vector4u& vec)
 {
-    use();
     glUniform4uiv(location, 1, &vec[0]);
 }
 
-void Shader::setVector4uSlow(const std::string& name, Vector4u& vec)
+void Shader::SetVector4uSlow(const std::string& name, Vector4u& vec)
 {
-    use();
     glUniform4uiv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, &vec[0]);
 }
 
-void Shader::use()
+void Shader::Use()
 {
-    if (m_shaderProgram != m_activeShaderProgram)
-    {
-        glUseProgram(m_shaderProgram);
-        m_activeShaderProgram = m_shaderProgram;
-    }
+    glUseProgram(m_shaderProgram);
 }
 
-bool Shader::checkProgramLinkErrors(uint32 program)
+bool Shader::CheckProgramLinkErrors(uint32 program)
 {
     int32 success;
     char infoLog[1024];
@@ -321,14 +302,15 @@ bool Shader::checkProgramLinkErrors(uint32 program)
     if (!success)
     {
         glGetProgramInfoLog(program, 1024, NULL, infoLog);
-        // @todo Log errors.
+        // @todo Add propper logger.
+        std::cout << "Program ERROR: " << infoLog << "\n";
         return false;
     }
 
     return true;
 }
 
-bool Shader::checkShaderCompileErrors(uint32 shader, const std::string& type)
+bool Shader::CheckShaderCompileErrors(uint32 shader, const std::string& type)
 {
     int32 success;
     char infoLog[1024];
@@ -337,7 +319,8 @@ bool Shader::checkShaderCompileErrors(uint32 shader, const std::string& type)
     if (!success)
     {
         glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-        // @todo Log errors.
+        // @todo Add propper logger.
+        std::cout << type << "ERROR: " << infoLog << "\n";
         return false;
     }
 

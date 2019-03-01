@@ -22,7 +22,7 @@ public:
      * @param b Second axis-aligned bounds to test.
      * @return True the two axis-aligned bounds intersects. False if not.
      */
-    static bool test(const AABounds2d& a, const AABounds2d& b);
+    static bool Test(const AABounds2d& a, const AABounds2d& b);
 
     /**
      * @brief Test if two circles intersects.
@@ -31,7 +31,7 @@ public:
      * @param b Second circle to test.
      * @return True the two circles intersects. False if not.
      */
-    static bool test(const Circle2d& a, const Circle2d& b);
+    static bool Test(const Circle2d& a, const Circle2d& b);
 };
 } // namespace chill
 

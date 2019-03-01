@@ -38,7 +38,7 @@ Vector4i::Vector4i(const std::string& str)
 {
 }
 
-std::string Vector4i::toString() const
+std::string Vector4i::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ", " + std::to_string(w) + ")";
 }

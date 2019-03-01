@@ -182,7 +182,7 @@ Vector4f::Vector4f(const std::string& str)
 {
 }
 
-std::string Vector4f::toString() const
+std::string Vector4f::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ", " + std::to_string(w) + ")";
 }

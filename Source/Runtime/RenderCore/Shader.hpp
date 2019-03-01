@@ -31,7 +31,7 @@ public:
      * @param name Name of the uniform.
      * @return Location of a uniform.
      */
-    uint32 getUniformLocation(const std::string& name) const;
+    uint32 GetUniformLocation(const std::string& name) const;
 
     /**
      * @brief Load shader from a file.
@@ -40,7 +40,7 @@ public:
      * @param fragmentShaderFilename Name and path to the fragment shader file.
      * @return True if everything went successfully. False if not.
      */
-    bool load(const std::string& vertexShaderFilename, const std::string& fragmentShaderFilename);
+    bool Load(const std::string& vertexShaderFilename, const std::string& fragmentShaderFilename);
 
     /**
      * @brief Load shader from a file.
@@ -50,7 +50,7 @@ public:
      * @param fragmentShaderFilename Name and path to the fragment shader file.
      * @return True if everything went successfully. False if not.
      */
-    bool load(const std::string& vertexShaderFilename, const std::string& geometryShaderFilename, const std::string& fragmentShaderFilename);
+    bool Load(const std::string& vertexShaderFilename, const std::string& geometryShaderFilename, const std::string& fragmentShaderFilename);
 
     /**
      * @brief Load shader from a string.
@@ -59,7 +59,7 @@ public:
      * @param fragmentShaderSource Fragment shader source code.
      * @return True if everything went successfully. False if not.
      */
-    bool loadFromString(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
+    bool LoadFromString(const std::string& vertexShaderSource, const std::string& fragmentShaderSource);
 
     /**
      * @brief Load shader from a string.
@@ -69,7 +69,11 @@ public:
      * @param fragmentShaderSource Fragment shader source code.
      * @return True if everything went successfully. False if not.
      */
-    bool loadFromString(const std::string& vertexShaderSource, const std::string& geometryShaderSource, const std::string& fragmentShaderSource);
+    bool LoadFromString(const std::string& vertexShaderSource, const std::string& geometryShaderSource, const std::string& fragmentShaderSource);
+
+    void SetInt(uint32 location, int32 value);
+
+    void SetIntSlow(const std::string& name, int32 value);
 
     /**
      * @brief Set a matrix uniform.
@@ -77,7 +81,7 @@ public:
      * @param location Location of uniform.
      * @param mat Matrix.
      */
-    void setMatrix2f(uint32 location, Matrix2f& mat);
+    void SetMatrix2f(uint32 location, Matrix2f& mat);
 
     /**
      * @brief Set a matrix uniform, slow.
@@ -85,7 +89,7 @@ public:
      * @param name Name of uniform.
      * @param mat Matrix.
      */
-    void setMatrix2fSlow(const std::string& name, Matrix2f& mat);
+    void SetMatrix2fSlow(const std::string& name, Matrix2f& mat);
 
     /**
      * @brief Set a matrix uniform.
@@ -93,7 +97,7 @@ public:
      * @param location Location of uniform.
      * @param mat Matrix.
      */
-    void setMatrix3f(uint32 location, Matrix3f& mat);
+    void SetMatrix3f(uint32 location, Matrix3f& mat);
 
     /**
      * @brief Set a matrix uniform, slow.
@@ -101,7 +105,7 @@ public:
      * @param name Name of uniform.
      * @param mat Matrix.
      */
-    void setMatrix3fSlow(const std::string& name, Matrix3f& mat);
+    void SetMatrix3fSlow(const std::string& name, Matrix3f& mat);
 
     /**
      * @brief Set a matrix uniform.
@@ -109,7 +113,7 @@ public:
      * @param location Location of uniform.
      * @param mat Matrix.
      */
-    void setMatrix4f(uint32 location, Matrix4f& mat);
+    void SetMatrix4f(uint32 location, Matrix4f& mat);
 
     /**
      * @brief Set a matrix uniform, slow.
@@ -117,7 +121,7 @@ public:
      * @param name Name of uniform.
      * @param mat Matrix.
      */
-    void setMatrix4fSlow(const std::string& name, Matrix4f& mat);
+    void SetMatrix4fSlow(const std::string& name, Matrix4f& mat);
 
     /**
      * @brief Set a vector uniform.
@@ -125,7 +129,7 @@ public:
      * @param location Location of uniform.
      * @param vec Vector.
      */
-    void setVector2f(uint32 location, Vector2f& vec);
+    void SetVector2f(uint32 location, Vector2f& vec);
 
     /**
      * @brief Set a vector uniform, slow.
@@ -133,7 +137,7 @@ public:
      * @param name Name of uniform.
      * @param vec Vector.
      */
-    void setVector2fSlow(const std::string& name, Vector2f& vec);
+    void SetVector2fSlow(const std::string& name, Vector2f& vec);
 
     /**
      * @brief Set a vector uniform.
@@ -141,7 +145,7 @@ public:
      * @param location Location of uniform.
      * @param vec Vector.
      */
-    void setVector2i(uint32 location, Vector2i& vec);
+    void SetVector2i(uint32 location, Vector2i& vec);
 
     /**
      * @brief Set a vector uniform, slow.
@@ -149,7 +153,7 @@ public:
      * @param name Name of uniform.
      * @param vec Vector.
      */
-    void setVector2iSlow(const std::string& name, Vector2i& vec);
+    void SetVector2iSlow(const std::string& name, Vector2i& vec);
 
     /**
      * @brief Set a vector uniform.
@@ -157,7 +161,7 @@ public:
      * @param location Location of uniform.
      * @param vec Vector.
      */
-    void setVector2u(uint32 location, Vector2u& vec);
+    void SetVector2u(uint32 location, Vector2u& vec);
 
     /**
      * @brief Set a vector uniform, slow.
@@ -165,7 +169,7 @@ public:
      * @param name Name of uniform.
      * @param vec Vector.
      */
-    void setVector2uSlow(const std::string& name, Vector2u& vec);
+    void SetVector2uSlow(const std::string& name, Vector2u& vec);
 
     /**
      * @brief Set a vector uniform.
@@ -173,7 +177,7 @@ public:
      * @param location Location of uniform.
      * @param vec Vector.
      */
-    void setVector3f(uint32 location, Vector3f& vec);
+    void SetVector3f(uint32 location, Vector3f& vec);
 
     /**
      * @brief Set a vector uniform, slow.
@@ -181,7 +185,7 @@ public:
      * @param name Name of uniform.
      * @param vec Vector.
      */
-    void setVector3fSlow(const std::string& name, Vector3f& vec);
+    void SetVector3fSlow(const std::string& name, Vector3f& vec);
 
     /**
      * @brief Set a vector uniform.
@@ -189,7 +193,7 @@ public:
      * @param location Location of uniform.
      * @param vec Vector.
      */
-    void setVector3i(uint32 location, Vector3i& vec);
+    void SetVector3i(uint32 location, Vector3i& vec);
 
     /**
      * @brief Set a vector uniform, slow.
@@ -197,7 +201,7 @@ public:
      * @param name Name of uniform.
      * @param vec Vector.
      */
-    void setVector3iSlow(const std::string& name, Vector3i& vec);
+    void SetVector3iSlow(const std::string& name, Vector3i& vec);
 
     /**
      * @brief Set a vector uniform.
@@ -205,7 +209,7 @@ public:
      * @param location Location of uniform.
      * @param vec Vector.
      */
-    void setVector3u(uint32 location, Vector3u& vec);
+    void SetVector3u(uint32 location, Vector3u& vec);
 
     /**
      * @brief Set a vector uniform, slow.
@@ -213,7 +217,7 @@ public:
      * @param name Name of uniform.
      * @param vec Vector.
      */
-    void setVector3uSlow(const std::string& name, Vector3u& vec);
+    void SetVector3uSlow(const std::string& name, Vector3u& vec);
 
     /**
      * @brief Set a vector uniform.
@@ -221,7 +225,7 @@ public:
      * @param location Location of uniform.
      * @param vec Vector.
      */
-    void setVector4f(uint32 location, Vector4f& vec);
+    void SetVector4f(uint32 location, Vector4f& vec);
 
     /**
      * @brief Set a vector uniform, slow.
@@ -229,7 +233,7 @@ public:
      * @param name Name of uniform.
      * @param vec Vector.
      */
-    void setVector4fSlow(const std::string& name, Vector4f& vec);
+    void SetVector4fSlow(const std::string& name, Vector4f& vec);
 
     /**
      * @brief Set a vector uniform.
@@ -237,7 +241,7 @@ public:
      * @param location Location of uniform.
      * @param vec Vector.
      */
-    void setVector4i(uint32 location, Vector4i& vec);
+    void SetVector4i(uint32 location, Vector4i& vec);
 
     /**
      * @brief Set a vector uniform, slow.
@@ -245,7 +249,7 @@ public:
      * @param name Name of uniform.
      * @param vec Vector.
      */
-    void setVector4iSlow(const std::string& name, Vector4i& vec);
+    void SetVector4iSlow(const std::string& name, Vector4i& vec);
 
     /**
      * @brief Set a vector uniform.
@@ -253,7 +257,7 @@ public:
      * @param location Location of uniform.
      * @param vec Vector.
      */
-    void setVector4u(uint32 location, Vector4u& vec);
+    void SetVector4u(uint32 location, Vector4u& vec);
 
     /**
      * @brief Set a vector uniform, slow.
@@ -261,28 +265,26 @@ public:
      * @param name Name of uniform.
      * @param vec Vector.
      */
-    void setVector4uSlow(const std::string& name, Vector4u& vec);
+    void SetVector4uSlow(const std::string& name, Vector4u& vec);
 
     /**
      * @brief Use this shader.
      */
-    void use();
+    void Use();
 
 private:
 
-    static bool checkProgramLinkErrors(uint32 program);
+    static bool CheckProgramLinkErrors(uint32 program);
    
-    static bool checkShaderCompileErrors(uint32 shader, const std::string& type);
+    static bool CheckShaderCompileErrors(uint32 shader, const std::string& type);
 
 private:
-
-    static uint32 m_activeShaderProgram;
 
     uint32 m_shaderProgram;
 };
 } // namespace chill
 
 /**
- * @class Shader
+ * @class chill::Shader
  * @ingroup RenderCore
  */

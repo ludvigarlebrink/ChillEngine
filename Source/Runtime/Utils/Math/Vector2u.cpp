@@ -32,7 +32,7 @@ Vector2u::Vector2u(const std::string& str)
     y = static_cast<uint32>(std::stoi(str.substr(str.find_first_of(",") + 1u)));
 }
 
-std::string Vector2u::toString() const
+std::string Vector2u::ToString() const
 {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
 }
