@@ -42,7 +42,7 @@ public:
      * @param height Height of this window.
      * @return True if successfully created. False if not.
      */
-    bool create(const std::string& title, int32 width, int32 height);
+    bool Create(const std::string& title, int32 width, int32 height);
 
 private:
 

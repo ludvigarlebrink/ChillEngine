@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ECSAPI.hpp"
+#include "EngineAPI.hpp"
 #include "BaseTypes.hpp"
 
 namespace chill
@@ -8,7 +8,7 @@ namespace chill
 class ECSManager;
 class RenderManager;
 
-class ECS_API System
+class ENGINE_API System
 {
     friend ECSManager;
 

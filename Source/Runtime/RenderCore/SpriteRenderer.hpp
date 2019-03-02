@@ -23,6 +23,7 @@ private:
     {
         Vector2f position;
         Vector2f textureCoordinates;
+        Vector4f color;
     };
 
 public:
@@ -32,6 +33,8 @@ public:
     ~SpriteRenderer();
 
     void Render() override;
+
+    void Submit(const LinearColor& color, const Recti& distRect);
 
     void Submit(Texture* pTexture, const Recti& distRect);
 

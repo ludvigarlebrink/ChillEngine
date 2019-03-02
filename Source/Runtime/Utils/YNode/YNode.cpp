@@ -36,7 +36,7 @@ YNode* YNode::Load(const std::string& filename)
 
 bool YNode::GenerateTokens(const std::string& code, std::vector<Token>& tokens)
 {
-    uint64 line_number = 1u;
+    uint64 lineNumber = 1u;
     uint64 i = 0u;
     while (i < code.length())
     {
@@ -50,7 +50,7 @@ bool YNode::GenerateTokens(const std::string& code, std::vector<Token>& tokens)
         // Increment line number used for debugging.
         if (code[i] == '\n')
         {
-            ++line_number;
+            ++lineNumber;
             ++i;
             continue;
         }
@@ -60,7 +60,7 @@ bool YNode::GenerateTokens(const std::string& code, std::vector<Token>& tokens)
         {
             std::string v = "";
             v += code[i];
-            tokens.push_back({ line_number, "operator", v });
+            tokens.push_back({ lineNumber, "operator", v });
             ++i;
             continue;
         }
@@ -73,18 +73,18 @@ bool YNode::GenerateTokens(const std::string& code, std::vector<Token>& tokens)
             ++i;
 
             while (((code[i] >= '0' && code[i] <= '9') || (code[i] >= 'a' && code[i] <= 'z') ||
-                (code[i] >= 'A' && code[i] <= 'Z') || code[i] == '_') && i < code.size())
+                (code[i] >= 'A' && code[i] <= 'Z') || code[i] == '_' || code[i] == '.') && i < code.size())
             {
                 name += code[i];
                 ++i;
             }
 
-            tokens.push_back({ line_number, "name", name });
+            tokens.push_back({ lineNumber, "name", name });
             continue;
         }
 
         // Number.
-        if (code[i] >= '0' && code[i] <= '9')
+        if ((code[i] >= '0' && code[i] <= '9') || code[i] == '-')
         {
             std::string number = "";
             number += code[i];
@@ -104,11 +104,11 @@ bool YNode::GenerateTokens(const std::string& code, std::vector<Token>& tokens)
 
             if (is_float)
             {
-                tokens.push_back({ line_number, "float", number });
+                tokens.push_back({ lineNumber, "float", number });
             }
             else
             {
-                tokens.push_back({ line_number, "int", number });
+                tokens.push_back({ lineNumber, "int", number });
             }
             continue;
         }
@@ -128,12 +128,12 @@ bool YNode::GenerateTokens(const std::string& code, std::vector<Token>& tokens)
             // Eat ".
             ++i;
 
-            tokens.push_back({ line_number, "string", str });
+            tokens.push_back({ lineNumber, "string", str });
             continue;
         }
 
         // Error in code. Break.
-        std::cout << "Error at line: " << line_number << ". Unresolved symbol: " << code[i] << "\n";
+        std::cout << "Error at line: " << lineNumber << ". Unresolved symbol: " << code[i] << "\n";
         return false;
     }
 }

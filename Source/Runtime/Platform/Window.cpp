@@ -10,7 +10,7 @@ Window::Window()
 Window::Window(const std::string& title, int32 width, int32 height)
     : m_pWindow(nullptr)
 {
-    create(title, width, height);
+    Create(title, width, height);
 }
 
 Window::~Window()
@@ -21,7 +21,7 @@ Window::~Window()
     }
 }
 
-bool Window::create(const std::string& title, int32 width, int32 height)
+bool Window::Create(const std::string& title, int32 width, int32 height)
 {
     m_pWindow = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
     if (!m_pWindow)

@@ -1,8 +1,10 @@
 #pragma once
 
+#include "EngineAPI.hpp"
+
 namespace chill
 {
-class ECSManager
+class ENGINE_API ECSManager
 {
 public:
 

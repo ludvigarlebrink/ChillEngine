@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ECSAPI.hpp"
+#include "EngineAPI.hpp"
 #include "Renderer.hpp"
 
 #include <typeinfo>
@@ -8,16 +8,17 @@
 
 namespace chill
 {
-class ECS_API RenderManager final
+class Engine;
+
+class ENGINE_API RenderManager final
 {
+    friend Engine;
+
 public:
 
     RenderManager();
 
     ~RenderManager();
-
-    template <typename T>
-    T* AddRenderer();
 
     template <typename T>
     T* GetRenderer();
@@ -29,16 +30,7 @@ private:
 private:
 
     std::unordered_map<size_t, Renderer*> m_renderers;
-    std::vector<Renderer*> m_transparencyPass;
 };
-
-template<typename T>
-T* RenderManager::AddRenderer()
-{
-    T* pRenderer = new T();
-    m_renderers.insert({ typeid(T).hash_code(), pRenderer });
-    return pRenderer;
-}
 
 template<typename T>
 T* RenderManager::GetRenderer()
@@ -48,6 +40,9 @@ T* RenderManager::GetRenderer()
     {
         return static_cast<T*>(itr->second);
     }
-    return nullptr;
+
+    T* pRenderer = new T();
+    m_renderers.insert({ typeid(T).hash_code(), pRenderer });
+    return pRenderer;
 }
 } // RenderManager

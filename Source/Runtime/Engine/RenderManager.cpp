@@ -13,9 +13,9 @@ RenderManager::~RenderManager()
 void RenderManager::Render()
 {
     // Render all in transparency pass.
-    for (auto r : m_transparencyPass)
+    for (auto r : m_renderers)
     {
-        r->Render();
+        r.second->Render();
     }
 }
 } // namespace chill

@@ -15,5 +15,9 @@ public:
 protected:
 
     void EnableBlending(bool enable);
+
+private:
+
+
 };
 } // namespace chill

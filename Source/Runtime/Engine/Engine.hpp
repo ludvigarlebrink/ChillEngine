@@ -18,6 +18,9 @@ public:
 
     void Run();
 
+
+private:
+
     void SetUp();
 
     void TearDown();
@@ -28,4 +31,4 @@ private:
     RenderManager* m_pRenderManager;
     UIManager* m_pUIManager;
 };
-}
+} // namespace chill

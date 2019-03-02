@@ -73,20 +73,12 @@ function useRenderCore()
     includeSTB()
 end
 
-function useECS()
-    includedirs "Source/Runtime/ECS"
-    filter { "kind:not StaticLib" }
-        links { "ECS" }
-    filter {}
-    useRenderCore()
-end
-
 function useEngine()
     includedirs "Source/Runtime/Engine"
     filter { "kind:not StaticLib" }
         links { "Engine" }
     filter {}
-    useECS()
+    useRenderCore()
 end
 
 workspace "ChillEngine"
@@ -171,17 +163,6 @@ project "RenderCore"
     usePlatform()
 
 group "Runtime"
-project "ECS"
-    kind "SharedLib"
-    location "Source/Runtime/ECS"
-    files {
-        "Source/Runtime/ECS/**.hpp",
-        "Source/Runtime/ECS/**.cpp",
-    }
-    defines "ECS_API_DLL_EXPORT"
-    useRenderCore()
-    
-group "Runtime"
 project "Engine"
     kind "SharedLib"
     location "Source/Runtime/Engine"
@@ -190,7 +171,7 @@ project "Engine"
         "Source/Runtime/Engine/**.cpp",
     }
     defines "ENGINE_API_DLL_EXPORT"
-    useECS()
+    useRenderCore()
 
 group "Main"
 project "Main"
@@ -201,4 +182,3 @@ project "Main"
         "Source/Main/**.cpp",
     }
     useEngine()
-
