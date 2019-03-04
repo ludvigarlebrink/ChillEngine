@@ -31,3 +31,6 @@
 !ThirdParty/SDL/Lib/Win64/*
 !ThirdParty/freetype/Lib/Win32/*
 !ThirdParty/freetype/Lib/Win64/*
+
+# Engine files
+!Source/Main/Data/**

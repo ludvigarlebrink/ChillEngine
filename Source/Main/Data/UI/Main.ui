@@ -1,0 +1,36 @@
+root = {
+    type = "canvas",
+    transform = {
+        anchor.x = 0.0,
+        anchor.y = 1.0,
+        pivot.x = 0.0,
+        pivot.y = 1.0,
+        position.x = 0.0,
+        position.y = 0.0,
+        width = 800.0,
+        height = 128.0,
+        enabled = true
+    },
+    children = [
+        {
+            type = "image",
+            transform = {
+                anchor.x = 0.0,
+                anchor.y = 1.0,
+                pivot.x = 0.0,
+                pivot.y = 1.0,
+                position.x = 0.0,
+                position.y = 0.0,
+                width = 800.0,
+                height = 128.0,
+                enabled = true
+            },
+            image = {
+                colorR = 0.5,
+                colorG = 0.8,
+                colorB = 0.3,
+                colorA = 1.0
+            }
+        }
+    ]
+}
