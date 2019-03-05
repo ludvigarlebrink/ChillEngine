@@ -5,9 +5,11 @@
 #include "Renderer.hpp"
 
 #include <unordered_map>
+#include <vector>
 
 namespace chill
 {
+class Font;
 class Shader;
 class Texture;
 class VertexArray;
@@ -23,7 +25,7 @@ private:
     {
         Vector2f position;
         Vector2f textureCoordinates;
-        Vector4f color;
+        LinearColor color;
     };
 
 public:
@@ -40,6 +42,8 @@ public:
 
     void Submit(Texture* pTexture, const Recti& sourceRect, const Recti& distRect);
 
+    void Submit(const std::string& text, Font* pFont, const Vector2f& position, const LinearColor& color);
+
 private:
 
     void SetUp();
@@ -53,6 +57,7 @@ private:
 
     Shader* m_pShader;
     VertexArray* m_pVertexArray;
-    std::unordered_map<Texture*, std::vector<SpriteVertex>> m_renderBucket;
+    
+    std::vector<std::pair<Texture*, std::vector<SpriteVertex>>> m_backToFront;
 };
 }

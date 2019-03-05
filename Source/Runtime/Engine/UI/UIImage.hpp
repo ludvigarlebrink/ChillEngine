@@ -14,6 +14,8 @@ public:
 
     virtual ~UIImage();
 
+    LinearColor GetColor() const;
+
     Type GetType() const override;
 
     void RegisterOnHoverCallback(void* pUserPointer, UICallback onHover);
@@ -23,6 +25,8 @@ protected:
     void Load(YNodeMap* pNode) override;
 
 private:
+
+    LinearColor m_color;
 
     UICallback m_onHover;
     void* m_pOnHoverUserPointer;

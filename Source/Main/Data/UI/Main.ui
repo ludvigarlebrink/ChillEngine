@@ -8,7 +8,7 @@ root = {
         position.x = 0.0,
         position.y = 0.0,
         width = 800.0,
-        height = 128.0,
+        height = 64.0,
         enabled = true
     },
     children = [
@@ -21,16 +21,35 @@ root = {
                 pivot.y = 1.0,
                 position.x = 0.0,
                 position.y = 0.0,
-                width = 800.0,
-                height = 128.0,
+                width = 800,
+                height = 32.0,
                 enabled = true
             },
             image = {
-                colorR = 0.5,
-                colorG = 0.8,
-                colorB = 0.3,
-                colorA = 1.0
-            }
+                color.r = 0.25,
+                color.g = 0.25,
+                color.b = 0.25,
+                color.a = 1.0
+            },
+			children = [
+				{
+					type = "text",
+					transform = {
+						anchor.x = 0.0,
+						anchor.y = 1.0,
+						pivot.x = 0.0,
+						pivot.y = 0.7,
+						position.x = 10.0,
+						position.y = 0.0,
+						width = 800,
+						height = 32.0,
+						enabled = true
+					},
+					text = {
+						text = "Danke Schon"
+					},
+				}
+			]
         }
     ]
 }

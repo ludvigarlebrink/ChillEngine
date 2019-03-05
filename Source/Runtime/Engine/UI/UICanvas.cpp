@@ -14,7 +14,6 @@ UIWidget::Type UICanvas::GetType() const
 {
     return Type::CANVAS;
 }
-
 void UICanvas::Load(YNodeMap* pNode)
 {
 }

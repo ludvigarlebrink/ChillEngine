@@ -42,7 +42,7 @@ bool UIManager::LoadUI(const std::string& filename)
 
 void UIManager::Render()
 {
-    Render(m_pRoot);
+    Render(800, 600, m_pRoot);
 }
 
 UIWidget* UIManager::Load(YNodeMap* pNode)
@@ -72,7 +72,7 @@ UIWidget* UIManager::Load(YNodeMap* pNode)
             pWidget->m_anchor.x = pAnchorX->AsFloat();
         }
 
-        YNodeValue* pAnchorY = pTransform->GetChild<YNodeValue>("anchor.x");
+        YNodeValue* pAnchorY = pTransform->GetChild<YNodeValue>("anchor.y");
         if (pAnchorY)
         {
             pWidget->m_anchor.y = pAnchorY->AsFloat();
@@ -143,15 +143,12 @@ UIWidget* UIManager::Load(YNodeMap* pNode)
     return pWidget;
 }
 
-void UIManager::Render(UIWidget* pWidget)
+void UIManager::Render(int32 parentWidth, int32 parentHeight, UIWidget* pWidget)
 {
     if (!pWidget->m_enabled)
     {
         return;
     }
-
-    int32 width = 800.0f;
-    int32 height = 600.0f;
 
     switch (pWidget->GetType())
     {
@@ -165,24 +162,34 @@ void UIManager::Render(UIWidget* pWidget)
         Vector2f position = pImage->m_position;
 
         Recti distRect;
-        distRect.x = position.x;
-        distRect.y = position.y;
+        distRect.x = position.x - (pImage->m_width * pImage->m_pivot.x) + (pImage->m_anchor.x * parentWidth);
+        distRect.y = position.y - (pImage->m_height * pImage->m_pivot.y) + (pImage->m_anchor.y * parentHeight);
         distRect.w = pImage->m_width;
         distRect.h = pImage->m_height;
 
-        m_pSpriteRenderer->Submit(LinearColor(0.0f, 1.0f, 1.0f, 1.0f), distRect);
+        m_pSpriteRenderer->Submit(pImage->GetColor(), distRect);
 
         break;
     }
     case UIWidget::Type::TEXT:
+    {
+        UIText* pText = static_cast<UIText*>(pWidget);
+
+        Vector2f position;
+        position.x = pText->m_position.x - (pText->m_width * pText->m_pivot.x) + (pText->m_anchor.x * parentWidth);
+        position.y = pText->m_position.y - (pText->m_height * pText->m_pivot.y) + (pText->m_anchor.y * parentHeight);
+
+        m_pSpriteRenderer->Submit(pText->GetText(), pText->GetFont(), position, LinearColor(1.0f, 0.7f, 0.4f, 1.0f));
+
         break;
+    }
     default:
         break;
     }
 
     for (UIWidget* pW : pWidget->m_children)
     {
-        Render(pW);
+        Render(800, 600, pW);
     }
 }
 } // namespace chill

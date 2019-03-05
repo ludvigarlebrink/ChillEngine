@@ -36,7 +36,7 @@ private:
 
     UIWidget* Load(YNodeMap* pNode);
 
-    void Render(UIWidget* pWidget);
+    void Render(int32 parentWidth, int32 parentHeight, UIWidget* pWidget);
 
 private:
 

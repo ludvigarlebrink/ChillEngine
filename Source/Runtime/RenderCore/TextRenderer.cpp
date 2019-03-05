@@ -143,12 +143,9 @@ void TextRenderer::SetUp()
     }
 
     m_pVertexArray->Load(nullptr, sizeof(CharacterVertex), m_maxCharacters * 4, indices, indexCount);
-    int32 offset = 0;
-    m_pVertexArray->SetAttribPtr(0, VertexArray::Type::VECTOR2F, offset);
-    offset += sizeof(Vector2f);
+    m_pVertexArray->SetAttribPtr(0, VertexArray::Type::VECTOR2F, 0);
     m_pVertexArray->SetAttribPtr(1, VertexArray::Type::VECTOR2F, sizeof(Vector2f));
-    offset += sizeof(LinearColor);
-    m_pVertexArray->SetAttribPtr(2, VertexArray::Type::VECTOR4F, sizeof(LinearColor));
+    m_pVertexArray->SetAttribPtr(2, VertexArray::Type::VECTOR4F, sizeof(Vector2f) * 2);
     m_pVertexArray->EnableAttribute(0);
     m_pVertexArray->EnableAttribute(1);
     m_pVertexArray->EnableAttribute(2);

@@ -28,9 +28,20 @@ public:
 
 public:
 
+    UIWidget();
+
     virtual ~UIWidget() = default;
 
+    Vector2f GetAnchor();
+
+    Vector2f GetPivot();
+
+    Vector2f GetPosition();
+
     virtual Type GetType() const = 0;
+
+    bool IsEnabled() const;
+
 
 protected:
 
@@ -45,6 +56,8 @@ private:
     f32 m_height;
 
     bool m_enabled;
+    bool m_useParentHeight;
+    bool m_useParentWidth;
 
     std::vector<UIWidget*> m_children;
 };
