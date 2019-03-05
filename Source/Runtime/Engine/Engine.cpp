@@ -47,11 +47,11 @@ void Engine::Run()
         std::cout << "Failed to load water shader.\n";
     }
 
-    pWater->Create(2048, 1024, 0.74f);
+    pWater->Create(2048, 1024, 0.76f);
 
     pTerrain->LoadFromHeightMap("Data/TerrainHeight.bmp");
 
-    glm::mat4 projection = glm::perspective(60.0f, 1280.0f / 720.0f, 0.001f, 100000.0f);
+    glm::mat4 projection = glm::perspective(60.0f, 1280.0f / 720.0f, 0.1f, 100000.0f);
 
     glm::vec3 position = glm::vec3(400.0f, 20.0f, 200.0f);
 
@@ -119,19 +119,19 @@ void Engine::Run()
 
         if (moveUp)
         {
-            position.z -= 2.0f;
+            position.z -= 10.0f;
         }
         else if (moveDown)
         {
-            position.z += 2.0f;
+            position.z += 10.0f;
         }  
         if (moveLeft)
         {
-            position.x -= 2.0f;
+            position.x -= 10.0f;
         }
         else if (moveRight)
         {
-            position.x += 2.0f;
+            position.x += 10.0f;
         }
 
         win.EnableDepthTest(true);

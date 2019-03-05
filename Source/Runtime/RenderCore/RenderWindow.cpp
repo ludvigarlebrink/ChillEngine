@@ -71,6 +71,7 @@ void RenderWindow::EnableDepthTest(bool enabled)
 {
     if (enabled)
     {
+        glDepthFunc(GL_LESS);
         glEnable(GL_DEPTH_TEST);
     }
     else

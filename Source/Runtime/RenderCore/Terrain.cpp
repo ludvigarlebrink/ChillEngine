@@ -36,7 +36,7 @@ bool Terrain::LoadFromHeightMap(const std::string& filename)
         for (int32 x = 0; x < m_width; ++x)
         {
             int32 index = z * m_width + x;
-            pVertices[index].position = glm::vec3(x, (pData[index] / 255.0f) * 0.9f , z);
+            pVertices[index].position = glm::vec3(x, (pData[index] / 255.0f), z);
             pVertices[index].normal = glm::vec3(0.0f, 1.0f, 0.0f);
             pVertices[index].texCoords1 = glm::vec2(x, z);
             pVertices[index].texCoords2 = glm::vec2(x, z);
