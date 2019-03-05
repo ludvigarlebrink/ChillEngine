@@ -7,7 +7,7 @@ root = {
         pivot.y = 1.0,
         position.x = 0.0,
         position.y = 0.0,
-        width = 800.0,
+        width = 1280.0,
         height = 64.0,
         enabled = true
     },
@@ -21,7 +21,7 @@ root = {
                 pivot.y = 1.0,
                 position.x = 0.0,
                 position.y = 0.0,
-                width = 800,
+                width = 1280.0,
                 height = 32.0,
                 enabled = true
             },

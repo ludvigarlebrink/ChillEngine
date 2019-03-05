@@ -98,10 +98,10 @@ void SpriteRenderer::Render()
 
 void SpriteRenderer::Submit(const LinearColor& color, const Recti& distRect)
 {
-    f32 xMin = static_cast<f32>(distRect.x / 800.0f * 2.0f) - 1.0f;
-    f32 yMin = static_cast<f32>(distRect.y / 600.0f * 2.0f) - 1.0f;
-    f32 xMax = (static_cast<f32>(distRect.x + distRect.w) / 800.0f * 2.0f) - 1.0f;
-    f32 yMax = (static_cast<f32>(distRect.y + distRect.h) / 600.0f * 2.0f) - 1.0f;
+    f32 xMin = static_cast<f32>(distRect.x / 1280.0f * 2.0f) - 1.0f;
+    f32 yMin = static_cast<f32>(distRect.y / 720.0f * 2.0f) - 1.0f;
+    f32 xMax = (static_cast<f32>(distRect.x + distRect.w) / 1280.0f * 2.0f) - 1.0f;
+    f32 yMax = (static_cast<f32>(distRect.y + distRect.h) / 720.0f * 2.0f) - 1.0f;
 
     std::vector<SpriteVertex> vertices(4);
     vertices[0].position = Vector2f(xMin, yMin);
@@ -124,10 +124,10 @@ void SpriteRenderer::Submit(const LinearColor& color, const Recti& distRect)
 
 void SpriteRenderer::Submit(Texture* pTexture, const Recti& distRect)
 {
-    f32 xMin = static_cast<f32>(distRect.x / 800.0f * 2.0f) - 1.0f;
-    f32 yMin = static_cast<f32>(distRect.y / 600.0f * 2.0f) - 1.0f;
-    f32 xMax = (static_cast<f32>(distRect.x + distRect.w) / 800.0f * 2.0f) - 1.0f;
-    f32 yMax = (static_cast<f32>(distRect.y + distRect.h) / 600.0f * 2.0f) - 1.0f;
+    f32 xMin = static_cast<f32>(distRect.x / 1280.0f * 2.0f) - 1.0f;
+    f32 yMin = static_cast<f32>(distRect.y / 720.0f * 2.0f) - 1.0f;
+    f32 xMax = (static_cast<f32>(distRect.x + distRect.w) / 1280.0f * 2.0f) - 1.0f;
+    f32 yMax = (static_cast<f32>(distRect.y + distRect.h) / 720.0f * 2.0f) - 1.0f;
 
     std::vector<SpriteVertex> vertices(4);
     vertices[0].position = Vector2f(xMin, yMin);
@@ -145,10 +145,10 @@ void SpriteRenderer::Submit(Texture* pTexture, const Recti& distRect)
 
 void SpriteRenderer::Submit(Texture* pTexture, const Recti& sourceRect, const Recti& distRect)
 {
-    f32 xMin = static_cast<f32>(distRect.x / 800.0f * 2.0f) - 1.0f;
-    f32 yMin = static_cast<f32>(distRect.y / 600.0f * 2.0f) - 1.0f;
-    f32 xMax = (static_cast<f32>(distRect.x + distRect.w) / 800.0f * 2.0f) - 1.0f;
-    f32 yMax = (static_cast<f32>(distRect.y + distRect.h) / 600.0f * 2.0f) - 1.0f;
+    f32 xMin = static_cast<f32>(distRect.x / 1280.0f * 2.0f) - 1.0f;
+    f32 yMin = static_cast<f32>(distRect.y / 720.0f * 2.0f) - 1.0f;
+    f32 xMax = (static_cast<f32>(distRect.x + distRect.w) / 1280.0f * 2.0f) - 1.0f;
+    f32 yMax = (static_cast<f32>(distRect.y + distRect.h) / 720.0f * 2.0f) - 1.0f;
 
     std::vector<SpriteVertex> vertices(4);
     vertices[0].position = Vector2f(xMin, yMin);
@@ -184,10 +184,10 @@ void SpriteRenderer::Submit(const std::string& text, Font* pFont, const Vector2f
 
         f32 xPos = x + static_cast<f32>(character.bearing.x);
         f32 yPos = y - static_cast<f32>(character.size.y - character.bearing.y);
-        f32 xMin = (xPos / 800.0f * 2.0f) - 1.0f;
-        f32 yMin = (yPos / 600.0f * 2.0f) - 1.0f;
-        f32 xMax = ((xPos + character.size.x) / 800.0f * 2.0f) - 1.0f;
-        f32 yMax = ((yPos + character.size.y) / 600.0f * 2.0f) - 1.0f;
+        f32 xMin = (xPos / 1280.0f * 2.0f) - 1.0f;
+        f32 yMin = (yPos / 720.0f * 2.0f) - 1.0f;
+        f32 xMax = ((xPos + character.size.x) / 1280.0f * 2.0f) - 1.0f;
+        f32 yMax = ((yPos + character.size.y) / 720.0f * 2.0f) - 1.0f;
 
         SpriteVertex v[4];
         v[0].position = Vector2f(xMin, yMin);

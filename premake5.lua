@@ -30,6 +30,10 @@ function includeSTB()
     includedirs "ThirdParty/STB/Include"
 end
 
+function includeGLM()
+    includedirs "ThirdParty/glm/Include"
+end
+
 function includeGTest()
     files {
         "ThirdParty/googletest-release-1.8.1/googletest/src/gtest-all.cc",
@@ -50,6 +54,7 @@ function useUtils()
     filter { "kind:not StaticLib" }
         links { "Utils" }
     filter {}
+    includeGLM()
 end
 
 function usePlatform()
@@ -120,6 +125,7 @@ project "Utils"
         "Source/Runtime/Utils/**.cpp",
     }
     defines "UTILS_API_DLL_EXPORT"
+    includeGLM()
 
 group "Dev"
 project "Utils_TEST"

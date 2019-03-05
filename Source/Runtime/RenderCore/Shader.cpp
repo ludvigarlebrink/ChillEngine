@@ -43,13 +43,13 @@ bool Shader::Load(const std::string& vertexShaderFilename, const std::string& ge
     std::string vertSource((std::istreambuf_iterator<char>(vert)), std::istreambuf_iterator<char>());
     vert.close();
 
-    std::ifstream frag(vertexShaderFilename);
+    std::ifstream frag(fragmentShaderFilename);
     if (!frag.is_open())
     {
         return false;
     }
 
-    std::string fragSource((std::istreambuf_iterator<char>(vert)), std::istreambuf_iterator<char>());
+    std::string fragSource((std::istreambuf_iterator<char>(frag)), std::istreambuf_iterator<char>());
     frag.close();
 
     if (!geometryShaderFilename.empty())
@@ -188,14 +188,14 @@ void Shader::SetMatrix3fSlow(const std::string& name, Matrix3f& mat)
     glUniformMatrix3fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::SetMatrix4f(uint32 location, Matrix4f& mat)
+void Shader::SetMatrix4f(uint32 location, const glm::mat4& mat)
 {
-    glUniformMatrix4fv(location, 1, GL_FALSE, &mat[0][0]);
+    glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(mat));
 }
 
-void Shader::SetMatrix4fSlow(const std::string& name, Matrix4f& mat)
+void Shader::SetMatrix4fSlow(const std::string& name, const glm::mat4& mat)
 {
-    glUniformMatrix4fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+    glUniformMatrix4fv(glGetUniformLocation(m_shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat));
 }
 
 void Shader::SetVector2f(uint32 location, Vector2f & vec)

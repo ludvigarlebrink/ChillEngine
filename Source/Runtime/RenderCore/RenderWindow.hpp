@@ -50,6 +50,8 @@ public:
      */
     bool Create(const std::string& title, int32 width, int32 height);
 
+    void EnableDepthTest(bool enabled);
+
     /**
      * @brief Set the color the backbuffer will be cleared with.
      *

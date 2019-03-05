@@ -29,10 +29,10 @@ RenderWindow::~RenderWindow()
 
 void RenderWindow::Clear()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // @todo Remove.
-    glCullFace(GL_BACK);
-    glFrontFace(GL_CCW);
+    // glCullFace(GL_BACK);
+    // glFrontFace(GL_CCW);
     glEnable(GL_CULL_FACE);
 }
 
@@ -65,6 +65,18 @@ bool RenderWindow::Create(const std::string& title, int32 width, int32 height)
     }
 
     return true;
+}
+
+void RenderWindow::EnableDepthTest(bool enabled)
+{
+    if (enabled)
+    {
+        glEnable(GL_DEPTH_TEST);
+    }
+    else
+    {
+        glDisable(GL_DEPTH_TEST);
+    }
 }
 
 void RenderWindow::SetClearColor(const LinearColor& clearColor)

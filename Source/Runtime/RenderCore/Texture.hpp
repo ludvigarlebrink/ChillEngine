@@ -7,8 +7,6 @@
 
 namespace chill
 {
-class Image;
-
 /**
  * @brief A texture.
  */

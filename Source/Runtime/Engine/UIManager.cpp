@@ -42,7 +42,7 @@ bool UIManager::LoadUI(const std::string& filename)
 
 void UIManager::Render()
 {
-    Render(800, 600, m_pRoot);
+    Render(1280, 720, m_pRoot);
 }
 
 UIWidget* UIManager::Load(YNodeMap* pNode)
@@ -189,7 +189,7 @@ void UIManager::Render(int32 parentWidth, int32 parentHeight, UIWidget* pWidget)
 
     for (UIWidget* pW : pWidget->m_children)
     {
-        Render(800, 600, pW);
+        Render(1280, 720, pW);
     }
 }
 } // namespace chill

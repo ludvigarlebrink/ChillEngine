@@ -26,6 +26,7 @@ VertexArray::~VertexArray()
 void VertexArray::Bind()
 {
     glBindVertexArray(m_vao);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
 }
 
 void VertexArray::EnableAttribute(int32 index)

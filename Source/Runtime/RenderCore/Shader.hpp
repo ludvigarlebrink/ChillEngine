@@ -4,6 +4,9 @@
 #include "BaseTypes.hpp"
 #include "Math/MathFwd.hpp"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <string>
 
 namespace chill
@@ -113,7 +116,7 @@ public:
      * @param location Location of uniform.
      * @param mat Matrix.
      */
-    void SetMatrix4f(uint32 location, Matrix4f& mat);
+    void SetMatrix4f(uint32 location, const glm::mat4& mat);
 
     /**
      * @brief Set a matrix uniform, slow.
@@ -121,7 +124,7 @@ public:
      * @param name Name of uniform.
      * @param mat Matrix.
      */
-    void SetMatrix4fSlow(const std::string& name, Matrix4f& mat);
+    void SetMatrix4fSlow(const std::string& name, const glm::mat4& mat);
 
     /**
      * @brief Set a vector uniform.
