@@ -51,9 +51,9 @@ void Engine::Run()
 
     pTerrain->LoadFromHeightMap("Data/TerrainHeight.bmp");
 
-    glm::mat4 projection = glm::perspective(60.0f, 1280.0f / 720.0f, 0.1f, 100000.0f);
+    glm::mat4 projection = glm::perspective(45.0f, 1280.0f / 720.0f, 1.0f, 100000.0f);
 
-    glm::vec3 position = glm::vec3(400.0f, 20.0f, 200.0f);
+    glm::vec3 position = glm::vec3(400.0f, 200.0f, 200.0f);
 
     bool moveLeft = false;
     bool moveRight = false;
@@ -139,7 +139,7 @@ void Engine::Run()
         glm::mat4 view = glm::translate(glm::mat4(1.0f), position);
         view = glm::rotate(view, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         view = glm::rotate(view, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        view = glm::rotate(view, glm::radians(270.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        view = glm::rotate(view, glm::radians(240.0f), glm::vec3(1.0f, 0.0f, 0.0f));
         view = glm::scale(view, glm::vec3(1.0f, 1.0f, 1.0f));
 
         m_pUIManager->Render();
